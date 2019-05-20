@@ -6,6 +6,6 @@ export interface IPreviewCard {
 }
 
 export interface IState {
-    renderList : Array<any>;
+    renderList : Array<IPreviewCard>;
     viewOption: string;  
 }
