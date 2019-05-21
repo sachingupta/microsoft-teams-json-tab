@@ -1,0 +1,17 @@
+.SearchBar{
+    position: relative;
+    margin: auto;
+    height: auto; 
+}
+
+#toggle.SearchBar{
+    float: left;
+}
+
+#search.SearchBar{
+    vertical-align: middle;
+}
+
+#search-button.SearchBar{
+    float:right;
+}
