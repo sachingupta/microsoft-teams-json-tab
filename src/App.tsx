@@ -23,10 +23,10 @@ class App extends React.Component<{}, IAppState>{
 
   //handles searchbar change
   public handleChange = (query: string, viewOption: string) => {
-    if(query != undefined){
+    if(query !== undefined){
       this.setState({query: query});
     }
-    if(viewOption != undefined){
+    if(viewOption !== undefined){
       this.setState({viewOption: viewOption});
     }
     console.log(this.state);
