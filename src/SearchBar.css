@@ -2,6 +2,7 @@
     position: relative;
     margin: auto;
     height: auto; 
+    text-align:right;
 }
 
 #toggle.SearchBar{
