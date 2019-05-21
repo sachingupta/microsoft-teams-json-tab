@@ -3,29 +3,40 @@ import './App.css';
 
 import { SearchBar } from './components/SearchBar';
 import { Results } from './components/Results';
-import { IState } from './jsonTabs.interface';
 
-import * as data from './generated.json';
+import { getResults } from './api/api';
 
-class App extends React.Component<any, any>{
+interface IAppState{
+  query: string,
+  viewOption: string,
+}
 
-  constructor(props: IState){
+class App extends React.Component<{}, IAppState>{
+
+  constructor(props: {}){
     super(props);
     this.state = {
-      viewOption: props.viewOption,
-      renderList: props.renderList
+      query: '',
+      viewOption: 'List'
     }
   }
 
-  public handleChange = (_State: any) => {
-    this.setState({renderList: _State.renderList, viewOption: _State.viewOption});
+  //handles searchbar change
+  public handleChange = (query: string, viewOption: string) => {
+    if(query){
+      this.setState({query: query});
+    }
+    if(viewOption){
+      this.setState({viewOption: viewOption});
+    }
   }
 
+  //calls api
   render(){
     return (
       <div>
-        <SearchBar list={data} query="" onChange={this.handleChange}/> 
-        <Results renderList={this.state.renderList} viewOption={this.state.viewOption} />
+        <SearchBar onChange={this.handleChange}/> 
+        <Results renderList={getResults(this.state.query)} viewOption={this.state.viewOption} />
       </div>
     );
   }
