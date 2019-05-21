@@ -30,6 +30,8 @@ export class SearchBar extends React.Component<any, any>{
 
   public handleDropdownChange = (event: any, item: any): void => {
     this.setState({view: item.value});
+
+    console.log(this.state);
   }
 
   //on search button click or 'return' pressed
