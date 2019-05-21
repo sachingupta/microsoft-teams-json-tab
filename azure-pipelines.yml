@@ -21,12 +21,3 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
-
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Visual Studio Ultimate with MSDN(b845ebc5-20c7-4f5f-97f3-b5d93818be77)'
-    appType: 'webApp'
-    WebAppName: 'teams-json-tab'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-  displayName: 'AzureRmWebAppDeployment'
