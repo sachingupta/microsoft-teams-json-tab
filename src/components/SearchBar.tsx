@@ -9,7 +9,7 @@ interface ISearchableProps{
   view: string
 }
 
-const inputItems = [ {header: 'List'}, {header: 'Grid'} ];
+const inputItems = [ 'List', 'Grid' ];
 
 // searchbar class contains toggle, search, and search button
 export class SearchBar extends React.Component<any, any>{
@@ -28,9 +28,8 @@ export class SearchBar extends React.Component<any, any>{
     this.setState({query: event.target.value});
   }
 
-  public handleDropdownChange(item: any): void{
-    console.log(item);
-    //this.setState({view: event.target.value});
+  public handleDropdownChange = (event: any, item: any): void => {
+    this.setState({view: item.value});
   }
 
   //on search button click or 'return' pressed
@@ -59,7 +58,7 @@ export class SearchBar extends React.Component<any, any>{
   public render() {
     return(
       <div className="SearchBar">
-        <Dropdown inline items={inputItems} onSelectedChange={e => this.handleDropdownChange(e)} placeholder="Select a view..." />
+        <Dropdown inline items={inputItems} onSelectedChange={this.handleDropdownChange} placeholder="Select a view..." />
         <span id="search">
           <Input placeholder="Search..." onChange={e => this.handleOnChange(e)}/>
         </span>
