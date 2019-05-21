@@ -1,20 +1,13 @@
 import React from 'react';
-//import { ListView } from './ListView'
+import { ListView } from './ListView'
 import { IState } from '../jsonTabs.interface';
 
-export class Results extends React.Component<any, any>{
 
-  constructor(props: IState) {
-    super(props);
-    this.state = { renderList: props.renderList, viewOption: props.viewOption };
-  }
+export const Results = (props: IState) =>{
+  return (
+    <div>
+      {props.viewOption === 'List' ? <ListView itemList={props.renderList} /> : '[Insert CardView Component Here]'}
+    </div>
+  )
 
-  render() {
-    return (
-      <div>
-        Results
-        {/*this.state.viewOption === 'list' ? <ListView itemList={this.state.renderList} /> : '[Insert CardView Component Here]'*/}
-      </div>
-    )
-  }
 }

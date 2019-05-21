@@ -2,6 +2,7 @@ import React from 'react';
 import { Input, Button, Dropdown } from '@stardust-ui/react';
 import { IState, IPreviewCard } from '../jsonTabs.interface';
 import '../SearchBar.css'
+import { listenerCount } from 'cluster';
 
 interface ISearchableProps{
   query: string, 
@@ -32,15 +33,13 @@ export class SearchBar extends React.Component<any, any>{
   }
 
   public handleDropdownChange = (event: any, item: any): void => {
-    this.setState({view: item.value});
+    this.setState({view: item.value}, this.broadcastState);
   }
 
   //on search button click or 'return' pressed
   public handleOnClick(event: any): void{
-    var search:string = this.state.query;
     this.setState({renderList: this.getQueriedItems()}, this.broadcastState);
   }
-
 
   // dispatches state of search bar
   public broadcastState(){
@@ -56,7 +55,7 @@ export class SearchBar extends React.Component<any, any>{
           <Input placeholder="Search..." onChange={e => this.handleOnChange(e)}/>
         </span>
         <span id="search-button">
-          <Button iconOnly icon="search" primary onClick= {e => this.handleOnClick(e)} />
+          <Button iconOnly icon="search" primary onClick={e => this.handleOnClick(e)} />
         </span>
         <br />
       </div>
@@ -70,8 +69,8 @@ export class SearchBar extends React.Component<any, any>{
   
   // query logic
   public getQueriedItems = (): Array<IPreviewCard> => {
-    if(!this.state.query){
-      return this.state.items;
+    if(this.state.query==="" || !this.state.query){
+      return this.state.list.default;
     }
     var queriedItems: Array<IPreviewCard> = [];
 

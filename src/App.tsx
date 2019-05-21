@@ -17,17 +17,17 @@ class App extends React.Component<any, any>{
     }
   }
 
+  public handleChange = (_State: any) => {
+    this.setState({renderList: _State.renderList, viewOption: _State.viewOption});
+  }
+
   render(){
     return (
       <div>
         <SearchBar list={data} query="" onChange={this.handleChange}/> 
-        <Results renderList={this.state.renderList} viewOption={this.state.viewOption}/>
+        <Results renderList={this.state.renderList} viewOption={this.state.viewOption} />
       </div>
     );
-  }
-
-  public handleChange = (_State: any) => {
-    this.setState({renderList: _State.renderList, viewOption: _State.viewOption});
   }
   
 }

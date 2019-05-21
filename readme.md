@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+[![Build Status](https://dev.azure.com/hapysachin91/json-tab/_apis/build/status/sachingupta.microsoft-teams-json-tab?branchName=master)](https://dev.azure.com/hapysachin91/json-tab/_build/latest?definitionId=1&branchName=master)
+
 ## Available Scripts
 
 In the project directory, you can run:
