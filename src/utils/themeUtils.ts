@@ -1,4 +1,5 @@
 import { themes, ThemeInput } from '@stardust-ui/react';
+import * as queryString from 'query-string';
 
 enum themeTypes{
     Dark='dark',
@@ -7,26 +8,24 @@ enum themeTypes{
 };
 
 // gets theme name from url params
-export const getThemeFromURL = (url: string): string => {
-    var indexOfEquals: number = url.indexOf("=");
-    if(indexOfEquals <= 0){ // no equals
+export const getThemeFromURL = (iUrl: string): string => {
+    var url = queryString.parseUrl(iUrl);
+
+    var themeString: any = url.query.theme;
+
+    if(!themeString){
         return 'default';
     }
-    var subs = url.substring(indexOfEquals+1);
-
-    return subs;
+    return themeString;
 }
 
 // gets theme type from string
 export const getTheme = (theme:string):ThemeInput => {
     var newTheme:ThemeInput = themes.teams;
     
-    if(theme === themeTypes.Contrast){
-        newTheme = themes.teamsHighContrast;
-    }
-    
-    if(theme === themeTypes.Dark){
-        newTheme = themes.teamsDark;
+    switch(theme){
+        case(themeTypes.Contrast): return themes.teamsHighContrast;
+        case(themeTypes.Dark): return themes.teamsDark;
     }
 
     return newTheme;
