@@ -55,7 +55,7 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
       <div className="SearchBar">
         <Dropdown inline items={inputItems} onSelectedChange={this.handleDropdownChange} placeholder="Select a view..." />
         <span id="search">
-          <Input placeholder="Search..." onChange={e => this.handleOnChange(e)}/>
+          <Input placeholder="Search..." icon="search" onChange={e => this.handleOnChange(e)}/>
         </span>
         <span id="search-button">
           <Button iconOnly icon="search" primary onClick={e => this.handleOnClick(e)} />

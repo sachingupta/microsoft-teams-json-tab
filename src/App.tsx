@@ -39,8 +39,6 @@ class App extends React.Component<IAppProps, IAppState>{
 
   public componentDidMount() {
     microsoftTeams.initialize();
-    microsoftTeams.getContext((context: microsoftTeams.Context) => {
-    });
     microsoftTeams.registerOnThemeChangeHandler(this.props.onThemeChange);
   }
 
