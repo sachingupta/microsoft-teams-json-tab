@@ -6,6 +6,8 @@ import { Results } from './components/Results';
 
 import { getResults } from './api/api';
 
+import * as microsoftTeams from "@microsoft/teams-js";
+
 interface IAppState{
   query: string,
   viewOption: string,
