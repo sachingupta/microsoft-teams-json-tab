@@ -29,6 +29,8 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
       query: '',
       viewOption: viewType.List,
     };
+    this.getViewOption.bind(this);
+    this.handleRadioButtonChange.bind(this);
   }
 
   // handler for query changed -> updates state
@@ -37,11 +39,7 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
   }
 
   public handleDropdownChange = (event: any, item: any): void => {
-    var _viewOption = viewType.List;
-    if(item.value === viewType.Grid){
-      _viewOption = viewType.Grid;
-    }
-    this.setState({viewOption: _viewOption});
+    this.setState({viewOption: this.getViewOption(item.value)});
   }
 
   //on search button click or 'return' pressed
@@ -49,12 +47,25 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
     this.props.onSearch(this.state.query, this.state.viewOption);
   }
 
+  handleRadioButtonChange = (view: string) => {
+    this.setState({viewOption: this.getViewOption(view)});
+  }
+
+  public getViewOption (view: string): viewType {
+    var _viewOption = viewType.List;
+    if(view === viewType.Grid){
+      _viewOption = viewType.Grid;
+    }
+    return _viewOption;
+  }
 
   // renders search component
   public render() {
     return(
       <div className="SearchBar">
-        <RadioIcons />
+        <div id="toggle">
+          <RadioIcons onChange={this.handleRadioButtonChange}/>
+        </div>
         <Dropdown inline items={inputItems} onSelectedChange={this.handleDropdownChange} placeholder="Select a view..." />
         <span id="search">
           <Input placeholder="Search..." icon="search" onChange={e => this.handleOnChange(e)}/>
