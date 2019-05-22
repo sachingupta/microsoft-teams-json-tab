@@ -31,11 +31,11 @@ class App extends React.Component<{}, IAppState>{
     if(viewOption !== undefined){
       this.setState({viewOption: viewOption});
     }
-    console.log(this.state);
   }
 
   //calls api
   render(){
+    
     return (
       <div>
         <SearchBar onSearch={this.handleChange}/> 
