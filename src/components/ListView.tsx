@@ -15,7 +15,12 @@ export const ListView = (props:any) => {
             key: key_count,
             header: item.title,
             content: item.subTitle,
-            media: <Image src={item.heroImageSrc} avatar/>
+            media: <Image src={item.heroImageSrc} avatar/>,
+            styles : {
+                boxShadow: "0 0 0 1px #E1DFDD",
+                'border-radius': '1px',
+                margin: '4px 4px 4px 4px'
+            },
         }
         return out;
     }
