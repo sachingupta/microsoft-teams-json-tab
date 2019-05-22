@@ -36,7 +36,7 @@ class App extends React.Component<{}, IAppState>{
   render(){
     return (
       <div>
-        <SearchBar onChange={this.handleChange}/> 
+        <SearchBar onSearch={this.handleChange}/> 
         <Results results={getResults(this.state.query)} viewOption={this.state.viewOption} />
       </div>
     );

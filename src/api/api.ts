@@ -1,14 +1,14 @@
-import {default as raw} from '../generated.json';
+import {default as jsonData} from '../generated.json';
 import { IPreviewCard } from '../jsonTabs.interface.js';
 
 export const getResults = (query: string): Array<IPreviewCard> => {
     if(!query){
-        return raw;
+        return jsonData;
     }
 
     var queriedItems: Array<IPreviewCard> = [];
 
-    raw.forEach((item: IPreviewCard) => {
+    jsonData.forEach((item: IPreviewCard) => {
         if(item.title.toLowerCase().includes(query.trim().toLowerCase())){
             queriedItems.push(item);
           }

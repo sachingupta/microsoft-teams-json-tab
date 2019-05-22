@@ -2,13 +2,18 @@ import React from 'react';
 import { Input, Button, Dropdown } from '@stardust-ui/react';
 import '../SearchBar.css'
 
+enum viewType{
+  List= 'List',
+  Grid= 'Grid'
+}
+
 interface ISearchBarProps{
-  onChange: any
+  onSearch: any
 }
 
 interface ISearchBarState{
   query: string,
-  viewOption: string
+  viewOption: viewType
 }
 
 const inputItems = [ 'List', 'Grid' ];
@@ -21,7 +26,7 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
     super(props);
     this.state = {
       query: '',
-      viewOption: 'List',
+      viewOption: viewType.List,
     };
   }
 
@@ -31,12 +36,16 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
   }
 
   public handleDropdownChange = (event: any, item: any): void => {
-    this.setState({viewOption: item.value});
+    var _viewOption = viewType.List;
+    if(item.value === viewType.Grid){
+      _viewOption = viewType.Grid;
+    }
+    this.setState({viewOption: _viewOption});
   }
 
   //on search button click or 'return' pressed
   public handleOnClick(event: any): void{
-    this.props.onChange(this.state.query, this.state.viewOption);
+    this.props.onSearch(this.state.query, this.state.viewOption);
   }
 
 
