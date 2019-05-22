@@ -33,7 +33,7 @@
     {
       "entityId": "json-list-tab",
       "name": "List Tab",
-      "contentUrl": "https://6851a1da.ngrok.io",
+      "contentUrl": "https://6851a1da.ngrok.io?theme={theme}",
       "websiteUrl": "https://6851a1da.ngrok.io",
       "scopes": [
         "personal"

@@ -13,13 +13,17 @@ interface IAppState{
   viewOption: string,
 }
 
-class App extends React.Component<{}, IAppState>{
+interface IAppProps{
+  onThemeChange: any
+}
 
-  constructor(props: {}){
+class App extends React.Component<IAppProps, IAppState>{
+
+  constructor(props: IAppProps){
     super(props);
     this.state = {
       query: '',
-      viewOption: 'List'
+      viewOption: 'List',
     }
   }
 
@@ -33,9 +37,16 @@ class App extends React.Component<{}, IAppState>{
     }
   }
 
+  public componentDidMount() {
+    microsoftTeams.initialize();
+    microsoftTeams.getContext((context: microsoftTeams.Context) => {
+    });
+    microsoftTeams.registerOnThemeChangeHandler(this.props.onThemeChange);
+  }
+
   //calls api
   render(){
-    
+
     return (
       <div>
         <SearchBar onSearch={this.handleChange}/> 
