@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './css/App.css';
 
 import { SearchBar } from './components/SearchBar';
 import { Results } from './components/Results';
