@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box } from '@stardust-ui/react';
 import { FlexItem } from './FlexItem'
+import '../CardView.css'
 
 export const CardView = (props: any) => {
 
@@ -9,8 +10,8 @@ export const CardView = (props: any) => {
   let tempSubTitle:string;
   let tempTitle:string;
 
-  let maxTitleLength = 30;
-  let maxSubtitleLength = 100;
+  let maxTitleLength = 21;
+  let maxSubtitleLength = 170;
 
 for (let i = 0; i < props.itemList.length; i++) {
   
@@ -37,10 +38,10 @@ for (let i = 0; i < props.itemList.length; i++) {
   //Pass new Item to FlexItem function to handle format of each box, then push each item to itemList array, a unique key is needed
   let new_item = <Box key={i} content={FlexItem(item)} />
   itemList.push(new_item);
-}
+  }
 
 return (
-<div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}} >
+<div className="CardsContainer">
   {itemList}
 </div>)
 }
