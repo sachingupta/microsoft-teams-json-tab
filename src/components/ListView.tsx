@@ -13,13 +13,40 @@ export const ListView = (props:any) => {
         key_count++
         let out = {
             key: key_count,
-            header: item.title,
-            content: item.subTitle,
-            media: <Image src={item.heroImageSrc} avatar/>,
+            header: {
+                content: item.title,
+                styles: {
+                    color:'#252424 100%',
+                    opacity: '100%',
+                    'font-size': '14px',
+                    'font-face': 'SegoeUI-Semibold',
+                    character: '0px',
+                    line: '20px',
+                    width: '200px',
+                    display: 'flex',
+                    'align-items': 'center'
+                }
+            },
+            content: {
+                content:item.subTitle,
+                styles: {
+                    color:'#252424 75%',
+                    opacity: '100%',
+                    'font-size': '14px',
+                    'font-face': 'SegoeUI',
+                    character: '0px',
+                    line: '20px',
+                    width: '200px' 
+                },
+            },
+            media: <Image src={item.heroImageSrc}/>,
             styles : {
-                boxShadow: "0 0 0 1px #E1DFDD",
-                'border-radius': '1px',
-                margin: '4px 4px 4px 4px'
+                boxShadow: "0 2px 0 0 #E1DFDD",
+                opacity: '100%',
+                radius: '3px 3px 0px 0px',
+                display: 'flex',
+                width: '1148px',
+                margin: '2px 2px 0 0',
             },
         }
         return out;
@@ -31,7 +58,7 @@ export const ListView = (props:any) => {
     // Render selectable list
     return (
         <div>
-            <List selectable defaultSelectedIndex={0} items = {out_list}/>
+            <List selectable items = {out_list}/>
         </div>    
     )
 }
