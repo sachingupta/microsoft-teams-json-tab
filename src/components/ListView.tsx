@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Image } from '@stardust-ui/react'
+import { List, Image, Flex, Text, Icon } from '@stardust-ui/react'
 
 export const ListView = (props:any) => {
     // Output List for processed data
@@ -13,41 +13,25 @@ export const ListView = (props:any) => {
         key_count++
         let out = {
             key: key_count,
-            header: {
-                content: item.title,
-                styles: {
-                    color:'#252424 100%',
-                    opacity: '100%',
-                    'font-size': '14px',
-                    'font-face': 'SegoeUI-Semibold',
-                    character: '0px',
-                    line: '20px',
-                    width: '200px',
-                    display: 'flex',
-                    'align-items': 'center'
-                }
-            },
-            content: {
-                content:item.subTitle,
-                styles: {
-                    color:'#252424 75%',
-                    opacity: '100%',
-                    'font-size': '14px',
-                    'font-face': 'SegoeUI',
-                    character: '0px',
-                    line: '20px',
-                    width: '200px' 
-                },
-            },
-            media: <Image src={item.heroImageSrc}/>,
-            styles : {
-                boxShadow: "0 2px 0 0 #E1DFDD",
-                opacity: '100%',
-                radius: '3px 3px 0px 0px',
-                display: 'flex',
-                width: '1148px',
-                margin: '2px 2px 0 0',
-            },
+            content: 
+            <Flex vAlign='center'> 
+                <Flex.Item >
+                    <Image src={item.heroImageSrc} className='listItemImage'/>
+                </Flex.Item>
+                <Flex.Item>
+                    <Text content={item.title} className='listItemTitle'/>
+                </Flex.Item>
+                <Flex.Item>
+                    <Text content={'The interns are cool'} className='listItemSubtitle'/>
+                </Flex.Item> 
+                <Flex.Item>
+                    <Text content={item.subTitle} className='listItemDescription'/>
+                </Flex.Item>
+                <Flex.Item>
+                    <Icon name='more'/>
+                </Flex.Item>
+            </Flex>,
+            className: 'listItem'
         }
         return out;
     }
