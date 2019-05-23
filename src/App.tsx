@@ -6,18 +6,24 @@ import { Results } from './components/Results';
 
 import { getResults } from './api/api';
 
+import * as microsoftTeams from "@microsoft/teams-js";
+
 interface IAppState{
   query: string,
   viewOption: string,
 }
 
-class App extends React.Component<{}, IAppState>{
+interface IAppProps{
+  onThemeChange: any
+}
 
-  constructor(props: {}){
+class App extends React.Component<IAppProps, IAppState>{
+
+  constructor(props: IAppProps){
     super(props);
     this.state = {
       query: '',
-      viewOption: 'List'
+      viewOption: 'List',
     }
   }
 
@@ -29,11 +35,16 @@ class App extends React.Component<{}, IAppState>{
     if(viewOption !== undefined){
       this.setState({viewOption: viewOption});
     }
-    console.log(this.state);
+  }
+
+  public componentDidMount() {
+    microsoftTeams.initialize();
+    microsoftTeams.registerOnThemeChangeHandler(this.props.onThemeChange);
   }
 
   //calls api
   render(){
+
     return (
       <div>
         <SearchBar onSearch={this.handleChange}/> 

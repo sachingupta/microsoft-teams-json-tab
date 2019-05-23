@@ -2,7 +2,7 @@
   "$schema": "https://github.com/OfficeDev/microsoft-teams-app-schema/blob/preview/DevPreview/MicrosoftTeams.schema.json",
   "manifestVersion": "devPreview",
   "version": "1.0",
-  "id": "1baea796-52e9-4e81-9bf7-5d201dc3733e",
+  "id": "300639bf-2c0f-41a7-aa2e-7833664c4c76",
   "packageName": "com.microsoft.teams.samples.v4bot",
   "developer": {
     "name": "Microsoft Corp",
@@ -11,37 +11,37 @@
     "termsOfUseUrl": "https://example.azurewebsites.net/termsofuse"
   },
   "name": {
-    "short": "JSON List Tab - Team",
-    "full": "Microsoft Teams V4 Sample Bot"
+    "short": "JSON Tab",
+    "full": "Sample JSON Tab - master"
   },
   "description": {
-    "short": "JSON List",
-    "full": "JSON List app"
+    "short": "Sample JSON Tab",
+    "full": "Sample JSON App"
   },
   "icons": {
     "outline": "icon-outline.png",
     "color": "icon-color.png"
   },
   "accentColor": "#abcdef",
-  "bots": [
-    {
-      "botId": "1baea796-52e9-4e81-9bf7-5d201dc3733e",
-      "scopes": ["personal", "team"]
-    }
-  ],
   "staticTabs": [
     {
-      "entityId": "json-list-tab",
-      "name": "List Tab",
-      "contentUrl": "https://6851a1da.ngrok.io?theme={theme}",
-      "websiteUrl": "https://6851a1da.ngrok.io",
+      "entityId": "json-tab",
+      "name": "json tab",
+      "contentUrl": "https://teams-json-tab.azurewebsites.net?theme={theme}",
+      "websiteUrl": "https://teams-json-tab.azurewebsites.net",
       "scopes": [
         "personal"
       ]
     }],
+  "bots": [
+    {
+      "botId": "300639bf-2c0f-41a7-aa2e-7833664c4c76",
+      "scopes": ["personal", "team"]
+    }
+  ],
   "composeExtensions": [
     {
-      "botId": "1baea796-52e9-4e81-9bf7-5d201dc3733e",
+      "botId": "300639bf-2c0f-41a7-aa2e-7833664c4c76",
       "commands": [
         {
           "id": "queryCards",
