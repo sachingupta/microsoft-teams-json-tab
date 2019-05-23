@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button } from '@stardust-ui/react';
+import { Input, Button, Icon } from '@stardust-ui/react';
 import '../css/SearchBar.css'
 import { RadioIcons } from './RadioIcons';
 
@@ -30,6 +30,7 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
     };
     this.getViewOption.bind(this);
     this.handleRadioButtonChange.bind(this);
+    this.handleKeyPress.bind(this);
   }
 
   // handler for query changed -> updates state
@@ -56,6 +57,13 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
     return _viewOption;
   }
 
+  //on enter search
+  handleKeyPress = (event:any) => {
+    if(event.key === 'Enter'){
+      this.props.onSearch(this.state.query);
+    }
+  }
+
   // renders search component
   public render() {
     return(
@@ -63,8 +71,20 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
         <RadioIcons onChange={ this.handleRadioButtonChange }/> 
         <Input 
           placeholder="Search..." 
-          icon={ () => <Button iconOnly icon="search" primary onClick={ e => this.handleOnClick(e) } styles={ { backgroundColor: 'none' } }/> } 
+          icon={ () => 
+            <Button 
+              iconOnly 
+              icon= { ()=> <Icon name="search" styles={ { color: 'black' } }/> }
+              primary onClick={ e => this.handleOnClick(e) } 
+              styles={ { backgroundColor: 'none', 
+                         border: 'none', 
+                         'box-shadow': 'none',
+                         'border-radius': 'none'
+                        } }
+              /> 
+            } 
           onChange={ e => this.handleOnChange(e) }
+          onKeyPress={ this.handleKeyPress }
         />
         <br />
       </div>

@@ -48,7 +48,6 @@ class App extends React.Component<IAppProps, IAppState>{
 
   //calls api
   render(){
-
     return (
         <div>
             <SearchBar onSearch={ this.handleSearch } onViewChange={ this.handleViewChange }/> 

@@ -4,6 +4,10 @@
     text-align:right;
 }
 
+#search.SearchBar{
+    margin-left: 0px;
+}
+
 #buttons.SearchBar{
     display: inline-block;
 }

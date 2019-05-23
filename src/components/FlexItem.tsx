@@ -1,22 +1,16 @@
 import * as React from 'react'
-import { Flex, Image, Text, Header } from '@stardust-ui/react'
+import { Image, Text, Header, Layout } from '@stardust-ui/react'
 
 export const FlexItem = (props:any) => (
-  <Flex gap="gap.small" padding="padding.medium">
-    <Flex.Item size="size.small">
-      <div style={{ position: 'relative' }}>
-        <Image className="heroImageSrc" src={props.heroImageSrc} circular width="75px" />
-      </div>
-    </Flex.Item>
-
-    <Flex.Item grow>
-      <Flex column gap="gap.small" vAlign="stretch">
-        <Flex space="evenly">
-          <Header className="title" as="h3" content={props.title} />
-        </Flex>
-        <Text content={props.subTitle} />
-        </Flex>
-    </Flex.Item>
-
-  </Flex>
-)
+  <div className="CardBox">
+        <Layout vertical 
+          start={
+            <div id="parent"> 
+              <Image className="heroImage" src={props.heroImageSrc} circular/> 
+              <Header className="Title" as="h4" content={props.title}/> 
+            </div>}
+          main={
+            <span className='Subtitle'><Text content={props.subTitle}/></span>} 
+          gap="2px" />
+  </div>
+  )
