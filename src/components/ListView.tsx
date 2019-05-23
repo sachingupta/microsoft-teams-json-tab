@@ -16,7 +16,7 @@ export const ListView = (props:any) => {
             content: 
             <Flex vAlign='center'> 
                 <Flex.Item >
-                    <Image src={item.heroImageSrc} className='listItemImage'/>
+                    <Image src={'https://robohash.org/Sachin.jpg?size=32x32'} className='listItemImage'/>
                 </Flex.Item>
                 <Flex.Item>
                     <Text content={item.title} className='listItemTitle'/>
@@ -27,7 +27,7 @@ export const ListView = (props:any) => {
                 <Flex.Item>
                     <Text content={item.subTitle} className='listItemDescription'/>
                 </Flex.Item>
-                <Flex.Item>
+                <Flex.Item push>
                     <Icon name='more'/>
                 </Flex.Item>
             </Flex>,
