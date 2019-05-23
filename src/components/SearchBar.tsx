@@ -30,6 +30,7 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
     };
     this.getViewOption.bind(this);
     this.handleRadioButtonChange.bind(this);
+    this.handleKeyPress.bind(this);
   }
 
   // handler for query changed -> updates state
@@ -56,6 +57,13 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
     return _viewOption;
   }
 
+  //on enter search
+  handleKeyPress = (event:any) => {
+    if(event.key === 'Enter'){
+      this.props.onSearch(this.state.query);
+    }
+  }
+
   // renders search component
   public render() {
     return(
@@ -65,6 +73,7 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
           placeholder="Search..." 
           icon={ () => <Button iconOnly icon="search" primary onClick={ e => this.handleOnClick(e) } styles={ { backgroundColor: 'none' } }/> } 
           onChange={ e => this.handleOnChange(e) }
+          onKeyPress={ this.handleKeyPress }
         />
         <br />
       </div>
