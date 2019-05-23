@@ -3,7 +3,6 @@ import { Provider, ThemeInput } from '@stardust-ui/react';
 import App from './App';
 import * as themeUtils from './utils/themeUtils'
 
-
 interface IProviderWrapperState{
     currentTheme: ThemeInput
 }
@@ -23,15 +22,15 @@ export class ProviderWrapper extends React.Component<{}, IProviderWrapperState>{
 
     render(){
         return (
-            <Provider theme={this.state.currentTheme}> 
-                <App onThemeChange={this.handleThemeChange}/>
+            <Provider theme={ this.state.currentTheme }> 
+                <App onThemeChange={ this.handleThemeChange }/>
             </Provider>
         );
     }
 
     //handler for change in theme
     public handleThemeChange = (theme:string) =>{
-        this.setState({currentTheme: themeUtils.getTheme(theme)});
+        this.setState({ currentTheme: themeUtils.getTheme(theme) });
     }
 
 }
