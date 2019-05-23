@@ -1,5 +1,5 @@
 import React from 'react';
-import { RadioGroup } from '@stardust-ui/react';
+import { Button } from '@stardust-ui/react';
 import '../css/SearchBar.css';
 
 enum viewType{
@@ -11,36 +11,30 @@ interface IRadioIconsProps{
     onChange: any
 }
 
-export class RadioIcons extends React.Component<IRadioIconsProps, {}>{
+interface IRadioIconsState {
+    highlighted: viewType
+}
+
+export class RadioIcons extends React.Component<IRadioIconsProps, IRadioIconsState>{
     constructor(props: IRadioIconsProps){
         super(props);
+        this.state = {
+            highlighted: viewType.List
+        }
     }
 
     //broadcast state
-    public handleChange = (event: any, items: any): void => {
-        this.props.onChange(items.value);
-    }
-
-    private getItems(){
-        return [
-            {
-                name: 'viewType',
-                key: viewType.List,
-                label: 'List',
-                value: viewType.List,
-            },
-            {
-                name: 'viewType',
-                key: viewType.Grid,
-                label: 'Grid',
-                value: viewType.Grid,
-            }
-        ];
+    public handleChange = async (event: any, items: any) => {
+        await this.setState({highlighted: items.value})
+        this.props.onChange(this.state.highlighted);
     }
 
     public render(){
         return (
-            <RadioGroup defaultCheckedValue={viewType.List} items={this.getItems()} checkedValueChanged={this.handleChange} styles={{display:'inline-block'}}/>
+            <div className="SearchBar" id="buttons">
+                <Button icon="bullets" iconOnly onClick={e => this.handleChange(e, {value: viewType.List})}/>
+                <Button icon="calendar" iconOnly onClick={e => this.handleChange(e, {value: viewType.Grid})} />
+            </div>
         )
     }
     

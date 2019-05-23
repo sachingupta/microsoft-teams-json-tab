@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button, Icon } from '@stardust-ui/react';
+import { Input, Button } from '@stardust-ui/react';
 import '../css/SearchBar.css'
 import { RadioIcons } from './RadioIcons';
 
@@ -17,8 +17,6 @@ interface ISearchBarState{
   query: string,
   viewOption: viewType
 }
-
-const inputItems = [ 'List', 'Grid' ];
 
 // searchbar class contains toggle, search, and search button
 export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>{
