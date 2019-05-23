@@ -1,0 +1,43 @@
+.CardsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.CardBox {
+    display: flex;
+    border: solid; 
+    border-width: 1px; 
+    border-style: groove; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19); 
+    margin: 10px; 
+    padding: 10px; 
+    width: 350px;
+    height: 250px;
+}
+
+.heroImage {
+    display: inline-block; 
+    margin: 15px 10px 10px 10px;
+    width: 75px;
+    height: 75px;
+}
+
+.Title {
+    display: inline-block; 
+    margin-top: 35px;
+    margin-left: 7px;
+}
+
+.Subtitle {
+    margin-left: 25px;
+    margin-top: 20px;
+    display: block;
+    height: 100%;
+}
+
+#parent {
+    white-space: nowrap;
+    overflow-x: auto;
+    display: flex;
+}
