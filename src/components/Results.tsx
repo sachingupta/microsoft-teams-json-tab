@@ -1,10 +1,17 @@
 import React from 'react';
-import { ListView } from "./ListView";
+import { ListView } from './ListView'
+import { IState } from '../jsonTabs.interface';
+import { CardView } from './CardView';
 
-export const Results: React.FC = () => {
+enum viewOption{
+  List = 'List',
+  Grid = 'Grid'
+}
+export const Results = (props: IState) =>{
   return (
     <div>
-      Results
+      {props.viewOption === viewOption.List ? <ListView itemList={ props.results } /> : <CardView itemList={ props.results } />}
     </div>
-  );
+  )
+
 }

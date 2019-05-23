@@ -1,0 +1,9 @@
+.SearchBar{
+    margin: auto;
+    height: auto; 
+    text-align:right;
+}
+
+#buttons.SearchBar{
+    display: inline-block;
+}
