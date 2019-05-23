@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button } from '@stardust-ui/react';
+import { Input, Button, Icon } from '@stardust-ui/react';
 import '../css/SearchBar.css'
 import { RadioIcons } from './RadioIcons';
 
@@ -71,7 +71,18 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
         <RadioIcons onChange={ this.handleRadioButtonChange }/> 
         <Input 
           placeholder="Search..." 
-          icon={ () => <Button iconOnly icon="search" primary onClick={ e => this.handleOnClick(e) } styles={ { backgroundColor: 'none' } }/> } 
+          icon={ () => 
+            <Button 
+              iconOnly 
+              icon= { ()=> <Icon name="search" styles={ { color: 'black' } }/> }
+              primary onClick={ e => this.handleOnClick(e) } 
+              styles={ { backgroundColor: 'none', 
+                         border: 'none', 
+                         'box-shadow': 'none',
+                         'border-radius': 'none'
+                        } }
+              /> 
+            } 
           onChange={ e => this.handleOnChange(e) }
           onKeyPress={ this.handleKeyPress }
         />
