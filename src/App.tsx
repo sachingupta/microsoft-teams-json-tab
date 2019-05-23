@@ -6,7 +6,7 @@ import { Results } from './components/Results';
 
 import { getResults } from './api/api';
 
-import * as microsoftTeams from "@microsoft/teams-js";
+import * as microsoftTeams from '@microsoft/teams-js';
 
 interface IAppState{
   query: string,
@@ -30,14 +30,14 @@ class App extends React.Component<IAppProps, IAppState>{
   //handles searchbar change
   public handleSearch = (query: string, viewOption: string) => {
     if(query !== undefined){
-      this.setState({query: query});
+      this.setState({ query: query });
     }
   }
 
   //handles change of view
   public handleViewChange = (viewOption:string) => {
     if(viewOption){
-      this.setState({viewOption: viewOption});
+      this.setState({ viewOption: viewOption });
     }
   }
 
@@ -50,15 +50,13 @@ class App extends React.Component<IAppProps, IAppState>{
   render(){
 
     return (
-      <div>
-        <SearchBar onSearch={this.handleSearch} onViewChange={this.handleViewChange}/> 
-        <Results results={getResults(this.state.query)} viewOption={this.state.viewOption} />
-      </div>
+        <div>
+            <SearchBar onSearch={ this.handleSearch } onViewChange={ this.handleViewChange }/> 
+            <Results results={ getResults(this.state.query) } viewOption={ this.state.viewOption } />
+        </div>
     );
   }
   
 }
-
-
 
 export default App;

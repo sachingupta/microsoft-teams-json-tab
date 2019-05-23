@@ -1,8 +1,8 @@
-import {default as jsonData} from '../generated.json';
+import { default as jsonData } from '../generated.json';
 import { IPreviewCard } from '../jsonTabs.interface.js';
 
 export const getResults = (query: string): Array<IPreviewCard> => {
-    if(!query){
+    if(!query) {
         return jsonData;
     }
 

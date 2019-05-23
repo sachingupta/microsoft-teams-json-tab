@@ -34,7 +34,7 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
 
   // handler for query changed -> updates state
   public handleOnChange(event: any) : void {
-    this.setState({query: event.target.value});
+    this.setState({ query: event.target.value });
   }
 
   //on search button click or 'return' pressed
@@ -44,11 +44,11 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
 
   //async to await the state change
   handleRadioButtonChange = async (view: string) => {
-    await this.setState({viewOption: this.getViewOption(view)});
+    await this.setState({ viewOption: this.getViewOption(view) });
     this.props.onViewChange(this.state.viewOption);
   }
 
-  public getViewOption (view: string): viewType {
+  getViewOption = (view: string): viewType => {
     var _viewOption = viewType.List;
     if(view === viewType.Grid){
       _viewOption = viewType.Grid;
@@ -60,11 +60,11 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
   public render() {
     return(
       <div className="SearchBar">
-        <RadioIcons onChange={this.handleRadioButtonChange}/> 
+        <RadioIcons onChange={ this.handleRadioButtonChange }/> 
         <Input 
           placeholder="Search..." 
-          icon={() => <Button iconOnly icon="search" primary onClick={e => this.handleOnClick(e)} styles={{backgroundColor: 'none'}}/>} 
-          onChange={e => this.handleOnChange(e)}
+          icon={ () => <Button iconOnly icon="search" primary onClick={ e => this.handleOnClick(e) } styles={ { backgroundColor: 'none' } }/> } 
+          onChange={ e => this.handleOnChange(e) }
         />
         <br />
       </div>

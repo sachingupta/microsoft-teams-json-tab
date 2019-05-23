@@ -25,18 +25,17 @@ export class RadioIcons extends React.Component<IRadioIconsProps, IRadioIconsSta
 
     //broadcast state
     public handleChange = async (event: any, items: any) => {
-        await this.setState({highlighted: items.value})
+        await this.setState({ highlighted: items.value })
         this.props.onChange(this.state.highlighted);
     }
 
     public render(){
         return (
             <div className="SearchBar" id="buttons">
-                <Button icon="bullets" iconOnly onClick={e => this.handleChange(e, {value: viewType.List})}/>
-                <Button icon="calendar" iconOnly onClick={e => this.handleChange(e, {value: viewType.Grid})} />
+                <Button icon="bullets" iconOnly onClick={ e => this.handleChange(e, { value: viewType.List }) }/>
+                <Button icon="calendar" iconOnly onClick={ e => this.handleChange(e, { value: viewType.Grid }) } />
             </div>
         )
     }
     
 }
-
