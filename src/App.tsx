@@ -28,11 +28,15 @@ class App extends React.Component<IAppProps, IAppState>{
   }
 
   //handles searchbar change
-  public handleChange = (query: string, viewOption: string) => {
+  public handleSearch = (query: string, viewOption: string) => {
     if(query !== undefined){
       this.setState({query: query});
     }
-    if(viewOption !== undefined){
+  }
+
+  //handles change of view
+  public handleViewChange = (viewOption:string) => {
+    if(viewOption){
       this.setState({viewOption: viewOption});
     }
   }
@@ -47,7 +51,7 @@ class App extends React.Component<IAppProps, IAppState>{
 
     return (
       <div>
-        <SearchBar onSearch={this.handleChange}/> 
+        <SearchBar onSearch={this.handleSearch} onViewChange={this.handleViewChange}/> 
         <Results results={getResults(this.state.query)} viewOption={this.state.viewOption} />
       </div>
     );

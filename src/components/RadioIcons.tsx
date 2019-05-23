@@ -11,23 +11,14 @@ interface IRadioIconsProps{
     onChange: any
 }
 
-interface IRadioIconsState{
-    view: string
-}
-
-export class RadioIcons extends React.Component<IRadioIconsProps, IRadioIconsState>{
-
+export class RadioIcons extends React.Component<IRadioIconsProps, {}>{
     constructor(props: IRadioIconsProps){
         super(props);
-        this.state = {
-            view: viewType.List
-        }
     }
 
     //broadcast state
     public handleChange = (event: any, items: any): void => {
-        this.setState({view: items.value});
-        this.props.onChange(this.state.view);
+        this.props.onChange(items.value);
     }
 
     private getItems(){
