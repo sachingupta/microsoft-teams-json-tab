@@ -40,7 +40,7 @@ export class RadioIcons extends React.Component<IRadioIconsProps, {}>{
 
     public render(){
         return (
-            <RadioGroup defaultCheckedValue={viewType.List} items={this.getItems()} checkedValueChanged={this.handleChange}/>
+            <RadioGroup defaultCheckedValue={viewType.List} items={this.getItems()} checkedValueChanged={this.handleChange} styles={{display:'inline-block'}}/>
         )
     }
     
