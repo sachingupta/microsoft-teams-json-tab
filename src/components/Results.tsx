@@ -9,9 +9,8 @@ enum viewOption{
 }
 export const Results = (props: IState) =>{
   return (
-    <div>
-      {props.viewOption === viewOption.List ? <ListView itemList={ props.results } /> : <CardView itemList={ props.results } />}
-    </div>
-  )
-
+      <div>
+          { props.viewOption === viewOption.List ? <ListView itemList={ props.results } /> : <CardView itemList={ props.results } /> }
+      </div>
+    )
 }

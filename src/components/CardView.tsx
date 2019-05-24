@@ -5,20 +5,20 @@ import '../css/CardView.css'
 
 export const CardView = (props: any) => {
 
-  let itemList = [];
+  const itemList = [];
 
   let tempSubTitle:string;
   let tempTitle:string;
 
-  let maxTitleLength = 21;
-  let maxSubtitleLength = 170;
+  const maxTitleLength = 21;
+  const maxSubtitleLength = 170;
 
 for (let i = 0; i < props.itemList.length; i++) {
   
-  let item = {
-    title: props.itemList[i].title,
-    subTitle: props.itemList[i].subTitle,
-    heroImageSrc: props.itemList[i].heroImageSrc
+  const item = {
+    title: props.itemList[ i ].title,
+    subTitle: props.itemList[ i ].subTitle,
+    heroImageSrc: props.itemList[ i ].heroImageSrc
   }
 
   tempSubTitle = item.subTitle;
@@ -26,22 +26,22 @@ for (let i = 0; i < props.itemList.length; i++) {
 
   //Limiting title length to maintain consistent box sizes
   if (tempTitle.length > maxTitleLength) {
-    let newTitle = tempTitle.substring(0, maxTitleLength).concat("...");
+    const newTitle = tempTitle.substring(0, maxTitleLength).concat('...');
     item.title = newTitle;
   }
   //Also limiting subtitle length to maintain box sizes, if length of subtitle is greater than a certain value, make a substring and concat "..."
   if (tempSubTitle.length > maxSubtitleLength) {
-    let newSubTitle = tempSubTitle.substring(0, maxSubtitleLength).concat("...");
+    const newSubTitle = tempSubTitle.substring(0, maxSubtitleLength).concat('...');
     item.subTitle = newSubTitle;
   }
 
   //Pass new Item to FlexItem function to handle format of each box, then push each item to itemList array, a unique key is needed
-  let new_item = <Box key={i} content={FlexItem(item)} />
-  itemList.push(new_item);
+  const newItem = <Box key={ i } content={ FlexItem(item) } />
+  itemList.push(newItem);
   }
 
 return (
-<div className="CardsContainer">
-  {itemList}
-</div>)
+    <div className="CardsContainer">
+        { itemList }
+    </div>)
 }
