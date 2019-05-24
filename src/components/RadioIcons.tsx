@@ -30,10 +30,14 @@ export class RadioIcons extends React.Component<IRadioIconsProps, IRadioIconsSta
     }
 
     public render(){
+        let styles = {
+            border: 'none', 
+            'box-shadow':'none'
+        }
         return (
             <div className="SearchBar" id="buttons">
-                <Button icon="bullets" iconOnly onClick={ e => this.handleChange(e, { value: viewType.List }) }/>
-                <Button icon="calendar" iconOnly onClick={ e => this.handleChange(e, { value: viewType.Grid }) } />
+                <Button icon="bullets" iconOnly onClick={ e => this.handleChange(e, { value: viewType.List }) } styles={ styles }/>
+                <Button icon="calendar" iconOnly onClick={ e => this.handleChange(e, { value: viewType.Grid }) } styles={ styles }/>
             </div>
         )
     }

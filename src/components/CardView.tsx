@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@stardust-ui/react';
 import { FlexItem } from './FlexItem'
-import '../CardView.css'
+import '../css/CardView.css'
 
 export const CardView = (props: any) => {
 

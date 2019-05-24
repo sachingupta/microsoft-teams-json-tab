@@ -13,8 +13,8 @@ export const ListView = (props:any) => {
             key: keyCount,
             content: (
                 <Flex vAlign='center'>
-                    <Flex.Item>
-                        <Image src={ 'https://robohash.org/Sachin.jpg?size=32x32' } className='listItemImage'/>
+                    <Flex.Item styles={{width: '32px', height:'32px'}}>
+                        <Image src={ item.heroImageSrc } className='listItemImage'/>
                     </Flex.Item>
                     <Flex.Item>
                         <Text content={ item.title } className='listItemTitle'/>
