@@ -6,7 +6,7 @@ export const FlexItem = (props:any) => (
         <Layout vertical 
           start={
             <div id="parent"> 
-              <Image className="heroImage" src={props.heroImageSrc} circular/> 
+              <Image className="heroImage" src={props.heroImageSrc} circular styles={{width:'75px', height: '75px'}}/> 
               <Header className="Title" as="h4" content={props.title}/> 
             </div>}
           main={
