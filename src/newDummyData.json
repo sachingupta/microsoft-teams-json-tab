@@ -1,0 +1,2682 @@
+[
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Singleton.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Pauline Richmond",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Juarez Burt",
+      "subtitle": "Incididunt laborum aute reprehenderit irure voluptate adipisicing pariatur laboris cupidatat mollit ullamco.",
+      "heroImageSrc": "https://robohash.org/Lara.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Burch.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Lelia Head",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Consuelo Wallace",
+      "subtitle": "Cupidatat aute culpa voluptate officia culpa anim ex reprehenderit.",
+      "heroImageSrc": "https://robohash.org/Mitzi.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Snider.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Kline Decker",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Lauri Bennett",
+      "subtitle": "Minim excepteur ullamco elit laborum dolor pariatur aliqua deserunt sit eu laborum est.",
+      "heroImageSrc": "https://robohash.org/Alyson.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Bessie.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Mays Alexander",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Jeri Pruitt",
+      "subtitle": "Commodo ea dolore irure ipsum.",
+      "heroImageSrc": "https://robohash.org/Nona.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Carlene.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Lee Hoffman",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Hayes Parker",
+      "subtitle": "Sint ipsum et non irure commodo minim amet veniam labore.",
+      "heroImageSrc": "https://robohash.org/Vazquez.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Hardy.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Crane Huber",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Amy Horne",
+      "subtitle": "Ullamco voluptate id fugiat proident velit eu aute id.",
+      "heroImageSrc": "https://robohash.org/Dorsey.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Raquel.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Spence Valentine",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Pierce Charles",
+      "subtitle": "Nisi eiusmod ea ullamco aute nisi.",
+      "heroImageSrc": "https://robohash.org/Goff.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Merritt.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Nelda Lowe",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Carrie Henderson",
+      "subtitle": "Lorem irure nostrud dolore irure ad consequat in labore irure aliqua ut proident qui.",
+      "heroImageSrc": "https://robohash.org/Shaffer.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Marianne.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Smith Craig",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Gilmore Grimes",
+      "subtitle": "Velit ex aute tempor dolore minim consectetur id proident nulla ea.",
+      "heroImageSrc": "https://robohash.org/Clara.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Jacklyn.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Sampson Carr",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Strong Velez",
+      "subtitle": "Occaecat nisi laboris culpa in et.",
+      "heroImageSrc": "https://robohash.org/Harrison.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Rodgers.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Deborah Grant",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Vincent Mercer",
+      "subtitle": "Sint consequat aute qui do qui pariatur officia exercitation proident.",
+      "heroImageSrc": "https://robohash.org/Katelyn.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Jordan.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Pate Pitts",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Richmond Bowman",
+      "subtitle": "Mollit laborum elit occaecat cupidatat amet ipsum.",
+      "heroImageSrc": "https://robohash.org/Horne.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Frieda.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Shields Howe",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Melendez Morgan",
+      "subtitle": "Minim sint proident Lorem nulla mollit deserunt duis enim consectetur est proident fugiat exercitation qui.",
+      "heroImageSrc": "https://robohash.org/Sargent.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Small.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Glover Martin",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Rowe Hines",
+      "subtitle": "Ullamco deserunt aliquip enim quis consequat commodo cupidatat aliqua dolore.",
+      "heroImageSrc": "https://robohash.org/Mendez.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Earnestine.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Reeves Mcbride",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Francisca Duffy",
+      "subtitle": "Velit minim irure cupidatat exercitation sint non aute proident amet nulla magna.",
+      "heroImageSrc": "https://robohash.org/Haley.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Copeland.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Susan Cherry",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Elaine Knowles",
+      "subtitle": "Pariatur voluptate dolor Lorem sit veniam ipsum amet dolore.",
+      "heroImageSrc": "https://robohash.org/Cynthia.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Shepard.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Dale Andrews",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Tamara Oneil",
+      "subtitle": "Incididunt magna commodo excepteur minim id.",
+      "heroImageSrc": "https://robohash.org/Ina.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Deleon.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Kris Booth",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Velez Rasmussen",
+      "subtitle": "Irure ad voluptate exercitation labore Lorem excepteur excepteur consectetur id quis laborum dolor in veniam.",
+      "heroImageSrc": "https://robohash.org/Walters.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Bonner.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Chavez Rocha",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Constance Stout",
+      "subtitle": "Tempor voluptate esse nostrud esse mollit in.",
+      "heroImageSrc": "https://robohash.org/Lora.jpg?size=75x75"
+    }
+  },
+  {
+    "contentType": "card",
+    "content": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Publish Adaptive Card schema",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://robohash.org/Woods.jpg?size=300x300",
+                      "size": "small",
+                      "style": "person"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Richards Perez",
+                      "weight": "bolder",
+                      "wrap": true
+                    },
+                    {
+                      "type": "TextBlock",
+                      "spacing": "none",
+                      "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                      "isSubtle": true,
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Board:",
+                  "value": "Adaptive Card"
+                },
+                {
+                  "title": "List:",
+                  "value": "Backlog"
+                },
+                {
+                  "title": "Assigned to:",
+                  "value": "Matt Hidinger"
+                },
+                {
+                  "title": "Due date:",
+                  "value": "Not set"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Set due date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Date",
+                "id": "dueDate"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Action.ShowCard",
+          "title": "Comment",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "Input.Text",
+                "id": "comment",
+                "isMultiline": true,
+                "placeholder": "Enter your comment"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "OK"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "1.0"
+    },
+    "preview": {
+      "title": "Craft Knox",
+      "subtitle": "Labore ad magna id fugiat ad duis aliqua labore et nisi.",
+      "heroImageSrc": "https://robohash.org/Hunt.jpg?size=75x75"
+    }
+  }
+]
