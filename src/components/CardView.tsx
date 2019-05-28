@@ -16,11 +16,7 @@ export const CardView = (props:IItemListProps) => {
 
   for (let i = 0; i < props.itemList.length; i++) {
   
-  const item = {
-    title: props.itemList[ i ].preview.title,
-    subTitle: props.itemList[ i ].preview.subTitle,
-    heroImageSrc: props.itemList[ i ].preview.heroImageSrc
-  }
+  const item = props.itemList[ i ].preview;
 
   tempSubTitle = item.subTitle;
   tempTitle = item.title;

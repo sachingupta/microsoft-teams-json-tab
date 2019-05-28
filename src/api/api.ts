@@ -9,7 +9,7 @@ export const getResults = (query: string): Array<ICard> => {
     var queriedItems: Array<ICard> = [];
 
     jsonData.forEach((item: ICard) => {
-        if(item.preview.title.toLowerCase().includes(query.trim().toLowerCase())){
+        if(item && item.preview.title.toLowerCase().includes(query.trim().toLowerCase())){
             queriedItems.push(item);
           }
     });
