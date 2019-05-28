@@ -129,7 +129,7 @@
     },
     "preview": {
       "title": "Juarez Burt",
-      "subtitle": "Incididunt laborum aute reprehenderit irure voluptate adipisicing pariatur laboris cupidatat mollit ullamco.",
+      "subTitle": "Incididunt laborum aute reprehenderit irure voluptate adipisicing pariatur laboris cupidatat mollit ullamco.",
       "heroImageSrc": "https://robohash.org/Lara.jpg?size=75x75"
     }
   },
@@ -263,7 +263,7 @@
     },
     "preview": {
       "title": "Consuelo Wallace",
-      "subtitle": "Cupidatat aute culpa voluptate officia culpa anim ex reprehenderit.",
+      "subTitle": "Cupidatat aute culpa voluptate officia culpa anim ex reprehenderit.",
       "heroImageSrc": "https://robohash.org/Mitzi.jpg?size=75x75"
     }
   },
@@ -397,7 +397,7 @@
     },
     "preview": {
       "title": "Lauri Bennett",
-      "subtitle": "Minim excepteur ullamco elit laborum dolor pariatur aliqua deserunt sit eu laborum est.",
+      "subTitle": "Minim excepteur ullamco elit laborum dolor pariatur aliqua deserunt sit eu laborum est.",
       "heroImageSrc": "https://robohash.org/Alyson.jpg?size=75x75"
     }
   },
@@ -531,7 +531,7 @@
     },
     "preview": {
       "title": "Jeri Pruitt",
-      "subtitle": "Commodo ea dolore irure ipsum.",
+      "subTitle": "Commodo ea dolore irure ipsum.",
       "heroImageSrc": "https://robohash.org/Nona.jpg?size=75x75"
     }
   },
@@ -665,7 +665,7 @@
     },
     "preview": {
       "title": "Hayes Parker",
-      "subtitle": "Sint ipsum et non irure commodo minim amet veniam labore.",
+      "subTitle": "Sint ipsum et non irure commodo minim amet veniam labore.",
       "heroImageSrc": "https://robohash.org/Vazquez.jpg?size=75x75"
     }
   },
@@ -799,7 +799,7 @@
     },
     "preview": {
       "title": "Amy Horne",
-      "subtitle": "Ullamco voluptate id fugiat proident velit eu aute id.",
+      "subTitle": "Ullamco voluptate id fugiat proident velit eu aute id.",
       "heroImageSrc": "https://robohash.org/Dorsey.jpg?size=75x75"
     }
   },
@@ -933,7 +933,7 @@
     },
     "preview": {
       "title": "Pierce Charles",
-      "subtitle": "Nisi eiusmod ea ullamco aute nisi.",
+      "subTitle": "Nisi eiusmod ea ullamco aute nisi.",
       "heroImageSrc": "https://robohash.org/Goff.jpg?size=75x75"
     }
   },
@@ -1067,7 +1067,7 @@
     },
     "preview": {
       "title": "Carrie Henderson",
-      "subtitle": "Lorem irure nostrud dolore irure ad consequat in labore irure aliqua ut proident qui.",
+      "subTitle": "Lorem irure nostrud dolore irure ad consequat in labore irure aliqua ut proident qui.",
       "heroImageSrc": "https://robohash.org/Shaffer.jpg?size=75x75"
     }
   },
@@ -1201,7 +1201,7 @@
     },
     "preview": {
       "title": "Gilmore Grimes",
-      "subtitle": "Velit ex aute tempor dolore minim consectetur id proident nulla ea.",
+      "subTitle": "Velit ex aute tempor dolore minim consectetur id proident nulla ea.",
       "heroImageSrc": "https://robohash.org/Clara.jpg?size=75x75"
     }
   },
@@ -1335,7 +1335,7 @@
     },
     "preview": {
       "title": "Strong Velez",
-      "subtitle": "Occaecat nisi laboris culpa in et.",
+      "subTitle": "Occaecat nisi laboris culpa in et.",
       "heroImageSrc": "https://robohash.org/Harrison.jpg?size=75x75"
     }
   },
@@ -1469,7 +1469,7 @@
     },
     "preview": {
       "title": "Vincent Mercer",
-      "subtitle": "Sint consequat aute qui do qui pariatur officia exercitation proident.",
+      "subTitle": "Sint consequat aute qui do qui pariatur officia exercitation proident.",
       "heroImageSrc": "https://robohash.org/Katelyn.jpg?size=75x75"
     }
   },
@@ -1603,7 +1603,7 @@
     },
     "preview": {
       "title": "Richmond Bowman",
-      "subtitle": "Mollit laborum elit occaecat cupidatat amet ipsum.",
+      "subTitle": "Mollit laborum elit occaecat cupidatat amet ipsum.",
       "heroImageSrc": "https://robohash.org/Horne.jpg?size=75x75"
     }
   },
@@ -1737,7 +1737,7 @@
     },
     "preview": {
       "title": "Melendez Morgan",
-      "subtitle": "Minim sint proident Lorem nulla mollit deserunt duis enim consectetur est proident fugiat exercitation qui.",
+      "subTitle": "Minim sint proident Lorem nulla mollit deserunt duis enim consectetur est proident fugiat exercitation qui.",
       "heroImageSrc": "https://robohash.org/Sargent.jpg?size=75x75"
     }
   },
@@ -1871,7 +1871,7 @@
     },
     "preview": {
       "title": "Rowe Hines",
-      "subtitle": "Ullamco deserunt aliquip enim quis consequat commodo cupidatat aliqua dolore.",
+      "subTitle": "Ullamco deserunt aliquip enim quis consequat commodo cupidatat aliqua dolore.",
       "heroImageSrc": "https://robohash.org/Mendez.jpg?size=75x75"
     }
   },
@@ -2005,7 +2005,7 @@
     },
     "preview": {
       "title": "Francisca Duffy",
-      "subtitle": "Velit minim irure cupidatat exercitation sint non aute proident amet nulla magna.",
+      "subTitle": "Velit minim irure cupidatat exercitation sint non aute proident amet nulla magna.",
       "heroImageSrc": "https://robohash.org/Haley.jpg?size=75x75"
     }
   },
@@ -2139,7 +2139,7 @@
     },
     "preview": {
       "title": "Elaine Knowles",
-      "subtitle": "Pariatur voluptate dolor Lorem sit veniam ipsum amet dolore.",
+      "subTitle": "Pariatur voluptate dolor Lorem sit veniam ipsum amet dolore.",
       "heroImageSrc": "https://robohash.org/Cynthia.jpg?size=75x75"
     }
   },
@@ -2273,7 +2273,7 @@
     },
     "preview": {
       "title": "Tamara Oneil",
-      "subtitle": "Incididunt magna commodo excepteur minim id.",
+      "subTitle": "Incididunt magna commodo excepteur minim id.",
       "heroImageSrc": "https://robohash.org/Ina.jpg?size=75x75"
     }
   },
@@ -2407,7 +2407,7 @@
     },
     "preview": {
       "title": "Velez Rasmussen",
-      "subtitle": "Irure ad voluptate exercitation labore Lorem excepteur excepteur consectetur id quis laborum dolor in veniam.",
+      "subTitle": "Irure ad voluptate exercitation labore Lorem excepteur excepteur consectetur id quis laborum dolor in veniam.",
       "heroImageSrc": "https://robohash.org/Walters.jpg?size=75x75"
     }
   },
@@ -2541,7 +2541,7 @@
     },
     "preview": {
       "title": "Constance Stout",
-      "subtitle": "Tempor voluptate esse nostrud esse mollit in.",
+      "subTitle": "Tempor voluptate esse nostrud esse mollit in.",
       "heroImageSrc": "https://robohash.org/Lora.jpg?size=75x75"
     }
   },
@@ -2675,7 +2675,7 @@
     },
     "preview": {
       "title": "Craft Knox",
-      "subtitle": "Labore ad magna id fugiat ad duis aliqua labore et nisi.",
+      "subTitle": "Labore ad magna id fugiat ad duis aliqua labore et nisi.",
       "heroImageSrc": "https://robohash.org/Hunt.jpg?size=75x75"
     }
   }
