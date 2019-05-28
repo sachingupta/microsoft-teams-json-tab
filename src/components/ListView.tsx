@@ -1,7 +1,6 @@
 import React from 'react'
 import { List, Image, Flex, Text } from '@stardust-ui/react'
-import * as microsoftTeams from '@microsoft/teams-js';
-import { IPreviewCard, ICard } from '../api/api.interface';
+import { ICard } from '../api/api.interface';
 import { displayTaskModule } from '../utils/utils';
  
 export interface IItemListProps {
@@ -20,7 +19,7 @@ export const ListView = (props:IItemListProps) => {
             key: keyCount,
             content: (
                 <Flex vAlign='center'>
-                    <Flex.Item styles={{width: '32px', height:'32px'}}>
+                    <Flex.Item styles={ { width: '32px', height:'32px' } }>
                         <Image src={ item.preview.heroImageSrc } className='listItemImage'/>
                     </Flex.Item>
                     <Flex.Item>
