@@ -1,12 +1,10 @@
 import React from 'react'
 import { List, Image, Flex, Text } from '@stardust-ui/react'
 import * as microsoftTeams from '@microsoft/teams-js';
-import { IPreviewCard, ICardResponse } from '../jsonTabs.interface';
+import { IPreviewCard } from '../api/api.interface';
+import { displayTaskModule } from '../utils/utils';
  
 
-const openTaskModule = (adaptiveCard:any) => {
-    microsoftTeams.tasks.startTask(adaptiveCard);
-}
 
 export const ListView = (props:{itemList:Array<IPreviewCard>}) => {
 
@@ -32,7 +30,7 @@ export const ListView = (props:{itemList:Array<IPreviewCard>}) => {
                 </Flex>
             ),
             className: 'listItem',
-            onClick: () => {console.log(item.content);openTaskModule(item.content)}
+            onClick: () => displayTaskModule(item)
         }
         return out;
     }
