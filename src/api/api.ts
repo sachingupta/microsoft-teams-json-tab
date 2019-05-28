@@ -1,5 +1,5 @@
 import { default as jsonData } from '../generated.json';
-import { IPreviewCard } from '../jsonTabs.interface.js';
+import { IPreviewCard } from '../api/api.interface';
 
 export const getResults = (query: string): Array<IPreviewCard> => {
     if(!query) {
