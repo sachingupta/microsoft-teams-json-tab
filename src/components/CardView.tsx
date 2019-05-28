@@ -2,12 +2,14 @@ import React from 'react';
 import { Box } from '@stardust-ui/react';
 import { FlexItem } from './FlexItem'
 import '../css/CardView.css'
+import { IItemListProps } from './ListView';
 
-export const CardView = (props: any) => {
+
+export const CardView = (props:IItemListProps) => {
 
   let itemList = [];
 
-  let tempSubTitle:string;
+  let tempSubTitle:string|undefined;
   let tempTitle:string;
 
   let maxTitleLength = 21;
@@ -16,9 +18,9 @@ export const CardView = (props: any) => {
 for (let i = 0; i < props.itemList.length; i++) {
   
   let item = {
-    title: props.itemList[i].title,
-    subTitle: props.itemList[i].subTitle,
-    heroImageSrc: props.itemList[i].heroImageSrc
+    title: props.itemList[i].preview.title,
+    subTitle: props.itemList[i].preview.subTitle,
+    heroImageSrc: props.itemList[i].preview.heroImageSrc
   }
 
   tempSubTitle = item.subTitle;
@@ -30,7 +32,7 @@ for (let i = 0; i < props.itemList.length; i++) {
     item.title = newTitle;
   }
   //Also limiting subtitle length to maintain box sizes, if length of subtitle is greater than a certain value, make a substring and concat "..."
-  if (tempSubTitle.length > maxSubtitleLength) {
+  if (tempSubTitle && (tempSubTitle.length > maxSubtitleLength)) {
     let newSubTitle = tempSubTitle.substring(0, maxSubtitleLength).concat("...");
     item.subTitle = newSubTitle;
   }

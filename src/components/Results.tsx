@@ -1,10 +1,10 @@
 import React from 'react';
 import { ListView } from './ListView'
 import { CardView } from './CardView';
-import { IPreviewCard } from '../api/api.interface';
+import { ICard } from '../api/api.interface';
 
 export interface IResultState {
-  results : Array<IPreviewCard>;
+  results : Array<ICard>;
   viewOption: string;  
 }
 enum viewOption{

@@ -1,15 +1,15 @@
-import { default as jsonData } from '../generated.json';
-import { IPreviewCard } from '../api/api.interface';
+import { default as jsonData } from './generated.json';
+import { ICard } from '../api/api.interface';
 
-export const getResults = (query: string): Array<IPreviewCard> => {
+export const getResults = (query: string): Array<ICard> => {
     if(!query) {
         return jsonData;
     }
 
-    var queriedItems: Array<IPreviewCard> = [];
+    var queriedItems: Array<ICard> = [];
 
-    jsonData.forEach((item: IPreviewCard) => {
-        if(item.title.toLowerCase().includes(query.trim().toLowerCase())){
+    jsonData.forEach((item: ICard) => {
+        if(item.preview.title.toLowerCase().includes(query.trim().toLowerCase())){
             queriedItems.push(item);
           }
     });

@@ -1,18 +1,20 @@
 import React from 'react'
 import { List, Image, Flex, Text } from '@stardust-ui/react'
 import * as microsoftTeams from '@microsoft/teams-js';
-import { IPreviewCard } from '../api/api.interface';
+import { IPreviewCard, ICard } from '../api/api.interface';
 import { displayTaskModule } from '../utils/utils';
  
+export interface IItemListProps {
+    itemList:Array<ICard>
+}
 
-
-export const ListView = (props:{itemList:Array<IPreviewCard>}) => {
+export const ListView = (props:IItemListProps) => {
 
     // Key count to ensure unique keys for every item
     let keyCount = 0
 
     // Function to translate items from IPreviewCard to List.Item format
-    const processItem = (item:any) => {
+    const processItem = (item:ICard) => {
         keyCount++
         const out = {
             key: keyCount,
@@ -25,7 +27,7 @@ export const ListView = (props:{itemList:Array<IPreviewCard>}) => {
                         <Text content={ item.preview.title } className='listItemTitle'/>
                     </Flex.Item>
                     <Flex.Item>
-                        <Text content={ item.preview.subtitle } className='listItemDescription'/>
+                        <Text content={ item.preview.subTitle } className='listItemDescription'/>
                     </Flex.Item>
                 </Flex>
             ),
