@@ -1,7 +1,7 @@
 import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard } from '../api/api.interface';
 
-export const launchTaskModule = (card: ICard) => {
+export const launchTaskModule = ( card: ICard ) => {
     const taskInfo: microsoftTeams.TaskInfo = {
         height: undefined,
         width: undefined,
@@ -9,5 +9,5 @@ export const launchTaskModule = (card: ICard) => {
         url: undefined,
         card: card.content
     }
-    microsoftTeams.tasks.startTask(taskInfo);
+    microsoftTeams.tasks.startTask( taskInfo );
 }

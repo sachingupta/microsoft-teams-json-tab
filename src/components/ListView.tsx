@@ -2,18 +2,18 @@ import React from 'react'
 import { List, Image, Flex, Text } from '@stardust-ui/react'
 import { ICard } from '../api/api.interface';
 import { launchTaskModule } from '../utils/utils';
- 
+
 export interface IItemListProps {
-    itemList:Array<ICard>
+    itemList: ICard[]
 }
 
-export const ListView = (props:IItemListProps) => {
+export const ListView = ( props: IItemListProps ) => {
 
     // Key count to ensure unique keys for every item
     let keyCount = 0
 
     // Function to translate items from IPreviewCard to List.Item format
-    const processItem = (item:ICard) => {
+    const processItem = ( item: ICard ) => {
         keyCount++
         const out = {
             key: keyCount,
@@ -25,7 +25,7 @@ export const ListView = (props:IItemListProps) => {
                     <Flex.Item>
                         <Text content={ item.preview.title } className='listItemTitle'/>
                     </Flex.Item>
-                    {item.preview.subTitle ? 
+                    {item.preview.subTitle ?
                         <Flex.Item>
                             <Text content={ item.preview.subTitle } className='listItemDescription'/>
                         </Flex.Item>
@@ -34,19 +34,19 @@ export const ListView = (props:IItemListProps) => {
                 </Flex>
             ),
             className: 'listItem',
-            onClick: () => launchTaskModule(item)
+            onClick: () => launchTaskModule( item )
         }
         return out;
     }
 
     // Output List for processed data
     // Call processing function on all items
-    const outList = (props.itemList).map(processItem);
+    const outList = ( props.itemList ).map( processItem );
 
     // Render selectable list
     return (
         <div>
             <List selectable items = { outList }/>
-        </div>    
+        </div>
     )
 }

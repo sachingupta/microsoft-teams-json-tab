@@ -1,18 +1,18 @@
 import { default as jsonData } from './generated.json';
 import { ICard } from '../api/api.interface';
 
-export const getResults = (query: string): Array<ICard> => {
-    if(!query) {
+export const getResults = ( query: string ): ICard[] => {
+    if( !query ) {
         return jsonData;
     }
 
-    const queriedItems: Array<ICard> = [];
+    const queriedItems: ICard[] = [];
 
-    jsonData.forEach((item: ICard) => {
-        if(item && item.preview.title.toLowerCase().includes(query.trim().toLowerCase())){
-            queriedItems.push(item);
+    jsonData.forEach( ( item: ICard ) => {
+        if( item && item.preview.title.toLowerCase().includes( query.trim().toLowerCase() ) ){
+            queriedItems.push( item );
           }
-    });
+    } );
 
     return queriedItems;
 }

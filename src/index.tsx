@@ -4,7 +4,7 @@ import './css/index.css';
 import * as serviceWorker from './serviceWorker';
 import { ProviderWrapper } from './ProviderWrapper';
 
-ReactDOM.render(<ProviderWrapper />, document.getElementById('root'));
+ReactDOM.render( <ProviderWrapper />, document.getElementById( 'root' ) );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

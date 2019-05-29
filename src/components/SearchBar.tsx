@@ -22,45 +22,45 @@ interface ISearchBarState{
 export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>{
 
   // constructs search bar with given props
-  constructor(props: ISearchBarProps){
-    super(props);
+  constructor( props: ISearchBarProps ){
+    super( props );
     this.state = {
       query: '',
       viewOption: viewType.List,
     };
-    this.getViewOption.bind(this);
-    this.handleRadioButtonChange.bind(this);
-    this.handleKeyPress.bind(this);
+    this.getViewOption.bind( this );
+    this.handleRadioButtonChange.bind( this );
+    this.handleKeyPress.bind( this );
   }
 
   // handler for query changed -> updates state
-  public handleOnChange(event: any) : void {
-    this.setState({ query: event.target.value });
+  public handleOnChange( event: any ): void {
+    this.setState( { query: event.target.value } );
   }
 
-  //on search button click or 'return' pressed
-  public handleOnClick(event: any): void{
-    this.props.onSearch(this.state.query);
+  // on search button click or 'return' pressed
+  public handleOnClick( event: any ): void{
+    this.props.onSearch( this.state.query );
   }
 
-  //async to await the state change
-  handleRadioButtonChange = async (view: string) => {
-    await this.setState({ viewOption: this.getViewOption(view) });
-    this.props.onViewChange(this.state.viewOption);
+  // async to await the state change
+  handleRadioButtonChange = async ( view: string ) => {
+    await this.setState( { viewOption: this.getViewOption( view ) } );
+    this.props.onViewChange( this.state.viewOption );
   }
 
-  getViewOption = (view: string): viewType => {
+  getViewOption = ( view: string ): viewType => {
     let _viewOption = viewType.List;
-    if(view === viewType.Grid){
+    if( view === viewType.Grid ){
       _viewOption = viewType.Grid;
     }
     return _viewOption;
   }
 
-  //on enter search
-  handleKeyPress = (event:any) => {
-    if(event.key === 'Enter'){
-      this.props.onSearch(this.state.query);
+  // on enter search
+  handleKeyPress = ( event: any ) => {
+    if( event.key === 'Enter' ){
+      this.props.onSearch( this.state.query );
     }
   }
 
@@ -68,22 +68,22 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
   public render() {
     return(
         <div className="SearchBar">
-            <RadioIcons onChange={ this.handleRadioButtonChange }/> 
-            <Input 
-                placeholder="Search..." 
-                icon={ () => 
-                    <Button 
-                      iconOnly 
+            <RadioIcons onChange={ this.handleRadioButtonChange }/>
+            <Input
+                placeholder="Search..."
+                icon={ () =>
+                    <Button
+                      iconOnly
                       icon= { ()=> <Icon name="search" styles={ { color: 'black' } }/> }
-                      primary onClick={ e => this.handleOnClick(e) } 
-                      styles={ { backgroundColor: 'none', 
-                                border: 'none', 
+                      primary onClick={ e => this.handleOnClick( e ) }
+                      styles={ { backgroundColor: 'none',
+                                border: 'none',
                                 'box-shadow': 'none',
                                 'border-radius': 'none'
                                 } }
-                      /> 
-                    } 
-                onChange={ e => this.handleOnChange(e) }
+                      />
+                    }
+                onChange={ e => this.handleOnChange( e ) }
                 onKeyPress={ this.handleKeyPress }
             />
             <br/>
