@@ -29,7 +29,7 @@ export const ListView = (props:IItemListProps) => {
                         <Flex.Item>
                             <Text content={ item.preview.subTitle } className='listItemDescription'/>
                         </Flex.Item>
-                        :''
+                        :null
                     }
                 </Flex>
             ),
