@@ -6,7 +6,7 @@ export const getResults = (query: string): Array<ICard> => {
         return jsonData;
     }
 
-    var queriedItems: Array<ICard> = [];
+    const queriedItems: Array<ICard> = [];
 
     jsonData.forEach((item: ICard) => {
         if(item && item.preview.title.toLowerCase().includes(query.trim().toLowerCase())){

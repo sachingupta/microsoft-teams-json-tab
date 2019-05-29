@@ -13,8 +13,8 @@ export class ProviderWrapper extends React.Component<{}, IProviderWrapperState>{
     constructor(props: {}){
         super(props);
         //theme from params
-        var url:string = window.location.href;
-        var theme: string = themeUtils.getThemeFromURL(url);
+        const url:string = window.location.href;
+        const theme: string = themeUtils.getThemeFromURL(url);
         this.state = {
             currentTheme: themeUtils.getTheme(theme)
         }

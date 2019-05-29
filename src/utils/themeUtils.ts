@@ -9,9 +9,9 @@ enum themeTypes{
 
 // gets theme name from url params
 export const getThemeFromURL = (iUrl: string): string => {
-    var url = queryString.parseUrl(iUrl);
+    const url = queryString.parseUrl(iUrl);
 
-    var themeString: any = url.query.theme;
+    const themeString: any = url.query.theme;
 
     if(!themeString){
         return 'default';
@@ -21,8 +21,8 @@ export const getThemeFromURL = (iUrl: string): string => {
 
 // gets theme type from string
 export const getTheme = (theme:string):ThemeInput => {
-    var newTheme:ThemeInput = themes.teams;
-    
+    const newTheme:ThemeInput = themes.teams;
+
     switch(theme){
         case(themeTypes.Contrast): return themes.teamsHighContrast;
         case(themeTypes.Dark): return themes.teamsDark;

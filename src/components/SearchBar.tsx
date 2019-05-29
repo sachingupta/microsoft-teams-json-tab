@@ -50,7 +50,7 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
   }
 
   getViewOption = (view: string): viewType => {
-    var _viewOption = viewType.List;
+    let _viewOption = viewType.List;
     if(view === viewType.Grid){
       _viewOption = viewType.Grid;
     }
