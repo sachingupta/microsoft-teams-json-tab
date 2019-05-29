@@ -2,6 +2,13 @@
   "name": "microsoft-teams-json-tab",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js",
+    "lint": "eslint ./src/**/*.{js,ts,tsx}",
+    "doctor": "yarn lint --fix"
+  },
   "dependencies": {
     "@babel/core": "7.4.3",
     "@microsoft/teams-js": "^1.4.2",
@@ -61,12 +68,6 @@
     "webpack-dev-server": "3.2.1",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "4.2.0"
-  },
-  "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "lint": "eslint ./src/**/*.{js,ts,tsx}"
   },
   "eslintConfig": {
     "extends": "react-app"
