@@ -30,7 +30,7 @@ export class RadioIcons extends React.Component<IRadioIconsProps, IRadioIconsSta
     }
 
     public render(){
-        let styles = {
+        const styles = {
             border: 'none', 
             'box-shadow':'none'
         }

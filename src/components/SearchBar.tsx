@@ -67,27 +67,27 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
   // renders search component
   public render() {
     return(
-      <div className="SearchBar">
-        <RadioIcons onChange={ this.handleRadioButtonChange }/> 
-        <Input 
-          placeholder="Search..." 
-          icon={ () => 
-            <Button 
-              iconOnly 
-              icon= { ()=> <Icon name="search" styles={ { color: 'black' } }/> }
-              primary onClick={ e => this.handleOnClick(e) } 
-              styles={ { backgroundColor: 'none', 
-                         border: 'none', 
-                         'box-shadow': 'none',
-                         'border-radius': 'none'
-                        } }
-              /> 
-            } 
-          onChange={ e => this.handleOnChange(e) }
-          onKeyPress={ this.handleKeyPress }
-        />
-        <br />
-      </div>
+        <div className="SearchBar">
+            <RadioIcons onChange={ this.handleRadioButtonChange }/> 
+            <Input 
+                placeholder="Search..." 
+                icon={ () => 
+                    <Button 
+                      iconOnly 
+                      icon= { ()=> <Icon name="search" styles={ { color: 'black' } }/> }
+                      primary onClick={ e => this.handleOnClick(e) } 
+                      styles={ { backgroundColor: 'none', 
+                                border: 'none', 
+                                'box-shadow': 'none',
+                                'border-radius': 'none'
+                                } }
+                      /> 
+                    } 
+                onChange={ e => this.handleOnChange(e) }
+                onKeyPress={ this.handleKeyPress }
+            />
+            <br/>
+        </div>
     );
   }
 }
