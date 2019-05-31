@@ -16,20 +16,20 @@ export const CardView = ( props: IItemListProps ) => {
 
   for ( let i = 0; i < props.itemList.length; i++ ) {
 
-  const item = props.itemList[ i ].preview;
+  const item = props.itemList[ i ];
 
-  tempSubTitle = item.subTitle;
-  tempTitle = item.title;
+  tempSubTitle = item.preview.subTitle;
+  tempTitle = item.preview.title;
 
   // Limiting title length to maintain consistent box sizes
   if ( tempTitle.length > maxTitleLength ) {
     const newTitle = tempTitle.substring( 0, maxTitleLength ).concat( '...' );
-    item.title = newTitle;
+    item.preview.title = newTitle;
   }
   // Also limiting subtitle length to maintain box sizes, if length of subtitle is greater than a certain value, make a substring and concat "..."
   if ( tempSubTitle && ( tempSubTitle.length > maxSubtitleLength ) ) {
     const newSubTitle = tempSubTitle.substring( 0, maxSubtitleLength ).concat( '...' );
-    item.subTitle = newSubTitle;
+    item.preview.subTitle = newSubTitle;
   }
 
   // Pass new Item to FlexItem function to handle format of each box, then push each item to itemList array, a unique key is needed
@@ -38,7 +38,7 @@ export const CardView = ( props: IItemListProps ) => {
   }
 
   return (
-      <div className="CardsContainer">
+      <div className='CardsContainer' id='CardsContainer' tabIndex={ 1 }>
           { itemList }
       </div>
   )

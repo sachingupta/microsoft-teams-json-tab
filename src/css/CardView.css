@@ -16,6 +16,10 @@
     height: 250px;
 }
 
+.CardBox:focus {
+    background-color: rgba(127, 63, 191, 0.2);
+}
+
 .heroImage {
     display: inline-block; 
     margin: 15px 10px 10px 10px;
