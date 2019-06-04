@@ -14,4 +14,7 @@ export const launchTaskModule = ( card: ICard ) => {
            }
         microsoftTeams.tasks.startTask( taskInfo );
      }
+     else {
+         alert( `Could not load data, ${ card.content.type } is not supported.` )
+     }
 }
