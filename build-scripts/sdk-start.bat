@@ -24,7 +24,7 @@ REM CALL :link
 
 CALL :yarn
 
-CALL :ngrok
+CALL :run-task-if-not-running ngrok
 
 CALL :serve
 
@@ -70,14 +70,17 @@ EXIT /b
     EXIT /b
 
 :ngrok
-    ECHO.
-    ECHO starting local ngrok tunnel...
-    START ngrok http 5000 --host-header=localhost
-    EXIT /b
+	ECHO.
+	ECHO starting local ngrok tunnel...
+	START ngrok http 5000 --host-header=localhost
+	EXIT /b
 
 :yarn
 	ECHO.
 	ECHO building project
+	ECHO.
+	ECHO. 
+	ECHO !!!!CLOSE BUILD WINDOW AND PRESS n WHEN BUILD IS COMPLETE!!!!
 	START /W yarn build
 	EXIT /b
 :: installs
@@ -89,6 +92,16 @@ EXIT /b
 :ngrok-install
     CALL :installer ngrok
     EXIT /b
-
+	
+:run-task-if-not-running
+	ECHO.
+	ECHO checking if %1 is alreay running
+	tasklist /FI "%IMAGENAME% eq %1.exe" 2>NUL | find /I /N "%1.exe">NUL
+	IF "%ERRORLEVEL%"=="0" (
+		GOTO %1
+	)
+	ECHO an instance of %1 is already running...
+	EXIT /b
+	
 ECHO something went wrong... ):
 PAUSE >NUL
