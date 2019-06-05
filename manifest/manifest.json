@@ -16,7 +16,7 @@
   },
   "description": {
     "short": "JSON List",
-    "full": "JSON List app"
+    "full": "JSON TEST List app"
   },
   "icons": {
     "outline": "icon-outline.png",
@@ -33,8 +33,8 @@
     {
       "entityId": "json-list-tab",
       "name": "List Tab",
-      "contentUrl": "https://6851a1da.ngrok.io?theme={theme}",
-      "websiteUrl": "https://6851a1da.ngrok.io",
+      "contentUrl": "https://7b872850.ngrok.io?theme={theme}",
+      "websiteUrl": "https://7b872850.ngrok.io",
       "scopes": [
         "personal"
       ]
