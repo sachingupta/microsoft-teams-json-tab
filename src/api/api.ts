@@ -7,6 +7,8 @@ export const getResults = ( query: string ): ICard[] => {
         return jsonData;
     }
 
+    console.log( `TEAMS ${ microsoftTeams }` );
+
     microsoftTeams.getBotData( { query } , ( data: any ) => { console.log( data ) } );
 
     const queriedItems: ICard[] = [];
