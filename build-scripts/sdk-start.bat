@@ -20,16 +20,16 @@ CALL :check_req ngrok ngrok-install
 ECHO done
 ECHO.
 
-ECHO linking teams sdk...
+REM CALL :link
 
-CALL :link
-
-ECHO done
-ECHO.
+CALL :yarn
 
 CALL :ngrok
 
 CALL :serve
+
+ECHO.
+ECHO done...
 
 PAUSE >NUL
 
@@ -75,6 +75,11 @@ EXIT /b
     START ngrok http 5000 --host-header=localhost
     EXIT /b
 
+:yarn
+	ECHO.
+	ECHO building project
+	START /W yarn build
+	EXIT /b
 :: installs
 
 :serve-install

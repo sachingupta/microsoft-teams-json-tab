@@ -7,10 +7,11 @@ import { Results } from './components/Results';
 import { getResults } from './api/api';
 
 import * as microsoftTeams from '@microsoft/teams-js';
+import { ICard } from './api/api.interface';
 
 interface IAppState{
-  query: string,
   viewOption: string,
+  results: ICard[]
 }
 
 interface IAppProps{
@@ -22,15 +23,15 @@ class App extends React.Component<IAppProps, IAppState>{
   constructor( props: IAppProps ){
     super( props );
     this.state = {
-      query: '',
       viewOption: 'List',
+      results: []
     }
   }
 
   // handles searchbar change
   public handleSearch = ( query: string, viewOption: string ) => {
     if( query !== undefined ){
-      this.setState( { query: query } );
+      getResults( query, this.handleDataOnChange )
     }
   }
 
@@ -46,12 +47,16 @@ class App extends React.Component<IAppProps, IAppState>{
     microsoftTeams.registerOnThemeChangeHandler( this.props.onThemeChange );
   }
 
+  public handleDataOnChange = ( data: ICard[] ): void => {
+    this.setState( { results: data } );
+  }
+
   // calls api
   render(){
     return (
         <div>
             <SearchBar onSearch={ this.handleSearch } onViewChange={ this.handleViewChange }/>
-            <Results results={ getResults( this.state.query ) } viewOption={ this.state.viewOption } />
+            <Results results={ this.state.results } viewOption={ this.state.viewOption } />
         </div>
     );
   }
