@@ -33,12 +33,19 @@
     {
       "entityId": "json-list-tab",
       "name": "List Tab",
-      "contentUrl": "https://b7771f81.ngrok.io?theme={theme}",
+      "contentUrl": "https://b7771f81.ngrok.io?theme={theme}&frameContext=content",
       "websiteUrl": "https://b7771f81.ngrok.io",
       "scopes": [
         "personal"
       ]
     }],
+    "configurableTabs": [
+      {
+        "configurationUrl": "https://b7771f81.ngrok.io?theme={theme}&frameContext=settings",
+        "canUpdateConfiguration": false,
+        "scopes": [ "team" ]
+      }
+    ],
   "composeExtensions": [
     {
       "botId": "1baea796-52e9-4e81-9bf7-5d201dc3733e",
