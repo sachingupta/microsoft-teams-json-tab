@@ -31,7 +31,7 @@ class App extends React.Component<IAppProps, IAppState>{
   // handles searchbar change
   public handleSearch = ( query: string, viewOption: string ) => {
     if( query !== undefined ){
-      getResults( query, this.handleDataOnChange )
+      getResults( query, this.onResults )
     }
   }
 
@@ -47,7 +47,7 @@ class App extends React.Component<IAppProps, IAppState>{
     microsoftTeams.registerOnThemeChangeHandler( this.props.onThemeChange );
   }
 
-  public handleDataOnChange = ( data: ICard[] ): void => {
+  public onResults = ( data: ICard[] ): void => {
     this.setState( { results: data } );
   }
 
