@@ -1,5 +1,6 @@
 import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard } from '../api/api.interface';
+import * as queryString from 'query-string';
 
 export const launchTaskModule = ( card: ICard ) => {
 
@@ -17,4 +18,10 @@ export const launchTaskModule = ( card: ICard ) => {
      else {
          alert( `Could not load data, ${ card.content.type } is not supported.` )
      }
+}
+
+// gets frame context from url
+export const getFrameContext = ( iUrl: string ) => {
+    const url = queryString.parseUrl( iUrl );
+    return url.query.frameContext;
 }

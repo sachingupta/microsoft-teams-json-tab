@@ -8,6 +8,8 @@ import { getResults } from './api/api';
 
 import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard, BotResponse } from './api/api.interface';
+import { getFrameContext } from './utils/utils';
+import { SettingsView } from './components/SettingsView';
 
 interface IAppState{
   viewOption: string,
@@ -45,6 +47,7 @@ class App extends React.Component<IAppProps, IAppState>{
   public componentDidMount() {
     microsoftTeams.initialize();
     microsoftTeams.registerOnThemeChangeHandler( this.props.onThemeChange );
+    getResults( '', this.onResults );
   }
 
   public onResults = ( status: boolean, response: string | BotResponse ): void => {
@@ -58,12 +61,25 @@ class App extends React.Component<IAppProps, IAppState>{
 
   // calls api
   render(){
-    return (
-        <div>
-            <SearchBar onSearch={ this.handleSearch } onViewChange={ this.handleViewChange }/>
-            <Results results={ this.state.results } viewOption={ this.state.viewOption } />
-        </div>
+    const url: string = window.location.href
+    const frameContext = getFrameContext( url );
+
+    if( frameContext === 'settings' ) {
+      return (
+          <div>
+              <SettingsView  />
+          </div>
+      );
+    }
+
+    else {
+      return (
+          <div>
+              <SearchBar onSearch={ this.handleSearch } onViewChange={ this.handleViewChange }/>
+              <Results results={ this.state.results } viewOption={ this.state.viewOption } />
+          </div>
     );
+    }
   }
 
 }
