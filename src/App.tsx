@@ -47,8 +47,13 @@ class App extends React.Component<IAppProps, IAppState>{
     microsoftTeams.registerOnThemeChangeHandler( this.props.onThemeChange );
   }
 
-  public onResults = ( data: ICard[] ): void => {
-    this.setState( { results: data } );
+  public onResults = ( status: boolean, response: string | microsoftTeams.BotResponse  ): void => {
+    if( status ){
+      this.setState( { results: ( response as microsoftTeams.BotResponse ).data } );
+    } else {
+      // output error message from bot response (assuming string is returned as response)
+      console.log( `Something went wrong...\n${ response }` );
+    }
   }
 
   // calls api
