@@ -7,7 +7,7 @@ import { Results } from './components/Results';
 import { getResults } from './api/api';
 
 import * as microsoftTeams from '@microsoft/teams-js';
-import { ICard } from './api/api.interface';
+import { ICard, BotResponse } from './api/api.interface';
 
 interface IAppState{
   viewOption: string,
@@ -47,9 +47,9 @@ class App extends React.Component<IAppProps, IAppState>{
     microsoftTeams.registerOnThemeChangeHandler( this.props.onThemeChange );
   }
 
-  public onResults = ( status: boolean, response: string | microsoftTeams.BotResponse  ): void => {
+  public onResults = ( status: boolean, response: string | BotResponse ): void => {
     if( status ){
-      this.setState( { results: ( response as microsoftTeams.BotResponse ).data } );
+      this.setState( { results: ( response as BotResponse ).data } );
     } else {
       // output error message from bot response (assuming string is returned as response)
       console.log( `Something went wrong...\n${ response }` );

@@ -1,10 +1,10 @@
 import { default as jsonData } from './generated.json';
-import { ICard, IPreviewCard } from '../api/api.interface';
+import { ICard, IPreviewCard, BotResponse } from '../api/api.interface';
 import * as microsoftTeams from '@microsoft/teams-js'
 
 export const getResults = ( query: string,
-    onResults: ( status: boolean, response: microsoftTeams.BotResponse | string ) => void ) => {
-    if( !query ) {
+    onResults: ( status: boolean, response: BotResponse | string ) => void ) => {
+    if( query === undefined ) {
         return jsonData;
     }
 
