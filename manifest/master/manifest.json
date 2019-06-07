@@ -32,18 +32,24 @@
       "scopes": [
         "personal"
       ]
-    }],
-    "configurableTabs": [
-      {
-        "configurationUrl": "https://teams-json-tab.azurewebsites.net?theme={theme}&frameContext=settings",
-        "canUpdateConfiguration": false,
-        "scopes": [ "team" ]
-      }
-    ],
+    }
+  ],
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://teams-json-tab.azurewebsites.net?theme={theme}&frameContext=settings",
+      "canUpdateConfiguration": false,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
   "bots": [
     {
       "botId": "300639bf-2c0f-41a7-aa2e-7833664c4c76",
-      "scopes": ["personal", "team"]
+      "scopes": [
+        "personal",
+        "team"
+      ]
     }
   ],
   "composeExtensions": [
@@ -54,6 +60,8 @@
           "id": "queryCards",
           "description": "Test command to run query",
           "title": "Query cards",
+          "initialRun": true,
+          "type": "query",
           "parameters": [
             {
               "name": "queryText",
@@ -62,10 +70,12 @@
             }
           ]
         },
-		{
+        {
           "id": "queryAdaptiveCards",
           "description": "Test command to run query",
           "title": "Query adaptive cards",
+          "initialRun": true,
+          "type": "query",
           "parameters": [
             {
               "name": "queryText",
@@ -74,10 +84,12 @@
             }
           ]
         },
-		{
+        {
           "id": "queryHeroCards",
           "description": "Test command to run query",
           "title": "Query hero cards",
+          "initialRun": true,
+          "type": "query",
           "parameters": [
             {
               "name": "queryText",
@@ -117,7 +129,9 @@
         {
           "id": "shareMessage",
           "type": "action",
-          "context": [ "message" ],
+          "context": [
+            "message"
+          ],
           "description": "Test command to run action on message context (message sharing)",
           "title": "Create cards",
           "fetchTask": true,
