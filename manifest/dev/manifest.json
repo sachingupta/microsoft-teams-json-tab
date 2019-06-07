@@ -33,12 +33,19 @@
     {
       "entityId": "json-list-tab",
       "name": "List Tab",
-      "contentUrl": "https://b7771f81.ngrok.io?theme={theme}",
-      "websiteUrl": "https://b7771f81.ngrok.io",
+      "contentUrl": "https://0c1661ae.ngrok.io?theme={theme}&frameContext=content",
+      "websiteUrl": "https://0c1661ae.ngrok.io",
       "scopes": [
         "personal"
       ]
     }],
+    "configurableTabs": [
+      {
+        "configurationUrl": "https://0c1661ae.ngrok.io?theme={theme}&frameContext=settings",
+        "canUpdateConfiguration": false,
+        "scopes": [ "team" ]
+      }
+    ],
   "composeExtensions": [
     {
       "botId": "1baea796-52e9-4e81-9bf7-5d201dc3733e",
@@ -47,6 +54,30 @@
           "id": "queryCards",
           "description": "Test command to run query",
           "title": "Query cards",
+          "parameters": [
+            {
+              "name": "queryText",
+              "title": "Query parameter",
+              "description": "Query parameter"
+            }
+          ]
+        },
+		{
+          "id": "queryAdaptiveCards",
+          "description": "Test command to run query",
+          "title": "Query adaptive cards",
+          "parameters": [
+            {
+              "name": "queryText",
+              "title": "Query parameter",
+              "description": "Query parameter"
+            }
+          ]
+        },
+		{
+          "id": "queryHeroCards",
+          "description": "Test command to run query",
+          "title": "Query hero cards",
           "parameters": [
             {
               "name": "queryText",

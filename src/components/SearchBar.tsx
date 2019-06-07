@@ -83,6 +83,9 @@ export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState>
                                 } }
                       />
                     }
+                input={ {
+                  styles: { backgroundColor: 'white' }
+                } }
                 onChange={ e => this.handleOnChange( e ) }
                 onKeyPress={ this.handleKeyPress }
             />
