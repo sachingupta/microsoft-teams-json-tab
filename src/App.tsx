@@ -8,54 +8,43 @@ import { getResults } from './api/api';
 
 import * as microsoftTeams from '@microsoft/teams-js';
 
-interface IAppState{
-  query: string,
-  viewOption: string,
+export interface IAppState{
+    query: string,
+    viewOption: string,
+  }
+export interface IAppProps{
+    onThemeChange: any
 }
 
-interface IAppProps{
-  onThemeChange: any
-}
+export const App = ( props: IAppProps ) => {
+    // HOOKS
+    const [ viewOption, setViewOption ] = React.useState( 'List' )
+    const [ Query, setQuery ] = React.useState( '' )
 
-class App extends React.Component<IAppProps, IAppState>{
+    React.useEffect( ( ) => {
+        microsoftTeams.initialize();
+        microsoftTeams.registerOnThemeChangeHandler( props.onThemeChange );
+    } );
 
-  constructor( props: IAppProps ){
-    super( props );
-    this.state = {
-      query: '',
-      viewOption: 'List',
+    // HANDLERS
+    const handleSearch = ( query: string, ViewOption: string ) => {
+        if ( query !== undefined ) {
+            setQuery( query )
+        }
     }
-  }
 
-  // handles searchbar change
-  public handleSearch = ( query: string, viewOption: string ) => {
-    if( query !== undefined ){
-      this.setState( { query: query } );
+    const handleViewChange = ( ViewOption: string ) => {
+        if ( ViewOption ) {
+            setViewOption( ViewOption )
+        }
     }
-  }
 
-  // handles change of view
-  public handleViewChange = ( viewOption: string ) => {
-    if( viewOption ){
-      this.setState( { viewOption: viewOption } );
-    }
-  }
-
-  public componentDidMount() {
-    microsoftTeams.initialize();
-    microsoftTeams.registerOnThemeChangeHandler( this.props.onThemeChange );
-  }
-
-  // calls api
-  render(){
     return (
         <div>
-            <SearchBar onSearch={ this.handleSearch } onViewChange={ this.handleViewChange }/>
-            <Results results={ getResults( this.state.query ) } viewOption={ this.state.viewOption } />
+            <SearchBar onSearch={ handleSearch } onViewChange={ handleViewChange }/>
+            <Results results={ getResults( Query ) } viewOption={ viewOption } />
         </div>
     );
-  }
-
 }
 
 export default App;
