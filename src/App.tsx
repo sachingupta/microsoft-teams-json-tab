@@ -50,8 +50,8 @@ class App extends React.Component<IAppProps, IAppState>{
     getResults( '', this.onResults, this.onError );
   }
 
-  public onError(error: string): any {
-    console.log(error);
+  public onError( error: string ): any {
+    console.log( error );
   }
 
   public onResults = ( response: string | BotResponse ): void => {
