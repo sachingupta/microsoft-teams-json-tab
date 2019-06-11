@@ -1,7 +1,35 @@
 import { default as jsonData } from './generated.json';
 import * as simData from './simulated.json';
-import { ICard, IPreviewCard, BotResponse } from '../api/api.interface';
+import { ICard, BotResponse, ICommand } from '../api/api.interface';
 import * as microsoftTeams from '@microsoft/teams-js'
+
+const listOfSupportedCmds: ICommand[] = [
+    {
+        title: 'queryCards',
+        id: 'queryCards'
+    },
+    {
+        title: 'queryAdaptiveCards',
+        id: 'queryAdaptiveCards'
+    },
+    {
+        title: 'queryHeroCards',
+        id: 'queryAdaptiveCards'
+    }
+]
+
+export const processQueryResponse = ( item: any ): ICard => {
+    const out: ICard = {
+        contentType: 'AdaptiveCard',
+        content: item.card.content,
+        preview: {
+            title: item.previewRawPayload.content.title,
+            subTitle: item.previewRawPayload.content.text,
+            heroImageSrc: item.previewRawPayload.content.images[ 0 ].url
+        },
+    };
+    return out;
+}
 
 export const getResults = ( query: string,
     // should be microsoftTeams.bot.QueryResponse
@@ -15,29 +43,18 @@ export const getResults = ( query: string,
     // microsoftTeams.bot.sendQuery( { query } , onResults, onError );
 
     // TODO REMOVE
-    const queriedItems: ICard[] = [];
-
-    simData.attachments.forEach( ( rawData: any ) => {
-        const item = rawData.previewRawPayload.content;
-        let previewCard: IPreviewCard;
-        if ( item ){
-            const { title, text, images } = item;
-            let url = images[ 0 ].url
-            if( !url ){
-                url = '';
-            }
-            console.log( url );
-
-            previewCard = { title: title, subTitle: text, heroImageSrc: url };
-            console.log( previewCard );
-            const card: ICard = { content: item.content, contentType: item.contentType, preview: previewCard }
-            if( card.preview.title.toLowerCase().includes( query.trim().toLowerCase() ) ){
-                queriedItems.push( item );
-              }
-        }
-    } );
-
-    console.log( queriedItems );
+    const queriedItems: ICard[] = simData.attachments.map( processQueryResponse );
     onResults( { data: queriedItems } );
     // TODO REMOVE
+}
+
+export const getSupportedCommands = (
+    onBotGetCommandResponse: ( data: any ) => void,
+    onError:  ( error: string ) => { } ): void => {
+
+    // Prod
+    // microsoftTeams.bot.getSupportedCommands(onBotGetCommandResponse, onError );
+
+    // TODO REMOVE : Dummy
+    onBotGetCommandResponse( { data: listOfSupportedCmds } );
 }
