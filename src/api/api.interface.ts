@@ -9,3 +9,9 @@ export interface ICard {
     content: any;
     preview: IPreviewCard;
 }
+
+// TODO
+// TEMPORARY FIX BEFORE SDK PUBLISH
+export interface BotResponse {
+    data: any
+}

@@ -68,8 +68,11 @@ export const SearchBar = ( props: ISearchBarProps ) => {
                                 } }
                       />
                     }
-                onChange={ ( e: any ) => handleOnChange( e ) }
-                onKeyPress={ handleKeyPress }
+                input={ {
+                  styles: { backgroundColor: 'white' }
+                } }
+                onChange={ e => this.handleOnChange( e ) }
+                onKeyPress={ this.handleKeyPress }
             />
             <br/>
         </div>
