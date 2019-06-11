@@ -54,8 +54,8 @@ class App extends React.Component<IAppProps, IAppState>{
     alert( error );
   }
 
-  public onResults = ( response: string | BotResponse ): void => {
-    this.setState( { results: ( response as BotResponse ).data } );
+  public onResults = ( response: BotResponse ): void => {
+    this.setState( { results: response.data } );
   }
 
   // calls api
