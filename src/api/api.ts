@@ -3,13 +3,15 @@ import { ICard, IPreviewCard, BotResponse } from '../api/api.interface';
 import * as microsoftTeams from '@microsoft/teams-js'
 
 export const getResults = ( query: string,
-    onResults: ( status: boolean, response: BotResponse | string ) => void ) => {
+    // should be microsoftTeams.bot.QueryResponse
+    onResults: ( response: BotResponse ) => void,
+    onError: ( error: string ) => {} ) => {
     if( query === undefined ) {
         return jsonData;
     }
 
     // TODO
-    // microsoftTeams.sendBotRequest( { query } , onResults );
+    // microsoftTeams.bot.sendQuery( { query } , onResults, onError );
 
     // TODO REMOVE
     const queriedItems: ICard[] = [];
@@ -19,6 +21,6 @@ export const getResults = ( query: string,
             queriedItems.push( item );
           }
     } );
-    onResults( true, { data: queriedItems } );
+    onResults( { data: queriedItems } );
     // TODO REMOVE
 }

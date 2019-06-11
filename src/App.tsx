@@ -33,7 +33,7 @@ class App extends React.Component<IAppProps, IAppState>{
   // handles searchbar change
   public handleSearch = ( query: string, viewOption: string ) => {
     if( query !== undefined ){
-      getResults( query, this.onResults )
+      getResults( query, this.onResults, this.onError )
     }
   }
 
@@ -47,16 +47,16 @@ class App extends React.Component<IAppProps, IAppState>{
   public componentDidMount() {
     microsoftTeams.initialize();
     microsoftTeams.registerOnThemeChangeHandler( this.props.onThemeChange );
-    getResults( '', this.onResults );
+    getResults( '', this.onResults, this.onError );
   }
 
-  public onResults = ( status: boolean, response: string | BotResponse ): void => {
-    if( status ){
-      this.setState( { results: ( response as BotResponse ).data } );
-    } else {
-      // output error message from bot response (assuming string is returned as response)
-      console.log( `Something went wrong...\n${ response }` );
-    }
+  public onError( error: string ): any {
+    alert( error );
+  }
+
+  // should be microsoftTeams.bot.QueryResponse
+  public onResults = ( response: BotResponse ): void => {
+    this.setState( { results: response.data } );
   }
 
   // calls api
