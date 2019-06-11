@@ -54,6 +54,7 @@ class App extends React.Component<IAppProps, IAppState>{
     alert( error );
   }
 
+  // should be microsoftTeams.bot.QueryResponse
   public onResults = ( response: BotResponse ): void => {
     this.setState( { results: response.data } );
   }
