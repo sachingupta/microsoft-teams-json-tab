@@ -51,16 +51,11 @@ class App extends React.Component<IAppProps, IAppState>{
   }
 
   public onError( error: string ): any {
-    console.log( error );
+    alert( error );
   }
 
   public onResults = ( response: string | BotResponse ): void => {
-    if( status ){
-      this.setState( { results: ( response as BotResponse ).data } );
-    } else {
-      // output error message from bot response (assuming string is returned as response)
-      console.log( `Something went wrong...\n${ response }` );
-    }
+    this.setState( { results: ( response as BotResponse ).data } );
   }
 
   // calls api
