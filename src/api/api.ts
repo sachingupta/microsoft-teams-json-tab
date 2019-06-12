@@ -12,8 +12,8 @@ const listOfSupportedCmds: ICommand[] = [
         id: 'queryAdaptiveCards'
     },
     {
-        title: 'Who this',
-        id: 'queryAdaptiveCards'
+        title: 'queryHeroCards',
+        id: 'queryHeroCards'
     }
 ]
 
