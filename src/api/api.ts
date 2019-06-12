@@ -23,12 +23,7 @@ export const getResults = ( query: string,
     onResults: ( response: BotResponse ) => void,
     onError: ( error: string ) => {} ) => {
 
-    // TODO
-    // microsoftTeams.bot.sendQuery( { query } , onResults, onError );
-
-    // TODO REMOVE
-    onResults( { data: simData } );
-    // TODO REMOVE
+    microsoftTeams.bot.sendQuery( { query } , onResults, onError );
 }
 
 export const getSupportedCommands = (
