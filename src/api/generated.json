@@ -164,7 +164,7 @@
           "data": {
             "msteams": {
                 "type": "signin",
-                "value": "https://signin.com",
+                "value": "https://signin.com"
             }
           }
         }
