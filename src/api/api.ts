@@ -13,25 +13,20 @@ const listOfSupportedCmds: ICommand[] = [
         id: 'queryAdaptiveCards'
     },
     {
-        title: 'queryHeroCards',
+        title: 'Who this',
         id: 'queryAdaptiveCards'
     }
 ]
 
 export const processQueryResponse = ( item: any ): ICard => {
-    let url = '';
-    if ( item.previewRawPayload.content.hasOwnProperty( 'images' ) ){
-        const images = item.previewRawPayload.content.images[ 0 ];
-        url = images.url;
-    }
 
     const out: ICard = {
         contentType: 'AdaptiveCard',
         content: item.card.content,
         preview: {
             title: item.previewRawPayload.content.title,
-            subTitle: item.previewRawPayload.content.text,
-            heroImageSrc: url
+            subTitle: item.previewRawPayload.content.text? item.previewRawPayload.content.text: null,
+            heroImageSrc: item.previewRawPayload.content.images? item.previewRawPayload.content.images[ 0 ].url: null
         },
     };
     return out;
@@ -55,12 +50,12 @@ export const getResults = ( query: string,
 }
 
 export const getSupportedCommands = (
-    onBotGetCommandResponse: ( data: any ) => void,
+    onBotGetCommandResponse: ( response: ICommand[] ) => void,
     onError:  ( error: string ) => { } ): void => {
 
     // Prod
     // microsoftTeams.bot.getSupportedCommands(onBotGetCommandResponse, onError );
 
     // TODO REMOVE : Dummy
-    onBotGetCommandResponse( { data: listOfSupportedCmds } );
+    onBotGetCommandResponse( listOfSupportedCmds );
 }

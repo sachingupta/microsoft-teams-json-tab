@@ -2,10 +2,19 @@ import * as React from 'react';
 import { Text, Input, Dropdown } from '@stardust-ui/react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { getSupportedCommands } from '../api/api';
+import { ICommand } from '../api/api.interface';
 
 export const SettingsView = ( props: { } ) => {
+    // INITIAL STATES
+    const iCommandList: ICommand[] = []
+
+    // PROCESSORS
+    const processCommands = ( command: ICommand ) => {
+        return command.title
+    }
+
     // STATE HOOKS
-    const [ Commands, setCommands ] = React.useState( [ ] );
+    const [ CommandList, setCommandList ] = React.useState( iCommandList );
     const [ CommandSelected, setCommandSelected ] = React.useState( '' );
     const [ TabName, setTabName ] = React.useState( 'JSONTabDefault' );
 
@@ -14,8 +23,8 @@ export const SettingsView = ( props: { } ) => {
         alert( error );
     }
 
-    const onResults = ( response: any ): void => {
-        setCommands( response );
+    const onGetCommandResponse = ( response: ICommand[] ): void => {
+        setCommandList( response );
     }
 
     const handleNameChange = async ( event: any ) => {
@@ -38,11 +47,9 @@ export const SettingsView = ( props: { } ) => {
             } );
             saveEvent.notifySuccess();
         } );
-        getSupportedCommands( onResults, onError );
+        getSupportedCommands( onGetCommandResponse, onError );
     } )
 
-    // CONSTANTS
-    const listOfCmds = Commands.map( ( command: any ) => { return command.title } )
     return (
         <div>
             <Text size={ 'smaller' } content={ 'Name your tab' } />
@@ -51,7 +58,7 @@ export const SettingsView = ( props: { } ) => {
             <Text size={ 'smaller' } content={ 'Select the command you\'d like query your bot with' } />
             <Dropdown
                 fluid
-                items={ listOfCmds }
+                items={ CommandList.map( processCommands ) }
                 noResultsMessage="We couldn't find any matches."
                 onSelectedChange={ handleCommandChange }
             />
