@@ -7,8 +7,8 @@ import { Results } from './components/Results';
 import { getResults } from './api/api';
 
 import * as microsoftTeams from '@microsoft/teams-js';
-import { BotResponse } from './api/api.interface';
-import { getFrameContext, toICard } from './utils/utils';
+import { ICard, QueryResponse } from './api/api.interface';
+import { getFrameContext, parseQueryResponse } from './utils/utils';
 import { SettingsView } from './components/SettingsView';
 
 interface IAppProps {
@@ -16,10 +16,11 @@ interface IAppProps {
 }
 
 export const App = ( props: IAppProps ) => {
-
+    // INITIAL STATES
+    const iResult:ICard[] = [];
     // STATE HOOKS
     const [ ViewOption, setViewOption ] = React.useState( 'List' );
-    const [ Result, setResult ] = React.useState( [ ] );
+    const [ Result, setResult ] = React.useState( iResult );
 
     // HANDLERS
 
@@ -27,8 +28,8 @@ export const App = ( props: IAppProps ) => {
         alert ( error );
     }
 
-    const onResults = ( response: BotResponse ) => {
-        setResult( toICard( response ) );
+    const onResults = ( response: QueryResponse ) => {
+        setResult( parseQueryResponse( response ) );
     }
 
     const handleSearch = ( query: string, viewOption: string ) => {
@@ -48,7 +49,7 @@ export const App = ( props: IAppProps ) => {
         microsoftTeams.initialize();
         microsoftTeams.registerOnThemeChangeHandler( props.onThemeChange );
         getResults ( '', onResults, onError );
-    } )
+    }, [])
 
     // CONSTANTS
     const url: string = window.location.href;

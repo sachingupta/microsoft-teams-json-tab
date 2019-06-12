@@ -1117,49 +1117,49 @@
     prop-types "^15.6.1"
     tslib "^1.9.3"
 
-"@stardust-ui/react-component-event-listener@^0.30.0":
-  version "0.30.0"
-  resolved "https://registry.yarnpkg.com/@stardust-ui/react-component-event-listener/-/react-component-event-listener-0.30.0.tgz#1bbfac3cd89f42e2099275d14c6c4e5064802229"
-  integrity sha512-2DadWiP1Q1s1Mg9nQOl7jgJTeRgrTo4H/AQfT/dFmuaHpTiUehU+0cKjMio38IR+4GmYrJle4LVH6afQBn+YWw==
+"@stardust-ui/react-component-event-listener@^0.32.1-rc1":
+  version "0.32.1-rc1"
+  resolved "https://registry.yarnpkg.com/@stardust-ui/react-component-event-listener/-/react-component-event-listener-0.32.1-rc1.tgz#d361222c93dae6f5b65151626a5d800160fff9f9"
+  integrity sha512-/dgAMUlbhbfBQojoA8fW3V1ry9XsXOgR8z1oluECd83XRcPNZNLtw743gtn9Umd7C2cXwOG2J1rP1OqQiijVLw==
   dependencies:
     prop-types "^15.6.1"
     tslib "^1.9.3"
 
-"@stardust-ui/react-component-nesting-registry@^0.30.0":
-  version "0.30.0"
-  resolved "https://registry.yarnpkg.com/@stardust-ui/react-component-nesting-registry/-/react-component-nesting-registry-0.30.0.tgz#b7289cdd07e37ab0688c8d640e4fb432138b9efa"
-  integrity sha512-JzpjoBM/xYuUbs4Lwd/sPQpqAPZJ/olINmO4lgGLFFIvZq8/TfI627ffsVSMdZZhDxT8eXd6UhIM/duDYnv0Kw==
+"@stardust-ui/react-component-nesting-registry@^0.32.1-rc1":
+  version "0.32.1-rc1"
+  resolved "https://registry.yarnpkg.com/@stardust-ui/react-component-nesting-registry/-/react-component-nesting-registry-0.32.1-rc1.tgz#6bb70956421f047f5a5cb97faa7d957272b4ca50"
+  integrity sha512-SGYcylc5xBc7uZmpLdAxNVOz699uKtC79ogVXUYqfDDTelsHn7KpDjejNmyiY26PN48F64AQBXVP4EthAibbRQ==
   dependencies:
     prop-types "^15.6.1"
     tslib "^1.9.3"
 
-"@stardust-ui/react-component-ref@^0.30.0":
-  version "0.30.0"
-  resolved "https://registry.yarnpkg.com/@stardust-ui/react-component-ref/-/react-component-ref-0.30.0.tgz#392f415750235488ac3497183287c8c33606aeaf"
-  integrity sha512-Y+Rr/ARDyJlWAfCpVKUxxIhb1rD6U3SNWll/qy8JkMo0vHPh5ZelvJcFyRzL8ubaWW4a9BJc0uofqXN+hvI8WA==
+"@stardust-ui/react-component-ref@^0.32.1-rc1":
+  version "0.32.1-rc1"
+  resolved "https://registry.yarnpkg.com/@stardust-ui/react-component-ref/-/react-component-ref-0.32.1-rc1.tgz#d9e7c5261309b26ab1273665d7bd428b7288dbfe"
+  integrity sha512-rxpk+VSBtud2kFaeaRGLRyrjVfBXPybBDhVoXFfNAsqpmWB2aFjDznjEdkDOFEGXvHNANHtfX4gExWqakE/BgQ==
   dependencies:
-    "@stardust-ui/react-proptypes" "^0.30.0"
+    "@stardust-ui/react-proptypes" "^0.32.1-rc1"
     prop-types "^15.6.1"
     react-is "^16.6.3"
 
-"@stardust-ui/react-proptypes@^0.30.0":
-  version "0.30.0"
-  resolved "https://registry.yarnpkg.com/@stardust-ui/react-proptypes/-/react-proptypes-0.30.0.tgz#2e2a48391a5d973263a5eea6c67563a59d2b0d3d"
-  integrity sha512-01ObmLW7KmrCEH5bJTQt4+84b600K6iS/gMYe/5HgS2J4TpgQbnxBUtx79QQCVm+E1DL9Bgo0ODR3zVWphR2sQ==
+"@stardust-ui/react-proptypes@^0.32.1-rc1":
+  version "0.32.1-rc1"
+  resolved "https://registry.yarnpkg.com/@stardust-ui/react-proptypes/-/react-proptypes-0.32.1-rc1.tgz#8d8141c995414487297fbfb242358355ea235977"
+  integrity sha512-Sbpr9YhMmkY8nybbURLnE2tJsOTJbNqXuxzgSDsbCZWKJSd+rrAqd7yUww1oqVLxe4YNJtLqND23qUV82VadtQ==
   dependencies:
     lodash "^4.17.11"
     prop-types "^15.6.1"
     tslib "^1.9.3"
 
-"@stardust-ui/react@^0.30.0":
-  version "0.30.0"
-  resolved "https://registry.yarnpkg.com/@stardust-ui/react/-/react-0.30.0.tgz#5be0f01428aa1c6cf240cf35a82191642fc74445"
-  integrity sha512-fC4UN5haGScIqyfPQv8X/fBC2C/9KIDff6zQVtgSGb7Ko12I9yTDvo0lMDtKjzIrkdFnqTV4JmXkKeaecPGVpw==
+"@stardust-ui/react@^0.32.1-rc1":
+  version "0.32.1-rc1"
+  resolved "https://registry.yarnpkg.com/@stardust-ui/react/-/react-0.32.1-rc1.tgz#6fcab8fbf21dc70ec08c85c402af8ba90c2fee95"
+  integrity sha512-AE/r+1g7oKCagv47JVGEHuT76wDq8poFuVFcjynq38BNRJ11u0l8qJhXn7bOKEqPkT4k+eHAMIDwHlfMYUCEUg==
   dependencies:
-    "@stardust-ui/react-component-event-listener" "^0.30.0"
-    "@stardust-ui/react-component-nesting-registry" "^0.30.0"
-    "@stardust-ui/react-component-ref" "^0.30.0"
-    "@stardust-ui/react-proptypes" "^0.30.0"
+    "@stardust-ui/react-component-event-listener" "^0.32.1-rc1"
+    "@stardust-ui/react-component-nesting-registry" "^0.32.1-rc1"
+    "@stardust-ui/react-component-ref" "^0.32.1-rc1"
+    "@stardust-ui/react-proptypes" "^0.32.1-rc1"
     classnames "^2.2.5"
     css-shorthand-expand "^1.2.0"
     downshift "^3.2.10"
@@ -1172,10 +1172,10 @@
     keyboard-key "^1.0.1"
     lodash "^4.17.11"
     mdn-polyfills "^5.15.0"
+    popper.js "^1.15.0"
     prop-types "^15.6.1"
     react-fela "^10.2.0"
     react-is "^16.6.3"
-    react-popper "^1.3.2"
     tslib "^1.9.3"
 
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
@@ -2908,14 +2908,6 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-react-context@<=0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.2.2.tgz#9836542f9aaa22868cd7d4a6f82667df38019dca"
-  integrity sha512-KkpaLARMhsTsgp0d2NA/R94F/eDLbhXERdIq3LvX2biCAXcDvHYoOqHfWCHf1+OLj+HKBotLG3KqaOOf+C1C+A==
-  dependencies:
-    fbjs "^0.8.0"
-    gud "^1.0.0"
-
 cross-spawn@6.0.5, cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
@@ -4125,7 +4117,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbjs@^0.8.0, fbjs@^0.8.4:
+fbjs@^0.8.4:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -4627,11 +4619,6 @@ growly@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
-
-gud@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
-  integrity sha512-zGEOVKFM5sVPPrYs7J5/hYEw2Pof8KCyOwyhG8sAF26mCAeUFAcYPu1mwB7hhpIP29zOIBaDqwuHdLp0jvZXjw==
 
 gzip-size@5.0.0:
   version "5.0.0"
@@ -7339,7 +7326,7 @@ pnp-webpack-plugin@1.2.1:
   dependencies:
     ts-pnp "^1.0.0"
 
-popper.js@^1.14.4:
+popper.js@^1.15.0:
   version "1.15.0"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.15.0.tgz#5560b99bbad7647e9faa475c6b8056621f5a4ff2"
   integrity sha512-w010cY1oCUmI+9KwwlWki+r5jxKfTFDVoadl7MSrIujHU5MJ5OR6HTDj6Xo8aoR/QsA56x8jKjA59qGH4ELtrA==
@@ -8344,18 +8331,6 @@ react-is@^16.5.2, react-is@^16.6.3, react-is@^16.8.1, react-is@^16.8.4:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
-
-react-popper@^1.3.2:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/react-popper/-/react-popper-1.3.3.tgz#2c6cef7515a991256b4f0536cd4bdcb58a7b6af6"
-  integrity sha512-ynMZBPkXONPc5K4P5yFWgZx5JGAUIP3pGGLNs58cfAPgK67olx7fmLp+AdpZ0+GoQ+ieFDa/z4cdV6u7sioH6w==
-  dependencies:
-    "@babel/runtime" "^7.1.2"
-    create-react-context "<=0.2.2"
-    popper.js "^1.14.4"
-    prop-types "^15.6.1"
-    typed-styles "^0.0.7"
-    warning "^4.0.2"
 
 react@^16.8.6:
   version "16.8.6"
@@ -9684,11 +9659,6 @@ type-is@~1.6.16:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typed-styles@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/typed-styles/-/typed-styles-0.0.7.tgz#93392a008794c4595119ff62dde6809dbc40a3d9"
-  integrity sha512-pzP0PWoZUhsECYjABgCGQlRGL1n7tOHsgwYv3oIiEpJwGhFTuty/YNeduxQYzXXa3Ge5BdT6sHYIQYpl4uJ+5Q==
-
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
@@ -10012,13 +9982,6 @@ walker@^1.0.7, walker@~1.0.5:
   integrity sha1-L3+bj9ENZ3JisYqITijRlhjgKPs=
   dependencies:
     makeerror "1.0.x"
-
-warning@^4.0.2:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
-  integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
-  dependencies:
-    loose-envify "^1.0.0"
 
 watchpack@^1.5.0:
   version "1.6.0"
