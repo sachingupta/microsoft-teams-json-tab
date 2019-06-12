@@ -1,5 +1,3 @@
-import { default as jsonData } from './generated.json';
-import * as simData from './simulated.json';
 import { ICard, BotResponse, ICommand } from '../api/api.interface';
 import * as microsoftTeams from '@microsoft/teams-js'
 
