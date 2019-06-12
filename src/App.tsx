@@ -17,7 +17,7 @@ interface IAppProps {
 
 export const App = ( props: IAppProps ) => {
     // INITIAL STATES
-    const iResult:ICard[] = [];
+    const iResult: ICard[] = [];
     // STATE HOOKS
     const [ ViewOption, setViewOption ] = React.useState( 'List' );
     const [ Result, setResult ] = React.useState( iResult );
@@ -49,7 +49,7 @@ export const App = ( props: IAppProps ) => {
         microsoftTeams.initialize();
         microsoftTeams.registerOnThemeChangeHandler( props.onThemeChange );
         getResults ( '', onResults, onError );
-    }, [])
+    }, [ props.onThemeChange ] )
 
     // CONSTANTS
     const url: string = window.location.href;
