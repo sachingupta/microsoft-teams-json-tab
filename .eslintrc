@@ -37,7 +37,7 @@
         "error",
         { "ignoreParameters": false }
       ],
-      "import/no-unassigned-import": ["warn"],
+      "import/no-unassigned-import": ["warn", {"allow":["./src/css/**"]}],
       "arrow-parens": ["error", "as-needed"],
       "space-in-parens": [ "error", "always" ],
       "template-curly-spacing": [ "error", "always" ],
