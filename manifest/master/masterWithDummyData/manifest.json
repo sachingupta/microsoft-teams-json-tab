@@ -11,8 +11,8 @@
     "termsOfUseUrl": "https://example.azurewebsites.net/termsofuse"
   },
   "name": {
-    "short": "JSON Tab",
-    "full": "Sample JSON Tab - master"
+    "short": "JSON Tab - dummy data",
+    "full": "Sample JSON Tab - master dummy data"
   },
   "description": {
     "short": "Sample JSON Tab",
