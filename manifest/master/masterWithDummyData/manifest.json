@@ -2,7 +2,7 @@
   "$schema": "https://github.com/OfficeDev/microsoft-teams-app-schema/blob/preview/DevPreview/MicrosoftTeams.schema.json",
   "manifestVersion": "devPreview",
   "version": "1.0",
-  "id": "300639bf-2c0f-41a7-aa2e-7833664c4c76",
+  "id": "300639bf-2c0f-41a7-aa2e-7833664c4c77",
   "packageName": "com.microsoft.teams.samples.v4bot",
   "developer": {
     "name": "Microsoft Corp",
