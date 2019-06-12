@@ -85,8 +85,20 @@
       ],
       "actions": [
         {
+          "type": "Action.OpenUrl",
+          "title": "Action.OpenUrl",
+          "url": "http://adaptivecards.io"
+        },
+        {
+          "type": "Action.Submit",
+          "title": "Action.Submit",
+          "data": {
+            "x": 13
+          }
+        },
+        {
           "type": "Action.ShowCard",
-          "title": "Set due date",
+          "title": "Action.ShowCard (Set due date)",
           "card": {
             "type": "AdaptiveCard",
             "body": [
@@ -105,7 +117,7 @@
         },
         {
           "type": "Action.ShowCard",
-          "title": "Comment",
+          "title": "Action.ShowCard (Comment)",
           "card": {
             "type": "AdaptiveCard",
             "body": [
@@ -122,6 +134,38 @@
                 "title": "OK"
               }
             ]
+          }
+        },
+        {
+          "type": "Action.Submit",
+          "title": "Click me for messageBack",
+          "data": {
+            "msteams": {
+                "type": "messageBack",
+                "displayText": "I clicked this button",
+                "text": "text to bots",
+                "value": "{\"bfKey\": \"bfVal\", \"conflictKey\": \"from value\"}"
+            }
+          }
+        },
+        {
+          "type": "Action.Submit",
+          "title": "Click me for imBack",
+          "data": {
+            "msteams": {
+                "type": "imBack",
+                "value": "Text to reply in chat"
+            }
+          }
+        },
+        {
+          "type": "Action.Submit",
+          "title": "Click me for signin",
+          "data": {
+            "msteams": {
+                "type": "signin",
+                "value": "https://signin.com",
+            }
           }
         }
       ],
