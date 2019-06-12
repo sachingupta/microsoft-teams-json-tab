@@ -1,6 +1,5 @@
-import { default as jsonData } from './generated.json';
 import * as simData from './simulated.json';
-import { ICard, BotResponse, ICommand } from '../api/api.interface';
+import { BotResponse, ICommand } from '../api/api.interface';
 import * as microsoftTeams from '@microsoft/teams-js'
 
 const listOfSupportedCmds: ICommand[] = [
@@ -21,7 +20,7 @@ const listOfSupportedCmds: ICommand[] = [
 export const getResults = ( query: string,
     // should be microsoftTeams.bot.QueryResponse
     onResults: ( response: BotResponse ) => void,
-    onError: ( error: string ) => {} ) => {
+    onError: ( error: string ) => void ): void => {
 
     // TODO
     // microsoftTeams.bot.sendQuery( { query } , onResults, onError );
@@ -33,7 +32,7 @@ export const getResults = ( query: string,
 
 export const getSupportedCommands = (
     onBotGetCommandResponse: ( response: ICommand[] ) => void,
-    onError:  ( error: string ) => { } ): void => {
+    onError:  ( error: string ) => void ): void => {
 
     // Prod
     // microsoftTeams.bot.getSupportedCommands(onBotGetCommandResponse, onError );
