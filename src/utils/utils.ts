@@ -26,26 +26,25 @@ export const getFrameContext = ( iUrl: string ) => {
     return url.query.frameContext;
 }
 
+export const processQueryResponse = ( item: any ): ICard => {
+    let url = '';
+    if ( item.previewRawPayload.content.hasOwnProperty( 'images' ) ){
+        const images = item.previewRawPayload.content.images[ 0 ];
+        url = images.url;
+    }
+    const out: ICard = {
+        contentType: 'AdaptiveCard',
+        content: item.card.content,
+        preview: {
+            title: item.previewRawPayload.content.title,
+            subTitle: item.previewRawPayload.content.text,
+            heroImageSrc: url
+        },
+    };
+    return out;
+}
+
 // converts a bot response to ICard
 export const toICard = ( response: BotResponse ) => {
-    const items: ICard[] = [];
-    response.data.default.attachments.forEach( ( rawData: any ) => {
-        const item = rawData.previewRawPayload;
-        if ( item ){
-            const { title, text, images } = item.content;
-            const heroImageSrc = images[ 0 ].url ? images[ 0 ].url : '';
-            const subTitle = text ? text : '';
-            const card: ICard = {
-                content: item.content,
-                contentType: item.contentType,
-                preview: {
-                    title,
-                    subTitle,
-                    heroImageSrc
-                }
-            }
-            items.push( card );
-        }
-    } );
-    return items;
+    return response.data.default.attachments.map( processQueryResponse );
 }

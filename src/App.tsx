@@ -56,8 +56,7 @@ class App extends React.Component<IAppProps, IAppState>{
 
   // should be microsoftTeams.bot.QueryResponse
   public onResults = ( response: BotResponse ): void => {
-    this.setState( { results: response.data } );
-    // AFTER SDK COMPLETE DO THIS -> this.setState( { results: toICard( response ) } );
+    this.setState( { results: toICard( response ) } );
   }
 
   // calls api
