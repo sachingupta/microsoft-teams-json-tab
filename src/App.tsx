@@ -7,81 +7,66 @@ import { Results } from './components/Results';
 import { getResults } from './api/api';
 
 import * as microsoftTeams from '@microsoft/teams-js';
-import { ICard, BotResponse } from './api/api.interface';
+import { BotResponse } from './api/api.interface';
 import { getFrameContext, toICard } from './utils/utils';
 import { SettingsView } from './components/SettingsView';
 
-interface IAppState{
-  viewOption: string,
-  results: ICard[]
+interface IAppProps {
+    onThemeChange: any
 }
 
-interface IAppProps{
-  onThemeChange: any
-}
+export const App = ( props: IAppProps ) => {
 
-class App extends React.Component<IAppProps, IAppState>{
+    // STATE HOOKS
+    const [ ViewOption, setViewOption ] = React.useState( 'List' );
+    const [ Result, setResult ] = React.useState( [ ] );
 
-  constructor( props: IAppProps ){
-    super( props );
-    this.state = {
-      viewOption: 'List',
-      results: []
+    // HANDLERS
+
+    const onError = ( error: string ) => {
+        alert ( error );
     }
-  }
 
-  // handles searchbar change
-  public handleSearch = ( query: string, viewOption: string ) => {
-    if( query !== undefined ){
-      getResults( query, this.onResults, this.onError )
+    const onResults = ( response: BotResponse ) => {
+        setResult( toICard( response ) );
     }
-  }
 
-  // handles change of view
-  public handleViewChange = ( viewOption: string ) => {
-    if( viewOption ){
-      this.setState( { viewOption: viewOption } );
+    const handleSearch = ( query: string, viewOption: string ) => {
+        if ( query !== undefined ) {
+            getResults ( query, onResults, onError );
+        }
     }
-  }
 
-  public componentDidMount() {
-    microsoftTeams.initialize();
-    microsoftTeams.registerOnThemeChangeHandler( this.props.onThemeChange );
-    getResults( '', this.onResults, this.onError );
-  }
+    const handleViewChange = ( viewOption: string ) => {
+        if ( viewOption ) {
+            setViewOption( viewOption );
+        }
+    }
 
-  public onError( error: string ): any {
-    alert( error );
-  }
+    // EFFECT HOOKS
+    React.useEffect( () => {
+        microsoftTeams.initialize();
+        microsoftTeams.registerOnThemeChangeHandler( props.onThemeChange );
+        getResults ( '', onResults, onError );
+    } )
 
-  // should be microsoftTeams.bot.QueryResponse
-  public onResults = ( response: BotResponse ): void => {
-    this.setState( { results: toICard( response ) } );
-  }
-
-  // calls api
-  render(){
-    const url: string = window.location.href
+    // CONSTANTS
+    const url: string = window.location.href;
     const frameContext = getFrameContext( url );
-
-    if( frameContext === 'settings' ) {
+    if ( frameContext === 'settings' ) {
       return (
           <div>
               <SettingsView  />
           </div>
-      );
-    }
-
-    else {
+      )
+    } else {
       return (
           <div>
-              <SearchBar onSearch={ this.handleSearch } onViewChange={ this.handleViewChange }/>
-              <Results results={ this.state.results } viewOption={ this.state.viewOption } />
+              <SearchBar onSearch={ handleSearch } onViewChange={ handleViewChange }/>
+              <Results results={ Result } viewOption={ ViewOption } />
           </div>
-    );
+      )
     }
-  }
-
 }
 
 export default App;
