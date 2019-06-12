@@ -8,7 +8,7 @@ import { getResults } from './api/api';
 
 import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard, BotResponse } from './api/api.interface';
-import { getFrameContext } from './utils/utils';
+import { getFrameContext, toICard } from './utils/utils';
 import { SettingsView } from './components/SettingsView';
 
 interface IAppState{
@@ -56,7 +56,7 @@ class App extends React.Component<IAppProps, IAppState>{
 
   // should be microsoftTeams.bot.QueryResponse
   public onResults = ( response: BotResponse ): void => {
-    this.setState( { results: response.data } );
+    this.setState( { results: toICard( response ) } );
   }
 
   // calls api

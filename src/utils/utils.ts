@@ -1,5 +1,5 @@
 import * as microsoftTeams from '@microsoft/teams-js';
-import { ICard } from '../api/api.interface';
+import { ICard, BotResponse } from '../api/api.interface';
 import * as queryString from 'query-string';
 
 export const launchTaskModule = ( card: ICard ) => {
@@ -24,4 +24,27 @@ export const launchTaskModule = ( card: ICard ) => {
 export const getFrameContext = ( iUrl: string ) => {
     const url = queryString.parseUrl( iUrl );
     return url.query.frameContext;
+}
+
+export const processQueryResponse = ( item: any ): ICard => {
+    let url = '';
+    if ( item.previewRawPayload.content.hasOwnProperty( 'images' ) ){
+        const images = item.previewRawPayload.content.images[ 0 ];
+        url = images.url;
+    }
+    const out: ICard = {
+        contentType: 'AdaptiveCard',
+        content: item.card.content,
+        preview: {
+            title: item.previewRawPayload.content.title,
+            subTitle: item.previewRawPayload.content.text,
+            heroImageSrc: url
+        },
+    };
+    return out;
+}
+
+// converts a bot response to ICard
+export const toICard = ( response: BotResponse ) => {
+    return response.data.default.attachments.map( processQueryResponse );
 }

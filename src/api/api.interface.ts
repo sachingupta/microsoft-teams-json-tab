@@ -15,3 +15,8 @@ export interface ICard {
 export interface BotResponse {
     data: any
 }
+
+export interface ICommand {
+    title:string;
+    id:string;
+}

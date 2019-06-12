@@ -24,7 +24,7 @@ REM CALL :link
 
 CALL :yarn
 
-CALL :run-task-if-not-running ngrok
+CALL :ngrok
 
 CALL :serve
 
