@@ -47,16 +47,22 @@ class App extends React.Component<IAppProps, IAppState>{
   public componentDidMount() {
     microsoftTeams.initialize();
     microsoftTeams.registerOnThemeChangeHandler( this.props.onThemeChange );
+    microsoftTeams.appInitialization.notifyAppLoaded();
     getResults( '', this.onResults, this.onError );
   }
 
   public onError( error: string ): any {
+    microsoftTeams.appInitialization.notifyFailure( {
+      reason: microsoftTeams.appInitialization.FailedReason.Other,
+      message: error
+    } );
     alert( error );
   }
 
   // should be microsoftTeams.bot.QueryResponse
   public onResults = ( response: QueryResponse ): void => {
     this.setState( { results: parseQueryResponse( response ) } );
+    microsoftTeams.appInitialization.notifySuccess();
   }
 
   // calls api
