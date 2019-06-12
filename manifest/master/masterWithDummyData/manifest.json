@@ -11,8 +11,8 @@
     "termsOfUseUrl": "https://example.azurewebsites.net/termsofuse"
   },
   "name": {
-    "short": "JSON Tab",
-    "full": "Sample JSON Tab - master"
+    "short": "JSON Tab - dummy data",
+    "full": "Sample JSON Tab - master dummy data"
   },
   "description": {
     "short": "Sample JSON Tab",
@@ -27,8 +27,8 @@
     {
       "entityId": "json-tab",
       "name": "json tab",
-      "contentUrl": "https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content",
-      "websiteUrl": "https://microsoft-teams-json-tab.azurewebsites.net",
+      "contentUrl": "https://teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content",
+      "websiteUrl": "https://teams-json-tab.azurewebsites.net",
       "scopes": [
         "personal"
       ]
@@ -36,7 +36,7 @@
   ],
   "configurableTabs": [
     {
-      "configurationUrl": "https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=settings",
+      "configurationUrl": "https://teams-json-tab.azurewebsites.net?theme={theme}&frameContext=settings",
       "canUpdateConfiguration": false,
       "scopes": [
         "team"
