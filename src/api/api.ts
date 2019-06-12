@@ -19,13 +19,19 @@ const listOfSupportedCmds: ICommand[] = [
 ]
 
 export const processQueryResponse = ( item: any ): ICard => {
+    let url = '';
+    if ( item.previewRawPayload.content.hasOwnProperty( 'images' ) ){
+        const images = item.previewRawPayload.content.images[ 0 ];
+        url = images.url;
+    }
+
     const out: ICard = {
         contentType: 'AdaptiveCard',
         content: item.card.content,
         preview: {
             title: item.previewRawPayload.content.title,
             subTitle: item.previewRawPayload.content.text,
-            heroImageSrc: item.previewRawPayload.content.images[ 0 ].url
+            heroImageSrc: url
         },
     };
     return out;
