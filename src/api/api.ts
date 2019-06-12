@@ -22,7 +22,6 @@ export const getResults = ( query: string,
     // should be microsoftTeams.bot.QueryResponse
     onResults: ( response: BotResponse ) => void,
     onError: ( error: string ) => {} ) => {
-
     microsoftTeams.bot.sendQuery( { query } , onResults, onError );
 }
 
