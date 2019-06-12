@@ -1,4 +1,4 @@
-import { ICard, BotResponse, ICommand } from '../api/api.interface';
+import { ICard, QueryResponse, ICommand } from '../api/api.interface';
 import * as microsoftTeams from '@microsoft/teams-js'
 
 const listOfSupportedCmds: ICommand[] = [
@@ -18,7 +18,7 @@ const listOfSupportedCmds: ICommand[] = [
 
 export const getResults = ( query: string,
     // should be microsoftTeams.bot.QueryResponse
-    onResults: ( response: BotResponse ) => void,
+    onResults: ( response: QueryResponse ) => void,
     onError: ( error: string ) => {} ) => {
     microsoftTeams.bot.sendQuery( { query } , onResults, onError );
 }

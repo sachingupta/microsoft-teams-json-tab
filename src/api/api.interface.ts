@@ -12,11 +12,19 @@ export interface ICard {
 
 // TODO
 // TEMPORARY FIX BEFORE SDK PUBLISH
-export interface BotResponse {
-    data: any
+export interface QueryResponse {
+    attachments: IAttachment[],
+    layout: any;
+}
+
+export interface IAttachment {
+    card: any;
+    previewCard: any;
+    previewRawPayload: any,
+    rawPayload: any;
 }
 
 export interface ICommand {
-    title:string;
-    id:string;
+    title: string;
+    id: string;
 }
