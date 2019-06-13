@@ -2,10 +2,9 @@ import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard, QueryResponse, IAttachment } from '../api/api.interface';
 import * as queryString from 'query-string';
 
-
 // gets frame context from url
-export const submitHandler = (err: string, result: string) => {
-    console.log(`Err value: ${ err }, result value : ${ result }`);
+export const submitHandler = ( err: string, result: string ) => {
+    console.log( `Err value: ${ err }, result value : ${ result }` );
 }
 
 export const launchTaskModule = ( card: ICard ) => {
