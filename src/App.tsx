@@ -7,7 +7,7 @@ import { Results } from './components/Results';
 import { getResults } from './api/api';
 
 import * as microsoftTeams from '@microsoft/teams-js';
-import { ICard, QueryResponse } from './api/api.interface';
+import { ICard } from './api/api.interface';
 import { getFrameContext, parseQueryResponse } from './utils/utils';
 import { SettingsView } from './components/SettingsView';
 
@@ -28,7 +28,7 @@ export const App = (props: IAppProps) => {
     alert(error);
   };
 
-  const onResults = (response: QueryResponse) => {
+  const onResults = (response: microsoftTeams.bot.QueryResponse) => {
     setResult(parseQueryResponse(response));
   };
 

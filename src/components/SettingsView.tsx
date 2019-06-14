@@ -2,14 +2,13 @@ import * as React from 'react';
 import { Text, Input, Dropdown } from '@stardust-ui/react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { getSupportedCommands } from '../api/api';
-import { ICommand } from '../api/api.interface';
 
 export const SettingsView = (props: {}) => {
   // INITIAL STATES
-  const iCommandList: ICommand[] = [];
+  const iCommandList: microsoftTeams.bot.ICommand[] = [];
 
   // PROCESSORS
-  const processCommands = (command: ICommand) => {
+  const processCommands = (command: microsoftTeams.bot.ICommand) => {
     return command.title;
   };
 
@@ -23,7 +22,7 @@ export const SettingsView = (props: {}) => {
     alert(error);
   };
 
-  const onGetCommandResponse = (response: ICommand[]): void => {
+  const onGetCommandResponse = (response: microsoftTeams.bot.ICommand[]): void => {
     setCommandList(response);
   };
 
