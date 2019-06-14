@@ -24,7 +24,7 @@ export const App = ( props: IAppProps ) => {
 
     // HANDLERS
 
-    const onError = ( error: string ) => {
+    const onError = ( error: string ): any => {
         alert ( error );
     }
 
