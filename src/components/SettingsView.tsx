@@ -34,7 +34,7 @@ export const SettingsView = (props: {}) => {
     microsoftTeams.settings.registerOnSaveHandler(saveEvent => {
       microsoftTeams.settings.setSettings({
         entityId: 'JSONTab',
-        contentUrl: `https://teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}`,
+        contentUrl: `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}`,
         suggestedDisplayName: TabName,
       });
       saveEvent.notifySuccess();
