@@ -12,62 +12,62 @@ import { getFrameContext, parseQueryResponse } from './utils/utils';
 import { SettingsView } from './components/SettingsView';
 
 interface IAppProps {
-    onThemeChange: any
+  onThemeChange: any;
 }
 
-export const App = ( props: IAppProps ) => {
-    // INITIAL STATES
-    const iResult: ICard[] = [];
-    // STATE HOOKS
-    const [ ViewOption, setViewOption ] = React.useState( 'List' );
-    const [ Result, setResult ] = React.useState( iResult );
+export const App = (props: IAppProps) => {
+  // INITIAL STATES
+  const iResult: ICard[] = [];
+  // STATE HOOKS
+  const [ViewOption, setViewOption] = React.useState('List');
+  const [Result, setResult] = React.useState(iResult);
 
-    // HANDLERS
+  // HANDLERS
 
-    const onError = ( error: string ): any => {
-        alert ( error );
+  const onError = (error: string): any => {
+    alert(error);
+  };
+
+  const onResults = (response: QueryResponse) => {
+    setResult(parseQueryResponse(response));
+  };
+
+  const handleSearch = (query: string, viewOption: string) => {
+    if (query !== undefined) {
+      getResults(query, onResults, onError);
     }
+  };
 
-    const onResults = ( response: QueryResponse ) => {
-        setResult( parseQueryResponse( response ) );
+  const handleViewChange = (viewOption: string) => {
+    if (viewOption) {
+      setViewOption(viewOption);
     }
+  };
 
-    const handleSearch = ( query: string, viewOption: string ) => {
-        if ( query !== undefined ) {
-            getResults ( query, onResults, onError );
-        }
-    }
+  // EFFECT HOOKS
+  React.useEffect(() => {
+    microsoftTeams.initialize();
+    microsoftTeams.registerOnThemeChangeHandler(props.onThemeChange);
+    getResults('', onResults, onError);
+  }, [props.onThemeChange]);
 
-    const handleViewChange = ( viewOption: string ) => {
-        if ( viewOption ) {
-            setViewOption( viewOption );
-        }
-    }
-
-    // EFFECT HOOKS
-    React.useEffect( () => {
-        microsoftTeams.initialize();
-        microsoftTeams.registerOnThemeChangeHandler( props.onThemeChange );
-        getResults ( '', onResults, onError );
-    }, [ props.onThemeChange ] )
-
-    // CONSTANTS
-    const url: string = window.location.href;
-    const frameContext = getFrameContext( url );
-    if ( frameContext === 'settings' ) {
-      return (
-          <div>
-              <SettingsView  />
-          </div>
-      )
-    } else {
-      return (
-          <div>
-              <SearchBar onSearch={ handleSearch } onViewChange={ handleViewChange }/>
-              <Results results={ Result } viewOption={ ViewOption } />
-          </div>
-      )
-    }
-}
+  // CONSTANTS
+  const url: string = window.location.href;
+  const frameContext = getFrameContext(url);
+  if (frameContext === 'settings') {
+    return (
+      <div>
+        <SettingsView />
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <SearchBar onSearch={handleSearch} onViewChange={handleViewChange} />
+        <Results results={Result} viewOption={ViewOption} />
+      </div>
+    );
+  }
+};
 
 export default App;
