@@ -11,83 +11,79 @@ import { ICard, QueryResponse } from './api/api.interface';
 import { getFrameContext, parseQueryResponse } from './utils/utils';
 import { SettingsView } from './components/SettingsView';
 
-interface IAppState{
-  viewOption: string,
-  results: ICard[]
+interface IAppState {
+  viewOption: string;
+  results: ICard[];
 }
 
-interface IAppProps{
-  onThemeChange: any
+interface IAppProps {
+  onThemeChange: any;
 }
 
-class App extends React.Component<IAppProps, IAppState>{
-
-  constructor( props: IAppProps ){
-    super( props );
+class App extends React.Component<IAppProps, IAppState> {
+  constructor(props: IAppProps) {
+    super(props);
     this.state = {
       viewOption: 'List',
-      results: []
-    }
+      results: [],
+    };
   }
 
   // handles searchbar change
-  public handleSearch = ( query: string, viewOption: string ) => {
-    if( query !== undefined ){
-      getResults( query, this.onResults, this.onError )
+  public handleSearch = (query: string, viewOption: string) => {
+    if (query !== undefined) {
+      getResults(query, this.onResults, this.onError);
     }
-  }
+  };
 
   // handles change of view
-  public handleViewChange = ( viewOption: string ) => {
-    if( viewOption ){
-      this.setState( { viewOption: viewOption } );
+  public handleViewChange = (viewOption: string) => {
+    if (viewOption) {
+      this.setState({ viewOption: viewOption });
     }
-  }
+  };
 
   public componentDidMount() {
     microsoftTeams.initialize();
-    microsoftTeams.registerOnThemeChangeHandler( this.props.onThemeChange );
+    microsoftTeams.registerOnThemeChangeHandler(this.props.onThemeChange);
     microsoftTeams.appInitialization.notifyAppLoaded();
-    getResults( '', this.onResults, this.onError );
+    getResults('', this.onResults, this.onError);
   }
 
-  public onError( error: string ): any {
-    microsoftTeams.appInitialization.notifyFailure( {
+  public onError(error: string): any {
+    microsoftTeams.appInitialization.notifyFailure({
       reason: microsoftTeams.appInitialization.FailedReason.Other,
-      message: error
-    } );
-    alert( error );
+      message: error,
+    });
+    alert(error);
   }
 
   // should be microsoftTeams.bot.QueryResponse
-  public onResults = ( response: QueryResponse ): void => {
-    this.setState( { results: parseQueryResponse( response ) } );
+  public onResults = (response: QueryResponse): void => {
+    this.setState({ results: parseQueryResponse(response) });
     microsoftTeams.appInitialization.notifySuccess();
-  }
+  };
 
   // calls api
-  render(){
-    const url: string = window.location.href
-    const frameContext = getFrameContext( url );
+  render() {
+    const url: string = window.location.href;
+    const frameContext = getFrameContext(url);
 
-    if( frameContext === 'settings' ) {
+    if (frameContext === 'settings') {
       return (
-          <div>
-              <SettingsView  />
-          </div>
+        <div>
+          <SettingsView />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <SearchBar onSearch={this.handleSearch} onViewChange={this.handleViewChange} />
+          <Results results={this.state.results} viewOption={this.state.viewOption} />
+        </div>
       );
     }
-
-    else {
-      return (
-          <div>
-              <SearchBar onSearch={ this.handleSearch } onViewChange={ this.handleViewChange }/>
-              <Results results={ this.state.results } viewOption={ this.state.viewOption } />
-          </div>
-    );
-    }
   }
-
 }
 
 export default App;

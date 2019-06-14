@@ -3,58 +3,60 @@ import { Text, Input, Dropdown } from '@stardust-ui/react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { getSupportedCommands } from '../api/api';
 
-export const SettingsView = ( props: { } ) => {
-    // STATE HOOKS
-    const [ Commands, setCommands ] = React.useState( [ ] );
-    const [ CommandSelected, setCommandSelected ] = React.useState( '' );
-    const [ TabName, setTabName ] = React.useState( 'JSONTabDefault' );
+export const SettingsView = (props: {}) => {
+  // STATE HOOKS
+  const [Commands, setCommands] = React.useState([]);
+  const [CommandSelected, setCommandSelected] = React.useState('');
+  const [TabName, setTabName] = React.useState('JSONTabDefault');
 
-    // HANDLERS
-    const onError = ( error: string ): any => {
-        alert( error );
-    }
+  // HANDLERS
+  const onError = (error: string): any => {
+    alert(error);
+  };
 
-    const onResults = ( response: any ): void => {
-        setCommands( response );
-    }
+  const onResults = (response: any): void => {
+    setCommands(response);
+  };
 
-    const handleNameChange = async ( event: any ) => {
-        await setTabName( event.target.value );
-    }
+  const handleNameChange = async (event: any) => {
+    await setTabName(event.target.value);
+  };
 
-    const handleCommandChange = async ( event: any, res: any ) => {
-        await setCommandSelected( res.value );
-        microsoftTeams.settings.setValidityState( true );
-    }
+  const handleCommandChange = async (event: any, res: any) => {
+    await setCommandSelected(res.value);
+    microsoftTeams.settings.setValidityState(true);
+  };
 
-    // EFFECT HOOKS
-    React.useEffect( () => {
-        microsoftTeams.initialize();
-        microsoftTeams.settings.registerOnSaveHandler( saveEvent => {
-            microsoftTeams.settings.setSettings( {
-                entityId: 'JSONTab',
-                contentUrl: `https://teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${ CommandSelected }`,
-                suggestedDisplayName: TabName,
-            } );
-            saveEvent.notifySuccess();
-        } );
-        getSupportedCommands( onResults, onError );
-    } )
+  // EFFECT HOOKS
+  React.useEffect(() => {
+    microsoftTeams.initialize();
+    microsoftTeams.settings.registerOnSaveHandler(saveEvent => {
+      microsoftTeams.settings.setSettings({
+        entityId: 'JSONTab',
+        contentUrl: `https://teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}`,
+        suggestedDisplayName: TabName,
+      });
+      saveEvent.notifySuccess();
+    });
+    getSupportedCommands(onResults, onError);
+  });
 
-    // CONSTANTS
-    const listOfCmds = Commands.map( ( command: any ) => { return command.title } )
-    return (
-        <div>
-            <Text size={ 'smaller' } content={ 'Name your tab' } />
-            <Input fluid placeholder="Tab name" onChange={ e => handleNameChange( e ) } />
-            <br />
-            <Text size={ 'smaller' } content={ 'Select the command you\'d like query your bot with' } />
-            <Dropdown
-                fluid
-                items={ listOfCmds }
-                noResultsMessage="We couldn't find any matches."
-                onSelectedChange={ handleCommandChange }
-            />
-        </div>
-    )
-}
+  // CONSTANTS
+  const listOfCmds = Commands.map((command: any) => {
+    return command.title;
+  });
+  return (
+    <div>
+      <Text size={'smaller'} content={'Name your tab'} />
+      <Input fluid placeholder="Tab name" onChange={e => handleNameChange(e)} />
+      <br />
+      <Text size={'smaller'} content={"Select the command you'd like query your bot with"} />
+      <Dropdown
+        fluid
+        items={listOfCmds}
+        noResultsMessage="We couldn't find any matches."
+        onSelectedChange={handleCommandChange}
+      />
+    </div>
+  );
+};
