@@ -2,10 +2,11 @@ import * as React from 'react';
 import { Text, Input, Dropdown } from '@stardust-ui/react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { getSupportedCommands } from '../api/api';
+import { ICommand } from '../api/api.interface';
 
 export const SettingsView = (props: {}) => {
   // STATE HOOKS
-  const [Commands, setCommands] = React.useState([]);
+  const [Commands, setCommands] = React.useState([] as ICommand[]);
   const [CommandSelected, setCommandSelected] = React.useState('');
   const [TabName, setTabName] = React.useState('JSONTabDefault');
 
@@ -14,7 +15,7 @@ export const SettingsView = (props: {}) => {
     alert(error);
   };
 
-  const onResults = (response: any): void => {
+  const onResults = (response: ICommand[]): void => {
     setCommands(response);
   };
 
@@ -42,7 +43,7 @@ export const SettingsView = (props: {}) => {
   });
 
   // CONSTANTS
-  const listOfCmds = Commands.map((command: any) => {
+  const listOfCmds = Commands.map((command: ICommand) => {
     return command.title;
   });
   return (
