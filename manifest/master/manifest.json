@@ -160,5 +160,6 @@
   "validDomains": [
     "*.azurewebsites.net",
     "*.ngrok.io"
-  ]
+  ],
+  "showLoadingIndicator": true
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input, Button, Icon } from '@stardust-ui/react';
-import '../css/SearchBar.css'
+import '../css/SearchBar.css';
 import { RadioIcons } from './RadioIcons';
 
 enum viewType {

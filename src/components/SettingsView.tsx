@@ -18,23 +18,23 @@ export const SettingsView = ( props: { } ) => {
     const [ CommandSelected, setCommandSelected ] = React.useState( '' );
     const [ TabName, setTabName ] = React.useState( 'JSONTabDefault' );
 
-    // HANDLERS
-    const onError = ( error: string ): any => {
-        alert( error );
-    }
+  // HANDLERS
+  const onError = (error: string): any => {
+    alert(error);
+  };
 
     const onGetCommandResponse = ( response: ICommand[] ): void => {
         setCommandList( response );
     }
 
-    const handleNameChange = async ( event: any ) => {
-        await setTabName( event.target.value );
-    }
+  const handleNameChange = async (event: any) => {
+    await setTabName(event.target.value);
+  };
 
-    const handleCommandChange = async ( event: any, res: any ) => {
-        await setCommandSelected( res.value );
-        microsoftTeams.settings.setValidityState( true );
-    }
+  const handleCommandChange = async (event: any, res: any) => {
+    await setCommandSelected(res.value);
+    microsoftTeams.settings.setValidityState(true);
+  };
 
     // EFFECT HOOKS
     React.useEffect( () => {
