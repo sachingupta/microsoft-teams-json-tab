@@ -63,7 +63,7 @@ export const SettingsView = (props: {}) => {
         items={CommandList.map(processCommands)}
         noResultsMessage="We couldn't find any matches."
         onSelectedChange={handleCommandChange}
-        placeholder={<Text weight='light' content='Select the command'></Text>}
+        placeholder="Select the command"
       />
     </div>
   );
