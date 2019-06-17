@@ -16,11 +16,9 @@ interface IAppProps {
 }
 
 export const App = (props: IAppProps) => {
-  // INITIAL STATES
-  const iResult: ICard[] = [];
   // STATE HOOKS
   const [ViewOption, setViewOption] = React.useState('List');
-  const [Result, setResult] = React.useState(iResult);
+  const [Result, setResult] = React.useState([] as ICard[]);
 
   // HANDLERS
 
