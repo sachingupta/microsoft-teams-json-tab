@@ -41,7 +41,7 @@ export const SettingsView = (props: {}) => {
     microsoftTeams.settings.registerOnSaveHandler(saveEvent => {
       microsoftTeams.settings.setSettings({
         entityId: 'JSONTab',
-        contentUrl: `https://teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}`,
+        contentUrl: `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}`,
         suggestedDisplayName: TabName,
       });
       saveEvent.notifySuccess();
@@ -51,15 +51,19 @@ export const SettingsView = (props: {}) => {
 
   return (
     <div>
-      <Text size={'smaller'} content={'Name your tab'} />
-      <Input fluid placeholder="Tab name" onChange={e => handleNameChange(e)} />
-      <br />
-      <Text size={'smaller'} content={"Select the command you'd like query your bot with"} />
+      <div>
+        <Text size={'medium'} content={'Name your tab'} />
+      </div>
+      <Input fluid placeholder={'Tab name'} onChange={e => handleNameChange(e)} />
+      <div>
+        <Text size={'medium'} content={"Select the command you'd like query your bot with"} />
+      </div>
       <Dropdown
         fluid
         items={CommandList.map(processCommands)}
         noResultsMessage="We couldn't find any matches."
         onSelectedChange={handleCommandChange}
+        placeholder={<Text weight='light' content='Select the command'></Text>}
       />
     </div>
   );
