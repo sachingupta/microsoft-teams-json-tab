@@ -4,16 +4,13 @@ import * as microsoftTeams from '@microsoft/teams-js';
 import { getSupportedCommands } from '../api/api';
 
 export const SettingsView = (props: {}) => {
-  // INITIAL STATES
-  const iCommandList: microsoftTeams.bot.ICommand[] = [];
-
   // PROCESSORS
   const processCommands = (command: microsoftTeams.bot.ICommand) => {
     return command.title;
   };
 
   // STATE HOOKS
-  const [CommandList, setCommandList] = React.useState(iCommandList);
+  const [CommandList, setCommandList] = React.useState([] as microsoftTeams.bot.ICommand[]);
   const [CommandSelected, setCommandSelected] = React.useState('');
   const [TabName, setTabName] = React.useState('JSONTabDefault');
 
