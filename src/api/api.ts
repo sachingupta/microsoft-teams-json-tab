@@ -20,14 +20,14 @@ export const getResults = (
   // should be microsoftTeams.bot.QueryResponse
   onResults: (response: microsoftTeams.bot.QueryResponse) => void,
   onError: (error: string) => {},
-): any => {
+): void => {
   microsoftTeams.bot.sendQuery({ query }, onResults, onError);
 };
 
 export const getSupportedCommands = (
   onBotGetCommandResponse: (response: microsoftTeams.bot.ICommand[]) => void,
   onError: (error: string) => {},
-): any => {
+): void => {
   // Prod
   // microsoftTeams.bot.getSupportedCommands( onBotGetCommandResponse, onError );
 
