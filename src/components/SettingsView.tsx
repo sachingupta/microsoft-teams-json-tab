@@ -4,11 +4,6 @@ import * as microsoftTeams from '@microsoft/teams-js';
 import { getSupportedCommands } from '../api/api';
 
 export const SettingsView = (props: {}) => {
-  // PROCESSORS
-  const processCommands = (command: microsoftTeams.bot.ICommand) => {
-    return command.title;
-  };
-
   // STATE HOOKS
   const [CommandList, setCommandList] = React.useState([] as microsoftTeams.bot.ICommand[]);
   const [CommandSelected, setCommandSelected] = React.useState('');
@@ -57,7 +52,9 @@ export const SettingsView = (props: {}) => {
       </div>
       <Dropdown
         fluid
-        items={CommandList.map(processCommands)}
+        items={CommandList.map((command: microsoftTeams.bot.ICommand): string => {
+          return command.title;
+        })}
         noResultsMessage="We couldn't find any matches."
         onSelectedChange={handleCommandChange}
         placeholder="Select the command"
