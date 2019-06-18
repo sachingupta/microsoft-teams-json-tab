@@ -28,9 +28,5 @@ export const getSupportedCommands = (
   onBotGetCommandResponse: (response: microsoftTeams.bot.ICommand[]) => void,
   onError: (error: string) => {},
 ): any => {
-  // Prod
-  // microsoftTeams.bot.getSupportedCommands( onBotGetCommandResponse, onError );
-
-  // TODO REMOVE : Dummy
-  onBotGetCommandResponse(listOfSupportedCmds);
+  microsoftTeams.bot.getSupportedCommands(onBotGetCommandResponse, onError);
 };
