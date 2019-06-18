@@ -20,8 +20,7 @@ module.exports =  {
       "@typescript-eslint/no-namespace": "warn",
       "@typescript-eslint/explicit-member-accessibility": "warn",
       "@typescript-eslint/interface-name-prefix": "off",
-      "@typescript-eslint/no-non-null-assertion": "off",
-      "@typescript-eslint/no-explicit-any": "error"
+      "@typescript-eslint/no-non-null-assertion": "off"
     },
     settings:  {
       react:  {

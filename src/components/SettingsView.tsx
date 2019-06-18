@@ -1,19 +1,14 @@
 import * as React from 'react';
-import { Text, Input, Dropdown } from '@stardust-ui/react';
+import { Text, Input, Dropdown, InputProps } from '@stardust-ui/react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { getSupportedCommands } from '../api/api';
+import { HtmlInputEvents } from '@stardust-ui/react/dist/es/lib/htmlPropsUtils';
 
 export const SettingsView: React.FC = (): JSX.Element => {
-  // PROCESSORS
-  const processCommands = (command: microsoftTeams.bot.ICommand): string => {
-    return command.title;
-  };
-
   // STATE HOOKS
   const [CommandList, setCommandList] = React.useState([] as microsoftTeams.bot.ICommand[]);
   const [CommandSelected, setCommandSelected] = React.useState('');
   const [TabName, setTabName] = React.useState('JSONTabDefault');
-
   // HANDLERS
   const onError = (error: string): void => {
     alert(error);
@@ -23,12 +18,12 @@ export const SettingsView: React.FC = (): JSX.Element => {
     setCommandList(response);
   };
 
-  const handleNameChange = async (event: any): Promise<void> => {
-    await setTabName(event.target.value);
+  const handleNameChange = (event: any): void => {
+    setTabName(event.target.value);
   };
 
-  const handleCommandChange = async (event: any, res: any): Promise<void> => {
-    await setCommandSelected(res.value);
+  const handleCommandChange = (event: any, res: any): void => {
+    setCommandSelected(res.value);
     microsoftTeams.settings.setValidityState(true);
   };
 
@@ -51,13 +46,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
       <div>
         <Text size={'medium'} content={'Name your tab'} />
       </div>
-      <Input
-        fluid
-        placeholder={'Tab name'}
-        onChange={(e: React.SyntheticEvent<HTMLElement, Event>): void => {
-          handleNameChange(e);
-        }}
-      />
+      <Input fluid placeholder={'Tab name'} onChange={handleNameChange} />
       <div>
         <Text size={'medium'} content={"Select the command you'd like query your bot with"} />
       </div>
