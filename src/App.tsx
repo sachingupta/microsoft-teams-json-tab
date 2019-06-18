@@ -12,10 +12,10 @@ import { getFrameContext, parseQueryResponse } from './utils/utils';
 import { SettingsView } from './components/SettingsView';
 
 interface IAppProps {
-  onThemeChange: any;
+  onThemeChange: (theme: string) => void;
 }
 
-export const App = (props: IAppProps) => {
+export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
   // STATE HOOKS
   const [ViewOption, setViewOption] = React.useState('List');
   const [Result, setResult] = React.useState([] as ICard[]);
@@ -26,24 +26,24 @@ export const App = (props: IAppProps) => {
     alert(error);
   };
 
-  const onResults = (response: microsoftTeams.bot.QueryResponse) => {
+  const onResults = (response: microsoftTeams.bot.QueryResponse): void => {
     setResult(parseQueryResponse(response));
   };
 
-  const handleSearch = (query: string, viewOption: string) => {
+  const handleSearch = (query: string): void => {
     if (query !== undefined) {
       getResults(query, onResults, onError);
     }
   };
 
-  const handleViewChange = (viewOption: string) => {
+  const handleViewChange = (viewOption: string): void => {
     if (viewOption) {
       setViewOption(viewOption);
     }
   };
 
   // EFFECT HOOKS
-  React.useEffect(() => {
+  React.useEffect((): void => {
     microsoftTeams.initialize();
     microsoftTeams.registerOnThemeChangeHandler(props.onThemeChange);
     getResults('', onResults, onError);
