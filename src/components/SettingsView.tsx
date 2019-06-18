@@ -15,7 +15,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
   const [TabName, setTabName] = React.useState('JSONTabDefault');
 
   // HANDLERS
-  const onError = (error: string): any => {
+  const onError = (error: string): void => {
     alert(error);
   };
 
