@@ -3,11 +3,11 @@ import { ICard } from '../api/api.interface';
 import * as queryString from 'query-string';
 
 // gets frame context from url
-export const submitHandler = (err: string, result: string) => {
+export const submitHandler = (err: string, result: string): void => {
   console.log(`Err value: ${err}, result value : ${result}`);
 };
 
-export const launchTaskModule = (card: ICard) => {
+export const launchTaskModule = (card: ICard): void => {
   // Only open task module if card is an Adaptive Card
   if (card.content.type && card.content.type === 'AdaptiveCard') {
     const taskInfo: microsoftTeams.TaskInfo = {
@@ -25,7 +25,7 @@ export const launchTaskModule = (card: ICard) => {
 };
 
 // gets frame context from url
-export const getFrameContext = (iUrl: string) => {
+export const getFrameContext = (iUrl: string): string | string[] | null | undefined => {
   const url = queryString.parseUrl(iUrl);
   return url.query.frameContext;
 };
