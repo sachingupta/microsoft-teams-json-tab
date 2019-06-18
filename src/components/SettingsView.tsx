@@ -2,11 +2,10 @@ import * as React from 'react';
 import { Text, Input, Dropdown } from '@stardust-ui/react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { getSupportedCommands } from '../api/api';
-import { ICommand } from '../api/api.interface';
 
 export const SettingsView = (props: {}) => {
   // STATE HOOKS
-  const [Commands, setCommands] = React.useState([] as ICommand[]);
+  const [CommandList, setCommandList] = React.useState([] as microsoftTeams.bot.ICommand[]);
   const [CommandSelected, setCommandSelected] = React.useState('');
   const [TabName, setTabName] = React.useState('JSONTabDefault');
 
@@ -15,8 +14,8 @@ export const SettingsView = (props: {}) => {
     alert(error);
   };
 
-  const onResults = (response: ICommand[]): void => {
-    setCommands(response);
+  const onGetCommandResponse = (response: microsoftTeams.bot.ICommand[]): void => {
+    setCommandList(response);
   };
 
   const handleNameChange = async (event: any) => {
@@ -39,24 +38,26 @@ export const SettingsView = (props: {}) => {
       });
       saveEvent.notifySuccess();
     });
-    getSupportedCommands(onResults, onError);
+    getSupportedCommands(onGetCommandResponse, onError);
   });
 
-  // CONSTANTS
-  const listOfCmds = Commands.map((command: ICommand) => {
-    return command.title;
-  });
   return (
     <div>
-      <Text size={'smaller'} content={'Name your tab'} />
-      <Input fluid placeholder="Tab name" onChange={e => handleNameChange(e)} />
-      <br />
-      <Text size={'smaller'} content={"Select the command you'd like query your bot with"} />
+      <div>
+        <Text size={'medium'} content={'Name your tab'} />
+      </div>
+      <Input fluid placeholder={'Tab name'} onChange={e => handleNameChange(e)} />
+      <div>
+        <Text size={'medium'} content={"Select the command you'd like query your bot with"} />
+      </div>
       <Dropdown
         fluid
-        items={listOfCmds}
+        items={CommandList.map((command: microsoftTeams.bot.ICommand): string => {
+          return command.title;
+        })}
         noResultsMessage="We couldn't find any matches."
         onSelectedChange={handleCommandChange}
+        placeholder="Select the command"
       />
     </div>
   );

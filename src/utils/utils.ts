@@ -1,5 +1,5 @@
 import * as microsoftTeams from '@microsoft/teams-js';
-import { ICard, QueryResponse, IAttachment } from '../api/api.interface';
+import { ICard } from '../api/api.interface';
 import * as queryString from 'query-string';
 
 // gets frame context from url
@@ -30,7 +30,7 @@ export const getFrameContext = (iUrl: string) => {
   return url.query.frameContext;
 };
 
-export const processQueryResponse = (item: IAttachment): ICard => {
+export const processQueryResponse = (item: microsoftTeams.bot.IAttachment): ICard => {
   let url = '';
   if (item.previewRawPayload.content.hasOwnProperty('images')) {
     const images = item.previewRawPayload.content.images[0];
@@ -49,6 +49,6 @@ export const processQueryResponse = (item: IAttachment): ICard => {
 };
 
 // converts a bot response to ICard
-export const parseQueryResponse = (response: QueryResponse): ICard[] => {
+export const parseQueryResponse = (response: microsoftTeams.bot.QueryResponse): ICard[] => {
   return response && response.attachments ? response.attachments.map(processQueryResponse) : [];
 };

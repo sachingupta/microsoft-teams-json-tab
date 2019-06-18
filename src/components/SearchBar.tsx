@@ -13,82 +13,51 @@ interface ISearchBarProps {
   onViewChange: any;
 }
 
-interface ISearchBarState {
-  query: string;
-  viewOption: viewType;
-}
+export const SearchBar = (props: ISearchBarProps) => {
+  // HOOKS
+  const [Query, setQuery] = React.useState('');
 
-// searchbar class contains toggle, search, and search button
-export class SearchBar extends React.Component<ISearchBarProps, ISearchBarState> {
-  // constructs search bar with given props
-  constructor(props: ISearchBarProps) {
-    super(props);
-    this.state = {
-      query: '',
-      viewOption: viewType.List,
-    };
-    this.getViewOption.bind(this);
-    this.handleRadioButtonChange.bind(this);
-    this.handleKeyPress.bind(this);
-  }
-
-  // handler for query changed -> updates state
-  public handleOnChange(event: any): void {
-    this.setState({ query: event.target.value });
-  }
-
-  // on search button click or 'return' pressed
-  public handleOnClick(event: any): void {
-    this.props.onSearch(this.state.query);
-  }
-
-  // async to await the state change
-  handleRadioButtonChange = async (view: string) => {
-    await this.setState({ viewOption: this.getViewOption(view) });
-    this.props.onViewChange(this.state.viewOption);
+  // HANDLERS
+  const handleOnChange = async (event: any) => {
+    setQuery(event.target.value);
   };
 
-  getViewOption = (view: string): viewType => {
-    let _viewOption = viewType.List;
-    if (view === viewType.Grid) {
-      _viewOption = viewType.Grid;
-    }
-    return _viewOption;
+  const handleOnClick = async (event: any) => {
+    props.onSearch(Query);
   };
 
-  // on enter search
-  handleKeyPress = (event: any) => {
+  const handleRadioButtonChange = (view: string) => {
+    const newView = view === viewType.List ? viewType.List : viewType.Grid;
+    props.onViewChange(newView);
+  };
+
+  const handleKeyPress = (event: any) => {
     if (event.key === 'Enter') {
-      this.props.onSearch(this.state.query);
+      props.onSearch(Query);
     }
   };
 
-  // renders search component
-  public render() {
-    return (
-      <div className="SearchBar">
-        <RadioIcons onChange={this.handleRadioButtonChange} />
-        <Input
-          placeholder="Search..."
-          icon={() => (
-            <Button
-              iconOnly
-              icon={() => <Icon name="search" styles={{ color: 'black' }} />}
-              primary
-              onClick={e => this.handleOnClick(e)}
-              styles={{ backgroundColor: 'none', border: 'none', 'box-shadow': 'none', 'border-radius': 'none' }}
-            />
-          )}
-          input={{
-            styles: { backgroundColor: 'white' },
-          }}
-          onChange={e => this.handleOnChange(e)}
-          onKeyPress={this.handleKeyPress}
-        />
-        <br />
-      </div>
-    );
-  }
-}
-
-export default SearchBar;
+  return (
+    <div className="SearchBar">
+      <RadioIcons onChange={handleRadioButtonChange} />
+      <Input
+        placeholder="Search..."
+        icon={() => (
+          <Button
+            iconOnly
+            icon={() => <Icon name="search" styles={{ color: 'black' }} />}
+            primary
+            onClick={e => handleOnClick(e)}
+            styles={{ backgroundColor: 'none', border: 'none', 'box-shadow': 'none', 'border-radius': 'none' }}
+          />
+        )}
+        input={{
+          styles: { backgroundColor: 'white' },
+        }}
+        onChange={e => handleOnChange(e)}
+        onKeyPress={handleKeyPress}
+      />
+      <br />
+    </div>
+  );
+};
