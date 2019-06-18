@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListView } from './ListView'
+import { ListView } from './ListView';
 import { CardView } from './CardView';
 import { ICard } from '../api/api.interface';
 
@@ -7,15 +7,18 @@ export interface IResultState {
   results: ICard[];
   viewOption: string;
 }
-enum viewOption{
+enum viewOption {
   List = 'List',
-  Grid = 'Grid'
+  Grid = 'Grid',
 }
-export const Results = ( props: IResultState ) =>{
+export const Results = (props: IResultState) => {
   return (
-      <div>
-          {props.viewOption === viewOption.List ? <ListView itemList={ props.results } />
-          : <CardView itemList={ props.results } />}
-      </div>
-  )
-}
+    <div>
+      {props.viewOption === viewOption.List ? (
+        <ListView itemList={props.results} />
+      ) : (
+        <CardView itemList={props.results} />
+      )}
+    </div>
+  );
+};

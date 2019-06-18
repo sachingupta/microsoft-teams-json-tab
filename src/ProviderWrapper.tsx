@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider, ThemeInput } from '@stardust-ui/react';
 import App from './App';
-import * as themeUtils from './utils/themeUtils'
+import * as themeUtils from './utils/themeUtils';
 
 export const ProviderWrapper = ( props: { } ) => {
     // CONSTANT

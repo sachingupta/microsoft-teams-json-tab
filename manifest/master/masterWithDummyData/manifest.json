@@ -2,7 +2,7 @@
   "$schema": "https://github.com/OfficeDev/microsoft-teams-app-schema/blob/preview/DevPreview/MicrosoftTeams.schema.json",
   "manifestVersion": "devPreview",
   "version": "1.0",
-  "id": "300639bf-2c0f-41a7-aa2e-7833664c4c76",
+  "id": "300639bf-2c0f-41a7-aa2e-7833664c4c77",
   "packageName": "com.microsoft.teams.samples.v4bot",
   "developer": {
     "name": "Microsoft Corp",
@@ -11,8 +11,8 @@
     "termsOfUseUrl": "https://example.azurewebsites.net/termsofuse"
   },
   "name": {
-    "short": "JSON EEE",
-    "full": "Sample JSON Tab - master"
+    "short": "JSON Tab - dummy data",
+    "full": "Sample JSON Tab - master dummy data"
   },
   "description": {
     "short": "Sample JSON Tab",
@@ -27,8 +27,8 @@
     {
       "entityId": "json-tab",
       "name": "json tab",
-      "contentUrl": "https://ab05fa6a.ngrok.io?theme={theme}&frameContext=content",
-      "websiteUrl": "https://ab05fa6a.ngrok.io",
+      "contentUrl": "https://teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content",
+      "websiteUrl": "https://teams-json-tab.azurewebsites.net",
       "scopes": [
         "personal"
       ]
@@ -36,7 +36,7 @@
   ],
   "configurableTabs": [
     {
-      "configurationUrl": "https://ab05fa6a.ngrok.io?theme={theme}&frameContext=settings",
+      "configurationUrl": "https://teams-json-tab.azurewebsites.net?theme={theme}&frameContext=settings",
       "canUpdateConfiguration": false,
       "scopes": [
         "team"

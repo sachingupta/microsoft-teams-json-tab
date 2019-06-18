@@ -1,26 +1,36 @@
-import { default as jsonData } from './generated.json';
-import { ICard, IPreviewCard, BotResponse } from '../api/api.interface';
-import * as microsoftTeams from '@microsoft/teams-js'
+import * as microsoftTeams from '@microsoft/teams-js';
 
-export const getResults = ( query: string,
-    // should be microsoftTeams.bot.QueryResponse
-    onResults: ( response: BotResponse ) => void,
-    onError: ( error: string ) => {} ) => {
-    if( query === undefined ) {
-        return jsonData;
-    }
+const listOfSupportedCmds: microsoftTeams.bot.ICommand[] = [
+  {
+    title: 'queryCards',
+    id: 'queryCards',
+  },
+  {
+    title: 'queryAdaptiveCards',
+    id: 'queryAdaptiveCards',
+  },
+  {
+    title: 'queryHeroCards',
+    id: 'queryHeroCards',
+  },
+];
 
-    // TODO
-    // microsoftTeams.bot.sendQuery( { query } , onResults, onError );
+export const getResults = (
+  query: string,
+  // should be microsoftTeams.bot.QueryResponse
+  onResults: (response: microsoftTeams.bot.QueryResponse) => void,
+  onError: (error: string) => {},
+): void => {
+  microsoftTeams.bot.sendQuery({ query }, onResults, onError);
+};
 
-    // TODO REMOVE
-    const queriedItems: ICard[] = [];
+export const getSupportedCommands = (
+  onBotGetCommandResponse: (response: microsoftTeams.bot.ICommand[]) => void,
+  onError: (error: string) => {},
+): void => {
+  // Prod
+  // microsoftTeams.bot.getSupportedCommands( onBotGetCommandResponse, onError );
 
-    jsonData.forEach( ( item: ICard ) => {
-        if( item && item.preview.title.toLowerCase().includes( query.trim().toLowerCase() ) ){
-            queriedItems.push( item );
-          }
-    } );
-    onResults( { data: queriedItems } );
-    // TODO REMOVE
-}
+  // TODO REMOVE : Dummy
+  onBotGetCommandResponse(listOfSupportedCmds);
+};
