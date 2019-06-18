@@ -63,7 +63,9 @@ export const SettingsView: React.FC = (): JSX.Element => {
       </div>
       <Dropdown
         fluid
-        items={CommandList.map(processCommands)}
+        items={CommandList.map((command: microsoftTeams.bot.ICommand): string => {
+          return command.title;
+        })}
         noResultsMessage="We couldn't find any matches."
         onSelectedChange={handleCommandChange}
         placeholder="Select the command"
