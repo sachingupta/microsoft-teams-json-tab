@@ -24,6 +24,7 @@
     "@types/react-dom": "16.8.4",
     "@typescript-eslint/eslint-plugin": "^1.10.2",
     "@typescript-eslint/parser": "^1.10.2",
+    "adaptivecards": "^1.2.0",
     "babel-jest": "^24.8.0",
     "babel-plugin-named-asset-import": "^0.3.2",
     "babel-preset-react-app": "^9.0.0",
