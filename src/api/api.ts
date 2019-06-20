@@ -1,13 +1,14 @@
 import * as microsoftTeams from '@microsoft/teams-js';
 import * as adaptiveCards from 'adaptivecards';
+import { request } from 'http';
 
 export const getResults = (
-  query: string, 
+  request: microsoftTeams.bot.QueryRequest, 
   onResults: (response: microsoftTeams.bot.QueryResponse) => void,
   onError: (error: string) => void,
   commandId?: string
 ): void => {
-  microsoftTeams.bot.sendQuery({ query }, onResults, onError);
+  microsoftTeams.bot.sendQuery(request, onResults, onError);
 };
 
 export const getSupportedCommands = (

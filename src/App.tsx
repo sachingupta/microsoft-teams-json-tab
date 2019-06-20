@@ -8,7 +8,7 @@ import { getResults } from './api/api';
 
 import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard } from './api/api.interface';
-import { getFrameContext, parseQueryResponse } from './utils/utils';
+import { getFrameContext, parseQueryResponse, getCommandId } from './utils/utils';
 import { SettingsView } from './components/SettingsView';
 
 interface IAppProps {
@@ -32,6 +32,10 @@ export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
 
   const handleSearch = (query: string): void => {
     if (query !== undefined) {
+      const request: microsoftTeams.bot.QueryRequest = {
+        query: query,
+        commandId: getCommandId(window.location.href)
+      }
       getResults(query, onResults, onError);
     }
   };
@@ -55,7 +59,7 @@ export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
   if (frameContext === 'settings') {
     return (
       <div>
-        <SettingsView />
+        <SettingsView/>
       </div>
     );
   } else {

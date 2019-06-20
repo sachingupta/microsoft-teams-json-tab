@@ -16,12 +16,17 @@ export const launchTaskModule = (card: ICard): void => {
       title: card.preview.heroImageSrc,
       url: undefined,
       card: card.content,
-      completionBotId: '300639bf-2c0f-41a7-aa2e-7833664c4c76',
+      completionBotId: card.botId,
     };
     microsoftTeams.tasks.startTask(taskInfo, submitHandler);
   } else {
     alert(`Could not load data, ${card.content.type} is not supported.`);
   }
+};
+
+export const getCommandId = (iUrl: string): string | string[] | null | undefined => {
+  const url = queryString.parseUrl(iUrl);
+  return url.query.commandId;
 };
 
 // gets frame context from url
@@ -30,7 +35,7 @@ export const getFrameContext = (iUrl: string): string | string[] | null | undefi
   return url.query.frameContext;
 };
 
-export const processQueryResponse = (item: microsoftTeams.bot.IAttachment): ICard => {
+export const processQueryResponse = (item: microsoftTeams.bot.IAttachment, botID: string): ICard => {
   let url = '';
   if (item.previewRawPayload.content.hasOwnProperty('images')) {
     const images = item.previewRawPayload.content.images[0];
@@ -44,11 +49,12 @@ export const processQueryResponse = (item: microsoftTeams.bot.IAttachment): ICar
       subTitle: item.previewRawPayload.content.text,
       heroImageSrc: url,
     },
+    botId: botID
   };
   return out;
 };
 
 // converts a bot response to ICard
 export const parseQueryResponse = (response: microsoftTeams.bot.QueryResponse): ICard[] => {
-  return response && response.attachments ? response.attachments.map(processQueryResponse) : [];
+  return response && response.attachments ? response.attachments.map((item:microsoftTeams.bot.IAttachment) => (processQueryResponse(item, response.botId))) : [];
 };
