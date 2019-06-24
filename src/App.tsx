@@ -3,6 +3,7 @@ import './css/App.css';
 
 import { SearchBar } from './components/SearchBar';
 import { Results } from './components/Results';
+import { LoadIcon } from './components/LoadIcon';
 
 import { getResults } from './api/api';
 
@@ -19,20 +20,22 @@ export const App = (props: IAppProps) => {
   // STATE HOOKS
   const [ViewOption, setViewOption] = React.useState('List');
   const [Result, setResult] = React.useState([] as ICard[]);
+  const [IsLoading, setIsLoading] = React.useState(true);
 
   // HANDLERS
-
   const onError = (error: string): any => {
     alert(error);
   };
 
   const onResults = (response: microsoftTeams.bot.QueryResponse) => {
     setResult(parseQueryResponse(response));
+    setIsLoading(false);
   };
 
   const handleSearch = (query: string, viewOption: string) => {
     if (query !== undefined) {
       getResults(query, onResults, onError);
+      setIsLoading(true);
     }
   };
 
@@ -62,6 +65,7 @@ export const App = (props: IAppProps) => {
     return (
       <div>
         <SearchBar onSearch={handleSearch} onViewChange={handleViewChange} />
+        <LoadIcon isLoading={IsLoading} />
         <Results results={Result} viewOption={ViewOption} />
       </div>
     );
