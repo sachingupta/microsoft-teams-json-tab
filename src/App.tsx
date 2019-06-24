@@ -10,24 +10,34 @@ import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard } from './api/api.interface';
 import { getFrameContext, parseQueryResponse } from './utils/utils';
 import { SettingsView } from './components/SettingsView';
+import { ErrorView } from './components/ErrorView';
 
 interface IAppProps {
   onThemeChange: any;
+}
+
+enum AppStateEnum {
+  Loading = 'Loading',
+  Error = 'Error',
+  Render = 'Render',
 }
 
 export const App = (props: IAppProps) => {
   // STATE HOOKS
   const [ViewOption, setViewOption] = React.useState('List');
   const [Result, setResult] = React.useState([] as ICard[]);
-
+  const [AppState, setAppState] = React.useState(AppStateEnum.Loading);
+  const [ErrorMessage, setErrorMessage] = React.useState('Hmm... Something went wrong...');
   // HANDLERS
 
   const onError = (error: string): any => {
-    alert(error);
+    setAppState(AppStateEnum.Error);
+    setErrorMessage(error);
   };
 
   const onResults = (response: microsoftTeams.bot.QueryResponse) => {
     setResult(parseQueryResponse(response));
+    setAppState(AppStateEnum.Render);
   };
 
   const handleSearch = (query: string, viewOption: string) => {
@@ -56,6 +66,21 @@ export const App = (props: IAppProps) => {
     return (
       <div>
         <SettingsView />
+      </div>
+    );
+  } else if (AppState === AppStateEnum.Loading) {
+    return (
+      // do loading stuff here?
+      <div>
+        <SearchBar onSearch={handleSearch} onViewChange={handleViewChange} />
+        <Results results={Result} viewOption={ViewOption} />
+      </div>
+    );
+  } else if (AppState === AppStateEnum.Error) {
+    return (
+      <div>
+        <SearchBar onSearch={handleSearch} onViewChange={handleViewChange} />
+        <ErrorView message={ErrorMessage} />
       </div>
     );
   } else {
