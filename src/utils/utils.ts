@@ -49,12 +49,18 @@ export const processQueryResponse = (item: microsoftTeams.bot.IAttachment, botID
       subTitle: item.previewRawPayload.content.text,
       heroImageSrc: url,
     },
-    botId: botID
+    botId: botID,
   };
   return out;
 };
 
 // converts a bot response to ICard
 export const parseQueryResponse = (response: microsoftTeams.bot.QueryResponse): ICard[] => {
-  return response && response.attachments ? response.attachments.map((item:microsoftTeams.bot.IAttachment) => (processQueryResponse(item, response.botId))) : [];
+  if (response && response.attachments) {
+    return response.attachments.map((item: microsoftTeams.bot.IAttachment) =>
+      processQueryResponse(item, response.botId),
+    );
+  } else {
+    return [];
+  }
 };
