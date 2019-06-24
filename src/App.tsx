@@ -36,7 +36,7 @@ export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
         query: query,
         commandId: getCommandId(window.location.href)
       }
-      getResults(query, onResults, onError);
+      getResults(request, onResults, onError);
     }
   };
 
