@@ -3,6 +3,7 @@ import './css/App.css';
 
 import { SearchBar } from './components/SearchBar';
 import { Results } from './components/Results';
+import { LoadIcon } from './components/LoadIcon';
 
 import { getResults } from './api/api';
 
@@ -26,10 +27,9 @@ export const App = (props: IAppProps) => {
   // STATE HOOKS
   const [ViewOption, setViewOption] = React.useState('List');
   const [Result, setResult] = React.useState([] as ICard[]);
-  const [AppState, setAppState] = React.useState(AppStateEnum.Loading);
+  const [AppState, setAppState] = React.useState(AppStateEnum.Render);
   const [ErrorMessage, setErrorMessage] = React.useState('Hmm... Something went wrong...');
   // HANDLERS
-
   const onError = (error: string): any => {
     setAppState(AppStateEnum.Error);
     setErrorMessage(error);
@@ -43,6 +43,7 @@ export const App = (props: IAppProps) => {
   const handleSearch = (query: string, viewOption: string) => {
     if (query !== undefined) {
       getResults(query, onResults, onError);
+      setAppState(AppStateEnum.Loading);
     }
   };
 
@@ -70,10 +71,9 @@ export const App = (props: IAppProps) => {
     );
   } else if (AppState === AppStateEnum.Loading) {
     return (
-      // do loading stuff here?
       <div>
         <SearchBar onSearch={handleSearch} onViewChange={handleViewChange} />
-        <Results results={Result} viewOption={ViewOption} />
+        <LoadIcon isLoading={true} />
       </div>
     );
   } else if (AppState === AppStateEnum.Error) {
