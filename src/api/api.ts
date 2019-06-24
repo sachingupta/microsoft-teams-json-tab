@@ -3,10 +3,9 @@ import * as adaptiveCards from 'adaptivecards';
 import { request } from 'http';
 
 export const getResults = (
-  request: microsoftTeams.bot.QueryRequest, 
+  request: microsoftTeams.bot.QueryRequest,
   onResults: (response: microsoftTeams.bot.QueryResponse) => void,
   onError: (error: string) => void,
-  commandId?: string
 ): void => {
   microsoftTeams.bot.sendQuery(request, onResults, onError);
 };
@@ -23,7 +22,7 @@ export const getSupportedCommands = (
 
 //   if(card.actions) {
 //     card.actions.forEach((item:any) => {
-  
+
 //     })
 //   }
 // }
