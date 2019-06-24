@@ -59,7 +59,6 @@
     "react-app-polyfill": "^1.0.1",
     "react-dev-utils": "^9.0.1",
     "react-dom": "^16.8.6",
-    "react-inlinesvg": "^0.8.4",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
     "semver": "6.0.0",
