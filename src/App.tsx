@@ -34,8 +34,8 @@ export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
     if (query !== undefined) {
       const request: microsoftTeams.bot.QueryRequest = {
         query: query,
-        commandId: getCommandId(window.location.href)
-      }
+        commandId: getCommandId(window.location.href),
+      };
       getResults(request, onResults, onError);
     }
   };
@@ -50,7 +50,11 @@ export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
   React.useEffect((): void => {
     microsoftTeams.initialize();
     microsoftTeams.registerOnThemeChangeHandler(props.onThemeChange);
-    getResults('', onResults, onError);
+    const request: microsoftTeams.bot.QueryRequest = {
+      query: '',
+      commandId: getCommandId(window.location.href),
+    };
+    getResults(request, onResults, onError);
   }, [props.onThemeChange]);
 
   // CONSTANTS
@@ -59,7 +63,7 @@ export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
   if (frameContext === 'settings') {
     return (
       <div>
-        <SettingsView/>
+        <SettingsView />
       </div>
     );
   } else {
