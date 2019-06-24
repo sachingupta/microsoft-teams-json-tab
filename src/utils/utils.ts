@@ -25,15 +25,15 @@ export const launchTaskModule = (card: ICard): void => {
   }
 };
 
-export const getCommandId = (iUrl: string): string | string[] | null | undefined => {
+export const getCommandId = (iUrl: string): string => {
   const url = queryString.parseUrl(iUrl);
-  return url.query.commandId;
+  return url.query.commandId as string;
 };
 
 // gets frame context from url
-export const getFrameContext = (iUrl: string): string | string[] | null | undefined => {
+export const getFrameContext = (iUrl: string): string => {
   const url = queryString.parseUrl(iUrl);
-  return url.query.frameContext;
+  return url.query.frameContext as string;
 };
 
 export const processQueryResponse = (item: microsoftTeams.bot.IAttachment, botID: string): ICard => {
