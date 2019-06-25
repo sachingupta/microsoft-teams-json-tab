@@ -27,8 +27,8 @@
     {
       "entityId": "json-tab",
       "name": "json tab",
-      "contentUrl": "https://f924a58a.ngrok.io?theme={theme}&frameContext=content",
-      "websiteUrl": "https://f924a58a.ngrok.io",
+      "contentUrl": "https://bf289583.ngrok.io?theme={theme}&frameContext=content",
+      "websiteUrl": "https://bf289583.ngrok.io",
       "scopes": [
         "personal"
       ]
@@ -36,7 +36,7 @@
   ],
   "configurableTabs": [
     {
-      "configurationUrl": "https://f924a58a.ngrok.io?theme={theme}&frameContext=settings",
+      "configurationUrl": "https://bf289583.ngrok.io?theme={theme}&frameContext=settings",
       "canUpdateConfiguration": false,
       "scopes": [
         "team"

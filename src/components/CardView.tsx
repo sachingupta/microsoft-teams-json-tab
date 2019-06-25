@@ -27,7 +27,10 @@ export const CardView = (props: IItemListProps) => {
     // Also limiting subtitle length to maintain box sizes, if length of subtitle is greater than a certain value, make a substring and concat "..."
     if (tempSubTitle && tempSubTitle.length > maxSubtitleLength) {
       const newSubTitle = tempSubTitle.substring(0, maxSubtitleLength).concat('...');
-      item.preview.subTitle = newSubTitle;
+      item.preview.subTitle = newSubTitle
+        .replace(/<[^>]*>?/gm, '')
+        .replace(/&nbsp;/gm, '')
+        .replace(/&quot;/gm, ''); // !!!!! REGEX HACK REMOVE !!!!!
     }
 
     // Pass new Item to FlexItem function to handle format of each box, then push each item to itemList array, a unique key is needed
