@@ -77,10 +77,3 @@
   margin: 2px 2px 0 0;
   box-shadow: 0 .2rem .4rem -.075rem rgba(0, 0, 0, .1);
 }
-
-.loadIcon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-}
