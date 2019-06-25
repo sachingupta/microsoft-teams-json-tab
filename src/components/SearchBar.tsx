@@ -9,8 +9,8 @@ enum viewType {
 }
 
 interface ISearchBarProps {
-  onSearch: any;
-  onViewChange: any;
+  onSearch: (query: string) => void;
+  onViewChange: (view: viewType) => void;
 }
 
 export const SearchBar = (props: ISearchBarProps) => {
