@@ -3,10 +3,10 @@ import { Image, Text, Header, Layout } from '@stardust-ui/react';
 import { launchTaskModule } from '../utils/utils';
 import { ICard } from '../api/api.interface';
 
-export const FlexItem = (props: ICard) => {
+export const FlexItem: React.FC<ICard> = (props: ICard): JSX.Element => {
   const item = props.preview;
 
-  const keyDown = (e: any) => {
+  const keyDown = (e: React.KeyboardEvent): void => {
     // Use Enter key to launch task module
     if (e.key === 'Enter') {
       launchTaskModule(props);
@@ -19,7 +19,7 @@ export const FlexItem = (props: ICard) => {
   };
 
   return (
-    <div tabIndex={0} className="CardBox" onClick={() => launchTaskModule(props)} onKeyDown={keyDown}>
+    <div tabIndex={0} className="CardBox" onClick={(): void => launchTaskModule(props)} onKeyDown={keyDown}>
       <Layout
         vertical
         start={

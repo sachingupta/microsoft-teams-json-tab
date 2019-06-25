@@ -8,14 +8,14 @@ import { getResults } from './api/api';
 
 import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard } from './api/api.interface';
-import { getFrameContext, parseQueryResponse } from './utils/utils';
+import { getFrameContext, parseQueryResponse, getCommandId } from './utils/utils';
 import { SettingsView } from './components/SettingsView';
 
 interface IAppProps {
-  onThemeChange: any;
+  onThemeChange: (theme: string) => void;
 }
 
-export const App = (props: IAppProps) => {
+export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
   // STATE HOOKS
   const [ViewOption, setViewOption] = React.useState('List');
   const [Result, setResult] = React.useState([] as ICard[]);
@@ -26,27 +26,35 @@ export const App = (props: IAppProps) => {
     alert(error);
   };
 
-  const onResults = (response: microsoftTeams.bot.QueryResponse) => {
+  const onResults = (response: microsoftTeams.bot.QueryResponse): void => {
     setResult(parseQueryResponse(response));
   };
 
-  const handleSearch = (query: string, viewOption: string) => {
+  const handleSearch = (query: string): void => {
     if (query !== undefined) {
-      getResults(query, onResults, onError);
+      const request: microsoftTeams.bot.QueryRequest = {
+        query: query,
+        commandId: getCommandId(window.location.href),
+      };
+      getResults(request, onResults, onError);
     }
   };
 
-  const handleViewChange = (viewOption: string) => {
+  const handleViewChange = (viewOption: string): void => {
     if (viewOption) {
       setViewOption(viewOption);
     }
   };
 
   // EFFECT HOOKS
-  React.useEffect(() => {
+  React.useEffect((): void => {
     microsoftTeams.initialize();
     microsoftTeams.registerOnThemeChangeHandler(props.onThemeChange);
-    getResults('', onResults, onError);
+    const request: microsoftTeams.bot.QueryRequest = {
+      query: '',
+      commandId: getCommandId(window.location.href),
+    };
+    getResults(request, onResults, onError);
   }, [props.onThemeChange]);
 
   // CONSTANTS
