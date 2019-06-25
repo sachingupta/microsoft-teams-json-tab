@@ -11,7 +11,7 @@ enum themeTypes {
 export const getThemeFromURL = (iUrl: string): string => {
   const url = queryString.parseUrl(iUrl);
 
-  const themeString: any = url.query.theme;
+  const themeString: string = url.query.theme as string;
 
   if (!themeString) {
     return 'default';
