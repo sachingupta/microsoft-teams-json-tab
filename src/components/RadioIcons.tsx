@@ -36,13 +36,8 @@ export class RadioIcons extends React.Component<IRadioIconsProps, IRadioIconsSta
     };
     return (
       <div className="SearchBar" id="buttons">
-        <Button icon="bullets" iconOnly onClick={e => this.handleChange(e, { value: viewType.List })} styles={styles} />
-        <Button
-          icon="calendar"
-          iconOnly
-          onClick={e => this.handleChange(e, { value: viewType.Grid })}
-          styles={styles}
-        />
+        <Button icon="menu" iconOnly onClick={e => this.handleChange(e, { value: viewType.List })} styles={styles} />
+        <Button icon="table" iconOnly onClick={e => this.handleChange(e, { value: viewType.Grid })} styles={styles} />
       </div>
     );
   }
