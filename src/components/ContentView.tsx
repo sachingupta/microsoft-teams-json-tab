@@ -41,7 +41,7 @@ export const ContentView = (props: IContentViewProps) => {
 
   const handleSearch = (query: string, viewOption: string) => {
     if (query !== undefined) {
-        const request: microsoftTeams.bot.QueryRequest = {
+      const request: microsoftTeams.bot.QueryRequest = {
         query: query,
         commandId: getCommandId(window.location.href),
       };
@@ -61,8 +61,8 @@ export const ContentView = (props: IContentViewProps) => {
     microsoftTeams.initialize();
     microsoftTeams.registerOnThemeChangeHandler(props.onThemeChange);
     const request: microsoftTeams.bot.QueryRequest = {
-        query: '',
-        commandId: getCommandId(window.location.href),
+      query: '',
+      commandId: getCommandId(window.location.href),
     };
     getResults(request, onResults, onError);
   }, [props.onThemeChange]);
