@@ -8,8 +8,17 @@ interface IErrorViewProps {
 export const ErrorView = (props: IErrorViewProps) => {
   return (
     <div className="ErrorView">
-      <Image styles={{ maxWidth: '37%', margin: '0 auto', display: 'block', textAlign: 'center' }} src="error.svg" />
-      <Text size="larger" content={props.message} />
+      <Image
+        styles={{
+          maxWidth: '37%',
+          margin: '0 auto',
+          display: 'block',
+          textAlign: 'center',
+          marginBottom: '10px',
+        }}
+        src="error.svg"
+      />
+      <Text size="larger" content={'Hmm... Something went wrong...'} />
     </div>
   );
 };

@@ -33,7 +33,7 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           </Flex.Item>
           {item.preview.subTitle ? (
             <Flex.Item>
-              <Text content={item.preview.subTitle} className="listItemDescription" />
+              <span dangerouslySetInnerHTML={{ __html: item.preview.subTitle }} className="listItemDescription" />
             </Flex.Item>
           ) : null}
         </Flex>
