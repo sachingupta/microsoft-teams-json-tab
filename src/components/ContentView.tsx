@@ -60,7 +60,11 @@ export const ContentView = (props: IContentViewProps) => {
   React.useEffect(() => {
     microsoftTeams.initialize();
     microsoftTeams.registerOnThemeChangeHandler(props.onThemeChange);
-    getResults('', onResults, onError);
+    const request: microsoftTeams.bot.QueryRequest = {
+        query: '',
+        commandId: getCommandId(window.location.href),
+    };
+    getResults(request, onResults, onError);
   }, [props.onThemeChange]);
 
   let view = <Results results={Result} viewOption={ViewOption} />;
