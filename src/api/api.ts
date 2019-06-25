@@ -21,11 +21,9 @@ export const removeUnsupportedActions = (card: adaptiveCards.IAdaptiveCard) => {
   const SupportedActions: string[] = ['Action.OpenUrl', 'Action.Submit', 'Action.ShowCard', 'invoke', 'signin'];
   let newCard = card;
   if (card.actions) {
-    console.log(card.actions);
     newCard.actions = card.actions.filter((item: any) => {
       return SupportedActions.includes(item.type) && SupportedActions.includes(item.title);
     });
   }
-  console.log(newCard.actions);
   return newCard;
 };
