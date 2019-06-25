@@ -9,7 +9,7 @@ import { getResults } from '../api/api';
 
 import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard } from '../api/api.interface';
-import { getFrameContext, parseQueryResponse } from '../utils/utils';
+import { getFrameContext, parseQueryResponse, getCommandId } from '../utils/utils';
 
 // handlers
 interface IContentViewProps {
@@ -41,7 +41,11 @@ export const ContentView = (props: IContentViewProps) => {
 
   const handleSearch = (query: string, viewOption: string) => {
     if (query !== undefined) {
-      getResults(query, onResults, onError);
+        const request: microsoftTeams.bot.QueryRequest = {
+        query: query,
+        commandId: getCommandId(window.location.href),
+      };
+      getResults(request, onResults, onError);
       setAppState(AppStateEnum.Loading);
     }
   };

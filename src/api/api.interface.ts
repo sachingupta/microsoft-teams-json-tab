@@ -8,4 +8,5 @@ export interface ICard {
   contentType: string;
   content: any;
   preview: IPreviewCard;
+  botId: string;
 }

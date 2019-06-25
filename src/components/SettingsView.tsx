@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { Text, Input, Dropdown } from '@stardust-ui/react';
+import { Text, Input, Dropdown, InputProps } from '@stardust-ui/react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { getSupportedCommands } from '../api/api';
+import { HtmlInputEvents } from '@stardust-ui/react/dist/es/lib/htmlPropsUtils';
 
-export const SettingsView = (props: {}) => {
+export const SettingsView: React.FC = (): JSX.Element => {
   // STATE HOOKS
   const [CommandList, setCommandList] = React.useState([] as microsoftTeams.bot.ICommand[]);
   const [CommandSelected, setCommandSelected] = React.useState('');
   const [TabName, setTabName] = React.useState('JSONTabDefault');
-
   // HANDLERS
-  const onError = (error: string): any => {
+  const onError = (error: string): void => {
     alert(error);
   };
 
@@ -18,19 +18,19 @@ export const SettingsView = (props: {}) => {
     setCommandList(response);
   };
 
-  const handleNameChange = async (event: any) => {
-    await setTabName(event.target.value);
+  const handleNameChange = (event: any): void => {
+    setTabName(event.target.value);
   };
 
-  const handleCommandChange = async (event: any, res: any) => {
-    await setCommandSelected(res.value);
+  const handleCommandChange = (event: any, res: any): void => {
+    setCommandSelected(res.value);
     microsoftTeams.settings.setValidityState(true);
   };
 
   // EFFECT HOOKS
-  React.useEffect(() => {
+  React.useEffect((): void => {
     microsoftTeams.initialize();
-    microsoftTeams.settings.registerOnSaveHandler(saveEvent => {
+    microsoftTeams.settings.registerOnSaveHandler((saveEvent: microsoftTeams.settings.SaveEvent): void => {
       microsoftTeams.settings.setSettings({
         entityId: 'JSONTab',
         contentUrl: `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}`,
@@ -46,7 +46,7 @@ export const SettingsView = (props: {}) => {
       <div>
         <Text size={'medium'} content={'Name your tab'} />
       </div>
-      <Input fluid placeholder={'Tab name'} onChange={e => handleNameChange(e)} />
+      <Input fluid placeholder={'Tab name'} onChange={handleNameChange} />
       <div>
         <Text size={'medium'} content={"Select the command you'd like query your bot with"} />
       </div>

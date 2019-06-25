@@ -6,7 +6,7 @@ import { SettingsView } from './components/SettingsView';
 import { ContentView } from './components/ContentView';
 
 interface IAppProps {
-  onThemeChange: any;
+  onThemeChange: (theme: string) => void;
 }
 
 export const App = (props: IAppProps) => {

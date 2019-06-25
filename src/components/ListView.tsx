@@ -7,12 +7,19 @@ export interface IItemListProps {
   itemList: ICard[];
 }
 
-export const ListView = (props: IItemListProps) => {
+export interface IProcessedItem {
+  key: number;
+  content: JSX.Element;
+  className: string;
+  onClick: () => void;
+}
+
+export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.Element => {
   // Key count to ensure unique keys for every item
   let keyCount = 0;
 
   // Function to translate items from IPreviewCard to List.Item format
-  const processItem = (item: ICard) => {
+  const processItem = (item: ICard): IProcessedItem => {
     keyCount++;
     const out = {
       key: keyCount,
@@ -32,7 +39,7 @@ export const ListView = (props: IItemListProps) => {
         </Flex>
       ),
       className: 'listItem',
-      onClick: () => launchTaskModule(item),
+      onClick: (): void => launchTaskModule(item),
     };
     return out;
   };
