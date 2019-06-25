@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Text, Input, Dropdown, InputProps } from '@stardust-ui/react';
+import { Text, Input, Dropdown } from '@stardust-ui/react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { getSupportedCommands } from '../api/api';
-import { HtmlInputEvents } from '@stardust-ui/react/dist/es/lib/htmlPropsUtils';
 
 export const SettingsView: React.FC = (): JSX.Element => {
   // STATE HOOKS
@@ -24,7 +23,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
 
   const handleCommandChange = (event: any, res: any): void => {
     const command = CommandList.find(
-      (item: microsoftTeams.bot.ICommand) => item.title === res.value,
+      (item: microsoftTeams.bot.ICommand): boolean => item.title === res.value,
     ) as microsoftTeams.bot.ICommand;
     setCommandSelected(command.id);
     microsoftTeams.settings.setValidityState(true);
