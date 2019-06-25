@@ -23,7 +23,10 @@ export const SettingsView: React.FC = (): JSX.Element => {
   };
 
   const handleCommandChange = (event: any, res: any): void => {
-    setCommandSelected(res.value);
+    const command = CommandList.find(
+      (item: microsoftTeams.bot.ICommand) => item.title === res.value,
+    ) as microsoftTeams.bot.ICommand;
+    setCommandSelected(command.id);
     microsoftTeams.settings.setValidityState(true);
   };
 
