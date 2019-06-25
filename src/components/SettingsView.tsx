@@ -16,6 +16,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
 
   const onGetCommandResponse = (response: microsoftTeams.bot.ICommand[]): void => {
     setCommandList(response);
+    microsoftTeams.appInitialization.notifySuccess();
   };
 
   const handleNameChange = (event: any): void => {
@@ -33,6 +34,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
   // EFFECT HOOKS
   React.useEffect((): void => {
     microsoftTeams.initialize();
+    microsoftTeams.appInitialization.notifyAppLoaded();
     microsoftTeams.settings.registerOnSaveHandler((saveEvent: microsoftTeams.settings.SaveEvent): void => {
       microsoftTeams.settings.setSettings({
         entityId: 'JSONTab',

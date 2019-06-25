@@ -37,6 +37,7 @@ export const ContentView = (props: IContentViewProps) => {
   const onResults = (response: microsoftTeams.bot.QueryResponse) => {
     setResult(parseQueryResponse(response));
     setAppState(AppStateEnum.Render);
+    microsoftTeams.appInitialization.notifySuccess();
   };
 
   const handleSearch = (query: string, viewOption: string) => {
@@ -59,6 +60,7 @@ export const ContentView = (props: IContentViewProps) => {
   // EFFECT HOOKS
   React.useEffect(() => {
     microsoftTeams.initialize();
+    microsoftTeams.appInitialization.notifyAppLoaded();
     microsoftTeams.registerOnThemeChangeHandler(props.onThemeChange);
     const request: microsoftTeams.bot.QueryRequest = {
       query: '',
