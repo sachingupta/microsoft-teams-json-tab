@@ -18,8 +18,7 @@ export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JS
 
   // HANDLERS
   const handleOnChange = (event: React.SyntheticEvent<HTMLElement>): void => {
-    const newEvent = event as React.SyntheticEvent<HTMLInputElement>;
-    setQuery(newEvent.currentTarget.value);
+    setQuery((event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value);
   };
 
   const handleOnClick = (): void => {
