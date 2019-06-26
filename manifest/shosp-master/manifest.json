@@ -20,14 +20,14 @@
   },
   "icons": {
     "outline": "icon-outline.png",
-    "color": "icon-color.PNG"
+    "color": "icon-color.png"
   },
   "accentColor": "#abcdef",
   "staticTabs": [
     {
       "entityId": "json-tab",
       "name": "json tab",
-      "contentUrl": "https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&initialRun=true",
+      "contentUrl": "https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=settings&initialRun=true",
       "websiteUrl": "https://microsoft-teams-json-tab.azurewebsites.net",
       "scopes": [
         "personal"
