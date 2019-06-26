@@ -1,7 +1,6 @@
 import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard } from '../api/api.interface';
 import * as queryString from 'query-string';
-import { removeUnsupportedActions } from '../api/api';
 
 // gets frame context from url
 export const submitHandler = (err: string, result: string): void => {
