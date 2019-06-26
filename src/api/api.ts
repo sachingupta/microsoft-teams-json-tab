@@ -22,7 +22,7 @@ export const removeUnsupportedActions = (card: adaptiveCards.IAdaptiveCard) => {
   let newCard = card;
   if (card.actions) {
     newCard.actions = card.actions.filter((item: any) => {
-      return SupportedActions.includes(item.type) && SupportedActions.includes(item.title);
+      return SupportedActions.includes(item.type);
     });
   }
   return newCard;
