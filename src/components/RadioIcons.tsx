@@ -13,7 +13,7 @@ interface IRadioIconsProps {
 
 export const RadioIcons: React.FC<IRadioIconsProps> = (props: IRadioIconsProps): JSX.Element => {
   // HANDLERS
-  const handleChange = async (event: React.SyntheticEvent, items: { value: viewType }): Promise<void> => {
+  const handleChange = (event: React.SyntheticEvent, items: { value: viewType }): void => {
     props.onChange(items.value);
   };
 
@@ -28,13 +28,13 @@ export const RadioIcons: React.FC<IRadioIconsProps> = (props: IRadioIconsProps):
       <Button
         icon="menu"
         iconOnly
-        onClick={(e: React.SyntheticEvent): Promise<void> => handleChange(e, { value: viewType.List })}
+        onClick={(e: React.SyntheticEvent): void => handleChange(e, { value: viewType.List })}
         styles={styles}
       />
       <Button
         icon="table"
         iconOnly
-        onClick={(e: React.SyntheticEvent): Promise<void> => handleChange(e, { value: viewType.Grid })}
+        onClick={(e: React.SyntheticEvent): void => handleChange(e, { value: viewType.Grid })}
         styles={styles}
       />
     </div>
