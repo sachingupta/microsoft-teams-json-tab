@@ -21,8 +21,8 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
   // Function to translate items from IPreviewCard to List.Item format
   const processItem = (item: ICard): IProcessedItem => {
     let subTitle = item.preview.subTitle;
-    if (subTitle && subTitle.length > 50) {
-      subTitle = subTitle.substring(0, 50).concat('...');
+    if (subTitle && subTitle.length > 100) {
+      subTitle = subTitle.substring(0, 100).concat('...');
     }
     keyCount++;
     const out = {
