@@ -44,7 +44,7 @@ export const processQueryResponse = (item: microsoftTeams.bot.IAttachment, botID
   }
   const out: ICard = {
     contentType: 'AdaptiveCard',
-    content: removeUnsupportedActions(item.card.content),
+    content: item.card.content,
     preview: {
       title: item.previewRawPayload.content.title,
       subTitle: item.previewRawPayload.content.text,
