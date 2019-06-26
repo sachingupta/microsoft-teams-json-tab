@@ -20,6 +20,10 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
 
   // Function to translate items from IPreviewCard to List.Item format
   const processItem = (item: ICard): IProcessedItem => {
+    let subTitle = item.preview.subTitle;
+    if (subTitle && subTitle.length > 50) {
+      subTitle = subTitle.substring(0, 50).concat('...');
+    }
     keyCount++;
     const out = {
       key: keyCount,
@@ -31,9 +35,9 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           <Flex.Item>
             <span dangerouslySetInnerHTML={{ __html: item.preview.title }} className="listItemTitle" />
           </Flex.Item>
-          {item.preview.subTitle ? (
+          {subTitle ? (
             <Flex.Item>
-              <span dangerouslySetInnerHTML={{ __html: item.preview.subTitle }} className="listItemDescription" />
+              <span dangerouslySetInnerHTML={{ __html: subTitle }} className="listItemDescription" />
             </Flex.Item>
           ) : null}
         </Flex>
