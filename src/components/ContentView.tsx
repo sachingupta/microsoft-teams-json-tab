@@ -9,7 +9,7 @@ import { getResults } from '../api/api';
 
 import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard } from '../api/api.interface';
-import { getFrameContext, parseQueryResponse, getCommandId } from '../utils/utils';
+import { isInitialRun, parseQueryResponse, getCommandId } from '../utils/utils';
 
 // handlers
 interface IContentViewProps {
@@ -62,11 +62,13 @@ export const ContentView = (props: IContentViewProps) => {
     microsoftTeams.initialize();
     microsoftTeams.appInitialization.notifyAppLoaded();
     microsoftTeams.registerOnThemeChangeHandler(props.onThemeChange);
-    const request: microsoftTeams.bot.QueryRequest = {
-      query: '',
-      commandId: getCommandId(window.location.href),
-    };
-    getResults(request, onResults, onError);
+    if (isInitialRun()) {
+      const request: microsoftTeams.bot.QueryRequest = {
+        query: '',
+        commandId: getCommandId(window.location.href),
+      };
+      getResults(request, onResults, onError);
+    }
   }, [props.onThemeChange]);
 
   let view = <Results results={Result} viewOption={ViewOption} />;

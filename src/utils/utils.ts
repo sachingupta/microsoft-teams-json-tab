@@ -30,6 +30,11 @@ export const getCommandId = (iUrl: string): string => {
   return url.query.commandId as string;
 };
 
+export const isInitialRun = (): boolean => {
+  const url = queryString.parseUrl(window.location.href);
+  return url.query.initialRun != null && url.query.initialRun == 'true';
+};
+
 // gets frame context from url
 export const getFrameContext = (iUrl: string): string => {
   const url = queryString.parseUrl(iUrl);
