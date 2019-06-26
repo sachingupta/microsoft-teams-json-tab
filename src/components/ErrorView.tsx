@@ -5,7 +5,7 @@ interface IErrorViewProps {
   message: string;
 }
 
-export const ErrorView = (props: IErrorViewProps) => {
+export const ErrorView: React.FC<IErrorViewProps> = (props: IErrorViewProps): JSX.Element => {
   return (
     <div className="ErrorView">
       <Image

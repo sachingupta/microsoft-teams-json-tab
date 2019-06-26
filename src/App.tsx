@@ -9,7 +9,7 @@ interface IAppProps {
   onThemeChange: (theme: string) => void;
 }
 
-export const App = (props: IAppProps) => {
+export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
   // CONSTANTS
   const url: string = window.location.href;
   const frameContext = getFrameContext(url);

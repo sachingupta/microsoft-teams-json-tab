@@ -1,6 +1,6 @@
 import * as microsoftTeams from '@microsoft/teams-js';
 import * as adaptiveCards from 'adaptivecards';
-import { request } from 'http';
+import { ISubmitAction, IOpenUrlAction, IShowCardAction } from 'adaptivecards/lib/schema';
 
 export const getResults = (
   request: microsoftTeams.bot.QueryRequest,
@@ -17,11 +17,11 @@ export const getSupportedCommands = (
   microsoftTeams.bot.getSupportedCommands(onBotGetCommandResponse, onError);
 };
 
-export const removeUnsupportedActions = (card: adaptiveCards.IAdaptiveCard) => {
+export const removeUnsupportedActions = (card: adaptiveCards.IAdaptiveCard): adaptiveCards.IAdaptiveCard => {
   const SupportedActions: string[] = ['Action.OpenUrl', 'Action.Submit', 'Action.ShowCard', 'invoke', 'signin'];
   let newCard = card;
   if (card.actions) {
-    newCard.actions = card.actions.filter((item: any) => {
+    newCard.actions = card.actions.filter((item: ISubmitAction | IOpenUrlAction | IShowCardAction): boolean => {
       return SupportedActions.includes(item.type);
     });
   }

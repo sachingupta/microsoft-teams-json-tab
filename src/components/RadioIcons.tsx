@@ -8,37 +8,35 @@ enum viewType {
 }
 
 interface IRadioIconsProps {
-  onChange: any;
+  onChange: (view: string) => void;
 }
 
-interface IRadioIconsState {
-  highlighted: viewType;
-}
-
-export class RadioIcons extends React.Component<IRadioIconsProps, IRadioIconsState> {
-  constructor(props: IRadioIconsProps) {
-    super(props);
-    this.state = {
-      highlighted: viewType.List,
-    };
-  }
-
-  // broadcast state
-  public handleChange = async (event: any, items: any) => {
-    await this.setState({ highlighted: items.value });
-    this.props.onChange(this.state.highlighted);
+export const RadioIcons: React.FC<IRadioIconsProps> = (props: IRadioIconsProps): JSX.Element => {
+  // HANDLERS
+  const handleChange = async (event: React.SyntheticEvent, items: { value: viewType }): Promise<void> => {
+    props.onChange(items.value);
   };
 
-  public render() {
-    const styles = {
-      border: 'none',
-      'box-shadow': 'none',
-    };
-    return (
-      <div className="SearchBar" id="buttons">
-        <Button icon="menu" iconOnly onClick={e => this.handleChange(e, { value: viewType.List })} styles={styles} />
-        <Button icon="table" iconOnly onClick={e => this.handleChange(e, { value: viewType.Grid })} styles={styles} />
-      </div>
-    );
-  }
-}
+  // CONSTANTS
+  const styles = {
+    border: 'none',
+    'box-shadow': 'none',
+  };
+
+  return (
+    <div className="SearchBar" id="buttons">
+      <Button
+        icon="menu"
+        iconOnly
+        onClick={(e: React.SyntheticEvent): Promise<void> => handleChange(e, { value: viewType.List })}
+        styles={styles}
+      />
+      <Button
+        icon="table"
+        iconOnly
+        onClick={(e: React.SyntheticEvent): Promise<void> => handleChange(e, { value: viewType.Grid })}
+        styles={styles}
+      />
+    </div>
+  );
+};
