@@ -14,7 +14,7 @@ export const launchTaskModule = (card: ICard): void => {
     const taskInfo: microsoftTeams.TaskInfo = {
       height: undefined,
       width: undefined,
-      title: card.preview.heroImageSrc,
+      title: card.preview.title,
       url: undefined,
       card: card.content,
       completionBotId: card.botId,
