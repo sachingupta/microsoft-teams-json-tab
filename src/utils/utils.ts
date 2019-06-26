@@ -14,20 +14,25 @@ export const launchTaskModule = (card: ICard): void => {
     const taskInfo: microsoftTeams.TaskInfo = {
       height: undefined,
       width: undefined,
-      title: card.preview.heroImageSrc,
+      title: card.preview.title,
       url: undefined,
       card: card.content,
       completionBotId: card.botId,
     };
     microsoftTeams.tasks.startTask(taskInfo, submitHandler);
   } else {
-    alert(`Could not load data, ${card.content.type} is not supported.`);
+    alert(`Could not load data, card type is not supported.`);
   }
 };
 
 export const getCommandId = (iUrl: string): string => {
   const url = queryString.parseUrl(iUrl);
   return url.query.commandId as string;
+};
+
+export const isInitialRun = (): boolean => {
+  const url = queryString.parseUrl(window.location.href);
+  return url.query.initialRun != null && url.query.initialRun == 'true';
 };
 
 // gets frame context from url
@@ -39,12 +44,16 @@ export const getFrameContext = (iUrl: string): string => {
 export const processQueryResponse = (item: microsoftTeams.bot.IAttachment, botID: string): ICard => {
   let url = '';
   if (item.previewRawPayload.content.hasOwnProperty('images')) {
-    const images = item.previewRawPayload.content.images[0];
-    url = images.url;
+    if (
+      item.previewRawPayload.content.images &&
+      item.previewRawPayload.content.images[0] &&
+      item.previewRawPayload.content.images[0].url
+    )
+      url = item.previewRawPayload.content.images[0].url;
   }
   const out: ICard = {
     contentType: 'AdaptiveCard',
-    content: removeUnsupportedActions(item.card.content),
+    content: item.card.content,
     preview: {
       title: item.previewRawPayload.content.title,
       subTitle: item.previewRawPayload.content.text,

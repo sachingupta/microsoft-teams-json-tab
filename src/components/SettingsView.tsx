@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Text, Input, Dropdown } from '@stardust-ui/react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { getSupportedCommands } from '../api/api';
+import { HtmlInputEvents } from '@stardust-ui/react/dist/es/lib/htmlPropsUtils';
+import { isInitialRun } from '../utils/utils';
 
 export const SettingsView: React.FC = (): JSX.Element => {
   // STATE HOOKS
@@ -15,6 +17,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
 
   const onGetCommandResponse = (response: microsoftTeams.bot.ICommand[]): void => {
     setCommandList(response);
+    microsoftTeams.appInitialization.notifySuccess();
   };
 
   const handleNameChange = (event: any): void => {
@@ -32,10 +35,14 @@ export const SettingsView: React.FC = (): JSX.Element => {
   // EFFECT HOOKS
   React.useEffect((): void => {
     microsoftTeams.initialize();
+    microsoftTeams.appInitialization.notifyAppLoaded();
+    let contentUrl = isInitialRun()
+      ? `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}&initialRun=true`
+      : `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}`;
     microsoftTeams.settings.registerOnSaveHandler((saveEvent: microsoftTeams.settings.SaveEvent): void => {
       microsoftTeams.settings.setSettings({
         entityId: 'JSONTab',
-        contentUrl: `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}`,
+        contentUrl: contentUrl,
         suggestedDisplayName: TabName,
       });
       saveEvent.notifySuccess();

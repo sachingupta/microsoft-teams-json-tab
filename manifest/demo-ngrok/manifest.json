@@ -11,24 +11,24 @@
     "termsOfUseUrl": "https://example.azurewebsites.net/termsofuse"
   },
   "name": {
-    "short": "Smart Hospital JSON Tab",
-    "full": "Smart Hospital JSON Tab"
+    "short": "JSON Tab Demo (w/ngrok)",
+    "full": "Sample JSON Tab - master"
   },
   "description": {
-    "short": "Smart Hospital JSON Tab",
-    "full": "Smart Hospital JSON App"
+    "short": "Sample JSON Tab",
+    "full": "Sample JSON App"
   },
   "icons": {
     "outline": "icon-outline.png",
-    "color": "icon-color.PNG"
+    "color": "icon-color.png"
   },
   "accentColor": "#abcdef",
   "staticTabs": [
     {
       "entityId": "json-tab",
       "name": "json tab",
-      "contentUrl": "https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&initialRun=true",
-      "websiteUrl": "https://microsoft-teams-json-tab.azurewebsites.net",
+      "contentUrl": "https://bf289583.ngrok.io?theme={theme}&frameContext=content",
+      "websiteUrl": "https://bf289583.ngrok.io",
       "scopes": [
         "personal"
       ]
@@ -36,7 +36,7 @@
   ],
   "configurableTabs": [
     {
-      "configurationUrl": "https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=settings&initialRun=true",
+      "configurationUrl": "https://bf289583.ngrok.io?theme={theme}&frameContext=settings",
       "canUpdateConfiguration": false,
       "scopes": [
         "team"
@@ -59,7 +59,7 @@
         {
           "id": "queryCards",
           "description": "Test command to run query",
-          "title": "Query Patients",
+          "title": "Query cards",
           "initialRun": true,
           "type": "query",
           "parameters": [
@@ -73,7 +73,7 @@
         {
           "id": "queryAdaptiveCards",
           "description": "Test command to run query",
-          "title": "Query Doctors",
+          "title": "Query adaptive cards",
           "initialRun": true,
           "type": "query",
           "parameters": [
@@ -87,7 +87,7 @@
         {
           "id": "queryHeroCards",
           "description": "Test command to run query",
-          "title": "Query Rooms",
+          "title": "Query hero cards",
           "initialRun": true,
           "type": "query",
           "parameters": [
