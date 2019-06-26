@@ -44,8 +44,12 @@ export const getFrameContext = (iUrl: string): string => {
 export const processQueryResponse = (item: microsoftTeams.bot.IAttachment, botID: string): ICard => {
   let url = '';
   if (item.previewRawPayload.content.hasOwnProperty('images')) {
-    const images = item.previewRawPayload.content.images[0];
-    url = images.url;
+    if (
+      item.previewRawPayload.content.images &&
+      item.previewRawPayload.content.images[0] &&
+      item.previewRawPayload.content.images[0].url
+    )
+      url = item.previewRawPayload.content.images[0].url;
   }
   const out: ICard = {
     contentType: 'AdaptiveCard',
