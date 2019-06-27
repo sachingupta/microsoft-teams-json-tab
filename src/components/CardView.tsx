@@ -4,7 +4,7 @@ import { FlexItem } from './FlexItem';
 import '../css/CardView.css';
 import { IItemListProps } from './ListView';
 
-export const CardView = (props: IItemListProps) => {
+export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.Element => {
   const itemList = [];
 
   let tempSubTitle: string | undefined;

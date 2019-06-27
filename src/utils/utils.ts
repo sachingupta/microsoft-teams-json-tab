@@ -1,7 +1,6 @@
 import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard } from '../api/api.interface';
 import * as queryString from 'query-string';
-import { removeUnsupportedActions } from '../api/api';
 
 // gets frame context from url
 export const submitHandler = (err: string, result: string): void => {
@@ -67,8 +66,8 @@ export const processQueryResponse = (item: microsoftTeams.bot.IAttachment, botID
 // converts a bot response to ICard
 export const parseQueryResponse = (response: microsoftTeams.bot.QueryResponse): ICard[] => {
   if (response && response.attachments) {
-    return response.attachments.map((item: microsoftTeams.bot.IAttachment) =>
-      processQueryResponse(item, response.botId),
+    return response.attachments.map(
+      (item: microsoftTeams.bot.IAttachment): ICard => processQueryResponse(item, response.botId),
     );
   } else {
     return [];

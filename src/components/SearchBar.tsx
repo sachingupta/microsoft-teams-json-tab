@@ -2,36 +2,35 @@ import React from 'react';
 import { Input, Button, Icon } from '@stardust-ui/react';
 import '../css/SearchBar.css';
 import { RadioIcons } from './RadioIcons';
-
 enum viewType {
   List = 'List',
   Grid = 'Grid',
 }
 
 interface ISearchBarProps {
-  onSearch: any;
-  onViewChange: any;
+  onSearch: (query: string) => void;
+  onViewChange: (view: viewType) => void;
 }
 
-export const SearchBar = (props: ISearchBarProps) => {
+export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JSX.Element => {
   // HOOKS
   const [Query, setQuery] = React.useState('');
 
   // HANDLERS
-  const handleOnChange = async (event: any) => {
-    setQuery(event.target.value);
+  const handleOnChange = (event: React.SyntheticEvent<HTMLElement>): void => {
+    setQuery((event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value);
   };
 
-  const handleOnClick = async (event: any) => {
+  const handleOnClick = (): void => {
     props.onSearch(Query);
   };
 
-  const handleRadioButtonChange = (view: string) => {
+  const handleRadioButtonChange = (view: string): void => {
     const newView = view === viewType.List ? viewType.List : viewType.Grid;
     props.onViewChange(newView);
   };
 
-  const handleKeyPress = (event: any) => {
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>): void => {
     if (event.key === 'Enter') {
       props.onSearch(Query);
     }
@@ -42,19 +41,19 @@ export const SearchBar = (props: ISearchBarProps) => {
       <RadioIcons onChange={handleRadioButtonChange} />
       <Input
         placeholder="Search..."
-        icon={() => (
+        icon={(): JSX.Element => (
           <Button
             iconOnly
-            icon={() => <Icon name="search" styles={{ color: 'black' }} />}
+            icon={(): JSX.Element => <Icon name="search" styles={{ color: 'black' }} />}
             primary
-            onClick={e => handleOnClick(e)}
+            onClick={handleOnClick}
             styles={{ backgroundColor: 'none', border: 'none', 'box-shadow': 'none', 'border-radius': 'none' }}
           />
         )}
         input={{
           styles: { backgroundColor: 'white' },
         }}
-        onChange={e => handleOnChange(e)}
+        onChange={handleOnChange}
         onKeyPress={handleKeyPress}
       />
       <br />

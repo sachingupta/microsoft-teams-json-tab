@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Image, Flex, Text } from '@stardust-ui/react';
+import { List, Image, Flex } from '@stardust-ui/react';
 import { ICard } from '../api/api.interface';
 import { launchTaskModule } from '../utils/utils';
 

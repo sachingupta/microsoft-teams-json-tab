@@ -11,7 +11,7 @@ enum viewOption {
   List = 'List',
   Grid = 'Grid',
 }
-export const Results = (props: IResultState) => {
+export const Results: React.FC<IResultState> = (props: IResultState): JSX.Element => {
   return (
     <div>
       {props.viewOption === viewOption.List ? (

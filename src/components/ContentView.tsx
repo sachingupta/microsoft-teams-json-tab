@@ -13,7 +13,7 @@ import { isInitialRun, parseQueryResponse, getCommandId } from '../utils/utils';
 
 // handlers
 interface IContentViewProps {
-  onThemeChange: any;
+  onThemeChange: (theme: string) => void;
 }
 
 enum AppStateEnum {
@@ -22,25 +22,25 @@ enum AppStateEnum {
   Render = 'Render',
 }
 
-export const ContentView = (props: IContentViewProps) => {
+export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProps): JSX.Element => {
   // state hooks
   const [ViewOption, setViewOption] = React.useState('List');
   const [Result, setResult] = React.useState([] as ICard[]);
   const [AppState, setAppState] = React.useState(AppStateEnum.Render);
   const [ErrorMessage, setErrorMessage] = React.useState('Hmm... Something went wrong...');
 
-  const onError = (error: string): any => {
+  const onError = (error: string): void => {
     setAppState(AppStateEnum.Error);
     setErrorMessage(error);
   };
 
-  const onResults = (response: microsoftTeams.bot.QueryResponse) => {
+  const onResults = (response: microsoftTeams.bot.QueryResponse): void => {
     setResult(parseQueryResponse(response));
     setAppState(AppStateEnum.Render);
     microsoftTeams.appInitialization.notifySuccess();
   };
 
-  const handleSearch = (query: string, viewOption: string) => {
+  const handleSearch = (query: string): void => {
     if (query !== undefined) {
       const request: microsoftTeams.bot.QueryRequest = {
         query: query,
@@ -51,14 +51,14 @@ export const ContentView = (props: IContentViewProps) => {
     }
   };
 
-  const handleViewChange = (viewOption: string) => {
+  const handleViewChange = (viewOption: string): void => {
     if (viewOption) {
       setViewOption(viewOption);
     }
   };
 
   // EFFECT HOOKS
-  React.useEffect(() => {
+  React.useEffect((): void => {
     microsoftTeams.initialize();
     microsoftTeams.appInitialization.notifyAppLoaded();
     microsoftTeams.registerOnThemeChangeHandler(props.onThemeChange);
