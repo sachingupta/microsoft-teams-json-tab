@@ -78,9 +78,9 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
     view = <ErrorView message={ErrorMessage} />;
   }
   return (
-    <div>
+    <>
       <SearchBar onSearch={handleSearch} onViewChange={handleViewChange} />
       {view}
-    </div>
+    </>
   );
 };

@@ -12,7 +12,7 @@ export const launchTaskModule = (card: ICard): void => {
   if (card.content.type && card.content.type === 'AdaptiveCard') {
     const taskInfo: microsoftTeams.TaskInfo = {
       height: undefined,
-      width: undefined,
+      width: 600,
       title: card.preview.title,
       url: undefined,
       card: card.content,

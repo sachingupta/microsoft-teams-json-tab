@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button, Icon } from '@stardust-ui/react';
+import { Input, Button, Icon, Image, Flex, Header } from '@stardust-ui/react';
 import '../css/SearchBar.css';
 import { RadioIcons } from './RadioIcons';
 enum viewType {
@@ -37,26 +37,31 @@ export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JS
   };
 
   return (
-    <div className="SearchBar">
-      <RadioIcons onChange={handleRadioButtonChange} />
-      <Input
-        placeholder="Search..."
-        icon={(): JSX.Element => (
-          <Button
-            iconOnly
-            icon={(): JSX.Element => <Icon name="search" styles={{ color: 'black' }} />}
-            text
-            secondary
-            onClick={handleOnClick}
-          />
-        )}
-        input={{
-          styles: { backgroundColor: 'white' },
-        }}
-        styles={{ margin: '22px 16px 22px 0px' }}
-        onChange={handleOnChange}
-        onKeyPress={handleKeyPress}
-      />
-    </div>
+    <Flex gap="gap.small" vAlign="center">
+      <Flex.Item styles={{ margin: '0 0 0 20px' }}>
+        <Image
+          src="https://robohash.org/ted.png"
+          styles={{ width: '32px', height: '32px', backgroundColor: '#CCCCCC' }}
+        />
+      </Flex.Item>
+      <Flex.Item>
+        <Header content="Placeholder" as="h3" />
+      </Flex.Item>
+      <Flex.Item push>
+        <RadioIcons onChange={handleRadioButtonChange} />
+      </Flex.Item>
+      <Flex.Item push>
+        <Input
+          placeholder="Search"
+          icon="search"
+          input={{
+            styles: { backgroundColor: 'white', width: '250px' },
+          }}
+          styles={{ margin: '22px 16px 22px 0px' }}
+          onChange={handleOnChange}
+          onKeyPress={handleKeyPress}
+        />
+      </Flex.Item>
+    </Flex>
   );
 };
