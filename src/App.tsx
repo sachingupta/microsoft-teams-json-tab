@@ -21,11 +21,10 @@ export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
     );
   } else {
     return (
-      <div>
+      <div style={{ backgroundColor: '#F1F2F3' }}>
         <ContentView onThemeChange={props.onThemeChange} />
       </div>
     );
   }
 };
-
 export default App;
