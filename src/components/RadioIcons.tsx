@@ -17,25 +17,21 @@ export const RadioIcons: React.FC<IRadioIconsProps> = (props: IRadioIconsProps):
     props.onChange(items.value);
   };
 
-  // CONSTANTS
-  const styles = {
-    border: 'none',
-    'box-shadow': 'none',
-  };
-
   return (
     <div className="SearchBar" id="buttons">
       <Button
         icon="menu"
         iconOnly
+        text
+        styles={{ color: 'black' }}
         onClick={(e: React.SyntheticEvent): void => handleChange(e, { value: viewType.List })}
-        styles={styles}
       />
       <Button
         icon="table"
         iconOnly
+        text
+        styles={{ color: 'black' }}
         onClick={(e: React.SyntheticEvent): void => handleChange(e, { value: viewType.Grid })}
-        styles={styles}
       />
     </div>
   );

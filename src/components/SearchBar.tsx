@@ -45,18 +45,18 @@ export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JS
           <Button
             iconOnly
             icon={(): JSX.Element => <Icon name="search" styles={{ color: 'black' }} />}
-            primary
+            text
+            secondary
             onClick={handleOnClick}
-            styles={{ backgroundColor: 'none', border: 'none', 'box-shadow': 'none', 'border-radius': 'none' }}
           />
         )}
         input={{
           styles: { backgroundColor: 'white' },
         }}
+        styles={{ margin: '22px 16px 22px 0px' }}
         onChange={handleOnChange}
         onKeyPress={handleKeyPress}
       />
-      <br />
     </div>
   );
 };
