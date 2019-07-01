@@ -24,16 +24,16 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
     const out = {
       key: keyCount,
       content: (
-        <Flex vAlign="center">
+        <Flex vAlign="center" fill gap="gap.small">
           <Flex.Item styles={{ width: '32px', height: '32px' }}>
             <Image src={item.preview.heroImageSrc} className="listItemImage" />
           </Flex.Item>
-          <Flex.Item>
-            <span dangerouslySetInnerHTML={{ __html: item.preview.title }} className="listItemTitle" />
+          <Flex.Item size="size.quarter">
+            <Text size="medium" weight="bold" content={item.preview.title} />
           </Flex.Item>
           {item.preview.subTitle ? (
-            <Flex.Item size="size.half">
-              <Text content={item.preview.subTitle} className="listItemDescription" />
+            <Flex.Item grow size="size.half">
+              <Text truncated size="medium" weight="regular" content={item.preview.subTitle} />
             </Flex.Item>
           ) : null}
         </Flex>
