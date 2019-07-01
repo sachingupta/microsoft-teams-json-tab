@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, Image, Flex, Text } from '@stardust-ui/react';
 import { ICard } from '../api/api.interface';
-import { launchTaskModule } from '../utils/utils';
+import { launchTaskModule, stripHTML } from '../utils/utils';
 
 export interface IItemListProps {
   itemList: ICard[];
@@ -33,7 +33,7 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           </Flex.Item>
           {item.preview.subTitle ? (
             <Flex.Item grow size="size.half">
-              <Text truncated size="medium" weight="regular" content={item.preview.subTitle} />
+              <Text truncated size="medium" weight="regular" content={stripHTML(item.preview.subTitle)} />
             </Flex.Item>
           ) : null}
         </Flex>

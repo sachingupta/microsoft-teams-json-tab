@@ -73,3 +73,10 @@ export const parseQueryResponse = (response: microsoftTeams.bot.QueryResponse): 
     return [];
   }
 };
+
+// Function to strip HTML tags from data
+export const stripHTML = (html: string): string => {
+  let div = document.createElement('div');
+  div.innerHTML = html;
+  return div.textContent || div.innerText || '';
+};
