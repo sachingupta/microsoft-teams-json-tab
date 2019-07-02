@@ -21,7 +21,7 @@ export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
     );
   } else {
     return (
-      <div style={{ backgroundColor: '#F1F2F3' }}>
+      <div style={{ backgroundColor: '#F3F2F1' }}>
         <ContentView onThemeChange={props.onThemeChange} />
       </div>
     );
