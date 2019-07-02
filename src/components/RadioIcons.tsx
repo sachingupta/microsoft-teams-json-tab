@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button } from '@stardust-ui/react';
-import '../css/SearchBar.css';
+import { Button, Flex } from '@stardust-ui/react';
 
 enum viewType {
   List = 'List',
@@ -9,6 +8,7 @@ enum viewType {
 
 interface IRadioIconsProps {
   onChange: (view: string) => void;
+  styles?: object;
 }
 
 export const RadioIcons: React.FC<IRadioIconsProps> = (props: IRadioIconsProps): JSX.Element => {
@@ -18,21 +18,25 @@ export const RadioIcons: React.FC<IRadioIconsProps> = (props: IRadioIconsProps):
   };
 
   return (
-    <div className="SearchBar" id="buttons">
-      <Button
-        icon="menu"
-        iconOnly
-        text
-        styles={{ color: 'black' }}
-        onClick={(e: React.SyntheticEvent): void => handleChange(e, { value: viewType.List })}
-      />
-      <Button
-        icon="table"
-        iconOnly
-        text
-        styles={{ color: 'black' }}
-        onClick={(e: React.SyntheticEvent): void => handleChange(e, { value: viewType.Grid })}
-      />
-    </div>
+    <Flex styles={props.styles} vAlign="center">
+      <Flex.Item>
+        <Button
+          icon="menu"
+          iconOnly
+          text
+          styles={{ color: 'black' }}
+          onClick={(e: React.SyntheticEvent): void => handleChange(e, { value: viewType.List })}
+        />
+      </Flex.Item>
+      <Flex.Item>
+        <Button
+          icon="table"
+          iconOnly
+          text
+          styles={{ color: 'black' }}
+          onClick={(e: React.SyntheticEvent): void => handleChange(e, { value: viewType.Grid })}
+        />
+      </Flex.Item>
+    </Flex>
   );
 };
