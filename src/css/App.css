@@ -39,10 +39,7 @@
 }
 
 .listItemImage {
-  margin-right: 12px;
   background-color: #abcdef;
-  width: 100%;
-  height: auto;
 }
 
 .listItem {
