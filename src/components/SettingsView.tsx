@@ -35,9 +35,18 @@ export const SettingsView: React.FC = (): JSX.Element => {
   React.useEffect((): void => {
     microsoftTeams.initialize();
     microsoftTeams.appInitialization.notifyAppLoaded();
-    let contentUrl = isInitialRun()
-      ? `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}&initialRun=true`
-      : `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}`;
+
+    let contentUrl: string;
+    const command = CommandList.find(
+      (item: microsoftTeams.bot.ICommand): boolean => item.id === CommandSelected,
+    ) as microsoftTeams.bot.ICommand;
+
+    if (command.isInitialRun) {
+      contentUrl = `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}&initialRun=${command.isInitialRun}`;
+    } else {
+      contentUrl = `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}`;
+    }
+
     microsoftTeams.settings.registerOnSaveHandler((saveEvent: microsoftTeams.settings.SaveEvent): void => {
       microsoftTeams.settings.setSettings({
         entityId: 'JSONTab',
