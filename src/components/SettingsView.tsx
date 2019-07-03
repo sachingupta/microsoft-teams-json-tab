@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Text, Input, Dropdown } from '@stardust-ui/react';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { getSupportedCommands } from '../api/api';
-import { isInitialRun } from '../utils/utils';
 
 export const SettingsView: React.FC = (): JSX.Element => {
   // STATE HOOKS
