@@ -5,7 +5,7 @@ import { getSupportedCommands } from '../api/api';
 
 export const SettingsView: React.FC = (): JSX.Element => {
   // STATE HOOKS
-  const [CommandList, setCommandList] = React.useState([] as microsoftTeams.bot.ICommand[]);
+  const [CommandList, setCommandList] = React.useState([] as microsoftTeams.bot.Command[]);
   const [CommandSelected, setCommandSelected] = React.useState('');
   const [TabName, setTabName] = React.useState('JSONTabDefault');
   // HANDLERS
@@ -13,7 +13,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
     alert(error);
   };
 
-  const onGetCommandResponse = (response: microsoftTeams.bot.ICommand[]): void => {
+  const onGetCommandResponse = (response: microsoftTeams.bot.Command[]): void => {
     setCommandList(response);
     microsoftTeams.appInitialization.notifySuccess();
   };
@@ -24,8 +24,8 @@ export const SettingsView: React.FC = (): JSX.Element => {
 
   const handleCommandChange = (event: any, res: any): void => {
     const command = CommandList.find(
-      (item: microsoftTeams.bot.ICommand): boolean => item.title === res.value,
-    ) as microsoftTeams.bot.ICommand;
+      (item: microsoftTeams.bot.Command): boolean => item.title === res.value,
+    ) as microsoftTeams.bot.Command;
     setCommandSelected(command.id);
     microsoftTeams.settings.setValidityState(true);
   };
@@ -37,8 +37,8 @@ export const SettingsView: React.FC = (): JSX.Element => {
 
     let contentUrl: string;
     const command = CommandList.find(
-      (item: microsoftTeams.bot.ICommand): boolean => item.id === CommandSelected,
-    ) as microsoftTeams.bot.ICommand;
+      (item: microsoftTeams.bot.Command): boolean => item.id === CommandSelected,
+    ) as microsoftTeams.bot.Command;
 
     if (command.isInitialRun) {
       contentUrl = `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}&initialRun=${command.isInitialRun}`;
@@ -68,7 +68,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
       </div>
       <Dropdown
         fluid
-        items={CommandList.map((command: microsoftTeams.bot.ICommand): string => {
+        items={CommandList.map((command: microsoftTeams.bot.Command): string => {
           return command.title;
         })}
         noResultsMessage="We couldn't find any matches."
