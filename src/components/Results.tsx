@@ -2,6 +2,7 @@ import React from 'react';
 import { ListView } from './ListView';
 import { CardView } from './CardView';
 import { ICard } from '../api/api.interface';
+import { NewCardView } from './NewCardView';
 
 export interface IResultState {
   results: ICard[];
@@ -17,7 +18,7 @@ export const Results: React.FC<IResultState> = (props: IResultState): JSX.Elemen
       {props.viewOption === viewOption.List ? (
         <ListView itemList={props.results} />
       ) : (
-        <CardView itemList={props.results} />
+        <NewCardView itemList={props.results} />
       )}
     </div>
   );
