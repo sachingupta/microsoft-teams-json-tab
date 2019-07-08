@@ -10,8 +10,15 @@ export const NewCardView: React.FC<IItemListProps> = (props: IItemListProps): JS
     return (
       <Segment
         data-is-focusable="true"
-        styles={{ margin: '0 0 16px 12px', width: '95%', minHeight: '146px', padding: '20px 20px 20px 20px' }}
+        styles={{
+          margin: '0 0 16px 12px',
+          height: '146px',
+          padding: '20px 20px 20px 20px',
+          borderRadius: '3px',
+          boxShadow: '0px 2px 4px -0.75px rgba(0,0,0,0.1)',
+        }}
         onClick={(): void => launchTaskModule(item)}
+        
       >
         <Flex gap="gap.small">
           <Flex.Item>
@@ -40,7 +47,7 @@ export const NewCardView: React.FC<IItemListProps> = (props: IItemListProps): JS
                     overflow: 'hidden',
                   }}
                 >
-                  <Text content={item.preview.subTitle} weight="regular" size="smaller" />
+                  <Text content={item.preview.subTitle} weight="regular" size="small" />
                 </Flex.Item>
               ) : null}
             </Flex>
