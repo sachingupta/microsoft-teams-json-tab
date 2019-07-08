@@ -4,10 +4,19 @@ import './css/App.css';
 import { getFrameContext } from './utils/utils';
 import { SettingsView } from './components/SettingsView';
 import { ContentView } from './components/ContentView';
+import { createComponent } from '@stardust-ui/react';
 
 interface IAppProps {
   onThemeChange: (theme: string) => void;
 }
+
+const ContentViewWrapper = createComponent({
+  displayName: 'ContentViewWrapper',
+  render: ({ stardust, onThemeChange }) => {
+    const { classes } = stardust;
+    return <ContentView className={classes.root} onThemeChange={onThemeChange} />;
+  },
+});
 
 export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
   // CONSTANTS
@@ -20,11 +29,7 @@ export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
       </div>
     );
   } else {
-    return (
-      <div style={{ backgroundColor: '#F3F2F1' }}>
-        <ContentView onThemeChange={props.onThemeChange} />
-      </div>
-    );
+    return <ContentViewWrapper onThemeChange={props.onThemeChange} />;
   }
 };
 export default App;
