@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex, Grid, Segment, Image, Header, Icon, Text, Button, gridBehavior } from '@stardust-ui/react';
 import { IItemListProps } from './ListView';
 import { ICard } from '../api/api.interface';
-import { stripHTML } from '../utils/utils';
+import { stripHTML, launchTaskModule } from '../utils/utils';
 import '../css/App.css';
 
 export const NewCardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.Element => {
@@ -11,6 +11,7 @@ export const NewCardView: React.FC<IItemListProps> = (props: IItemListProps): JS
       <Segment
         data-is-focusable="true"
         styles={{ margin: '0 0 16px 12px', width: '95%', minHeight: '146px', padding: '20px 20px 20px 20px' }}
+        onClick={(): void => launchTaskModule(item)}
       >
         <Flex gap="gap.small">
           <Flex.Item>
