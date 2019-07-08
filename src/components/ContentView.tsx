@@ -30,8 +30,7 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   const [Result, setResult] = React.useState([] as ICard[]);
   const [AppState, setAppState] = React.useState(AppStateEnum.Render);
   const [ErrorMessage, setErrorMessage] = React.useState('Hmm... Something went wrong...');
-  const [AuthUrl, setAuthUrl] = React.useState('');
-  const [AuthTitle, setAuthTitle] = React.useState('Sign in');
+  const [AuthData, setAuthData] = React.useState({ url: '', title: 'Sign in' });
 
   const onError = (error: string): void => {
     setAppState(AppStateEnum.Error);
@@ -39,9 +38,8 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   };
 
   const onResults = (response: microsoftTeams.bot.QueryResponse): void => {
-    if (response.type === 'Auth') {
-      setAuthUrl(response.data.url);
-      setAuthTitle(response.data.title);
+    if (response.type === microsoftTeams.bot.ResponseType.Auth) {
+      setAuthData({ url: response.data.url, title: response.data.title });
       setAppState(AppStateEnum.Auth);
     } else {
       setResult(parseQueryResponse(response.data));
@@ -90,7 +88,7 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
       view = <ErrorView message={ErrorMessage} />;
       break;
     case 'Auth':
-      view = <AuthView title={AuthTitle} url={AuthUrl} />;
+      view = <AuthView title={AuthData.title} url={AuthData.url} />;
       break;
   }
   return (
