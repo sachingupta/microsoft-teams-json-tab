@@ -4,6 +4,7 @@ import { SearchBar } from './SearchBar';
 import { Results } from './Results';
 import { LoadIcon } from './LoadIcon';
 import { ErrorView } from './ErrorView';
+import { AuthView } from './AuthView';
 
 import { getResults } from '../api/api';
 
@@ -20,6 +21,7 @@ enum AppStateEnum {
   Loading = 'Loading',
   Error = 'Error',
   Render = 'Render',
+  Auth = 'Auth',
 }
 
 export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProps): JSX.Element => {
@@ -28,6 +30,8 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   const [Result, setResult] = React.useState([] as ICard[]);
   const [AppState, setAppState] = React.useState(AppStateEnum.Render);
   const [ErrorMessage, setErrorMessage] = React.useState('Hmm... Something went wrong...');
+  const [AuthUrl, setAuthUrl] = React.useState('');
+  const [AuthTitle, setAuthTitle] = React.useState('Sign in');
 
   const onError = (error: string): void => {
     setAppState(AppStateEnum.Error);
@@ -35,9 +39,15 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   };
 
   const onResults = (response: microsoftTeams.bot.QueryResponse): void => {
-    setResult(parseQueryResponse(response));
-    setAppState(AppStateEnum.Render);
-    microsoftTeams.appInitialization.notifySuccess();
+    if (response.type === 'Auth') {
+      setAuthUrl(response.data.url);
+      setAuthTitle(response.data.title);
+      setAppState(AppStateEnum.Auth);
+    } else {
+      setResult(parseQueryResponse(response.data));
+      setAppState(AppStateEnum.Render);
+      microsoftTeams.appInitialization.notifySuccess();
+    }
   };
 
   const handleSearch = (query: string): void => {
@@ -72,15 +82,21 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   }, [props.onThemeChange]);
 
   let view = <Results results={Result} viewOption={ViewOption} />;
-  if (AppState === AppStateEnum.Loading) {
-    view = <LoadIcon isLoading={true} />;
-  } else if (AppState === AppStateEnum.Error) {
-    view = <ErrorView message={ErrorMessage} />;
+  switch (AppState) {
+    case 'Loading':
+      view = <LoadIcon isLoading={true} />;
+      break;
+    case 'Error':
+      view = <ErrorView message={ErrorMessage} />;
+      break;
+    case 'Auth':
+      view = <AuthView title={AuthTitle} url={AuthUrl} />;
+      break;
   }
   return (
-    <div>
+    <>
       <SearchBar onSearch={handleSearch} onViewChange={handleViewChange} />
       {view}
-    </div>
+    </>
   );
 };
