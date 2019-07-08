@@ -64,7 +64,7 @@ export const processQueryResponse = (item: microsoftTeams.bot.Attachment, botID:
 };
 
 // converts a bot response to ICard
-export const parseQueryResponse = (response: microsoftTeams.bot.QueryResponse): ICard[] => {
+export const parseQueryResponse = (response: microsoftTeams.bot.Results): ICard[] => {
   if (response && response.attachments) {
     return response.attachments.map(
       (item: microsoftTeams.bot.Attachment): ICard => processQueryResponse(item, response.botId),

@@ -41,10 +41,12 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
 
   const onResults = (response: microsoftTeams.bot.QueryResponse): void => {
     if (response.type === microsoftTeams.bot.ResponseType.Auth) {
-      setAuthData({ url: response.data.url, title: response.data.title });
+      const authResponse: microsoftTeams.bot.Auth = response.data as microsoftTeams.bot.Auth;
+      setAuthData({ url: authResponse.url, title: authResponse.title });
       setAppState(AppStateEnum.Auth);
     } else {
-      setResult(parseQueryResponse(response.data));
+      const resultsResponse: microsoftTeams.bot.Results = response.data as microsoftTeams.bot.Results;
+      setResult(parseQueryResponse(resultsResponse));
       setAppState(AppStateEnum.Render);
       microsoftTeams.appInitialization.notifySuccess();
     }

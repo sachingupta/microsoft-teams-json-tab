@@ -3,7 +3,7 @@ import { Text } from '@stardust-ui/react';
 
 interface IAuthViewProps {
   title: string;
-  url: any;
+  url: string;
 }
 
 export const AuthView: React.FC<IAuthViewProps> = (props: IAuthViewProps): JSX.Element => {
