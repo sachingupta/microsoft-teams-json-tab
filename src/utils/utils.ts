@@ -40,7 +40,7 @@ export const getFrameContext = (iUrl: string): string => {
   return url.query.frameContext as string;
 };
 
-export const processQueryResponse = (item: microsoftTeams.bot.IAttachment, botID: string): ICard => {
+export const processQueryResponse = (item: microsoftTeams.bot.Attachment, botID: string): ICard => {
   let url = '';
   if (item.previewRawPayload.content.hasOwnProperty('images')) {
     if (
@@ -64,10 +64,10 @@ export const processQueryResponse = (item: microsoftTeams.bot.IAttachment, botID
 };
 
 // converts a bot response to ICard
-export const parseQueryResponse = (response: microsoftTeams.bot.QueryResponse): ICard[] => {
+export const parseQueryResponse = (response: microsoftTeams.bot.Results): ICard[] => {
   if (response && response.attachments) {
     return response.attachments.map(
-      (item: microsoftTeams.bot.IAttachment): ICard => processQueryResponse(item, response.botId),
+      (item: microsoftTeams.bot.Attachment): ICard => processQueryResponse(item, response.botId),
     );
   } else {
     return [];

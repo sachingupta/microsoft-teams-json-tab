@@ -10,7 +10,6 @@ export interface IItemListProps {
 export interface IProcessedItem {
   key: number;
   content: JSX.Element;
-  className: string;
   onClick: () => void;
 }
 
@@ -44,7 +43,7 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           </Flex.Item>
         </Flex>
       ),
-      className: 'listItem',
+      styles: { margin: '2px 2px 0 0' },
       onClick: (): void => launchTaskModule(item),
     };
     return out;
@@ -57,7 +56,7 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
   // Render selectable list
   return (
     <div>
-      <List styles={{ backgroundColor: '#F1F2F3' }} selectable items={outList} />
+      <List selectable items={outList} />
     </div>
   );
 };

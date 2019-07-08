@@ -11,7 +11,7 @@ export const getResults = (
 };
 
 export const getSupportedCommands = (
-  onBotGetCommandResponse: (response: microsoftTeams.bot.ICommand[]) => void,
+  onBotGetCommandResponse: (response: microsoftTeams.bot.Command[]) => void,
   onError: (error: string) => void,
 ): void => {
   microsoftTeams.bot.getSupportedCommands(onBotGetCommandResponse, onError);
