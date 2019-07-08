@@ -18,7 +18,6 @@ export const NewCardView: React.FC<IItemListProps> = (props: IItemListProps): JS
           boxShadow: '0px 2px 4px -0.75px rgba(0,0,0,0.1)',
         }}
         onClick={(): void => launchTaskModule(item)}
-        
       >
         <Flex gap="gap.small">
           <Flex.Item>
