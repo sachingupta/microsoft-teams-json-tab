@@ -40,6 +40,7 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           </Flex.Item>
         </Flex>
       ),
+      styles: { margin: '2px 2px 0 0' },
       onClick: (): void => launchTaskModule(item),
     };
     return out;
