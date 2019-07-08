@@ -25,7 +25,7 @@ enum AppStateEnum {
 
 export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProps): JSX.Element => {
   // state hooks
-  const [ViewOption, setViewOption] = React.useState('Card');
+  const [ViewOption, setViewOption] = React.useState('List');
   const [Result, setResult] = React.useState([] as ICard[]);
   const [AppState, setAppState] = React.useState(AppStateEnum.Render);
   const [ErrorMessage, setErrorMessage] = React.useState('Hmm... Something went wrong...');
