@@ -12,8 +12,9 @@ import { ICard } from '../api/api.interface';
 import { isInitialRun, parseQueryResponse, getCommandId } from '../utils/utils';
 
 // handlers
-interface IContentViewProps {
+export interface IContentViewProps {
   onThemeChange: (theme: string) => void;
+  className: string;
 }
 
 enum AppStateEnum {
@@ -24,7 +25,7 @@ enum AppStateEnum {
 
 export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProps): JSX.Element => {
   // state hooks
-  const [ViewOption, setViewOption] = React.useState('List');
+  const [ViewOption, setViewOption] = React.useState('Card');
   const [Result, setResult] = React.useState([] as ICard[]);
   const [AppState, setAppState] = React.useState(AppStateEnum.Render);
   const [ErrorMessage, setErrorMessage] = React.useState('Hmm... Something went wrong...');
@@ -78,9 +79,9 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
     view = <ErrorView message={ErrorMessage} />;
   }
   return (
-    <>
+    <div className={props.className}>
       <SearchBar onSearch={handleSearch} onViewChange={handleViewChange} />
       {view}
-    </>
+    </div>
   );
 };
