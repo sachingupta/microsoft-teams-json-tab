@@ -1,6 +1,5 @@
 import React from 'react';
-import { Input, Button, Icon } from '@stardust-ui/react';
-import '../css/SearchBar.css';
+import { Input, Button, Icon, Image, Flex, Header } from '@stardust-ui/react';
 import { RadioIcons } from './RadioIcons';
 enum viewType {
   List = 'List',
@@ -37,26 +36,22 @@ export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JS
   };
 
   return (
-    <div className="SearchBar">
-      <RadioIcons onChange={handleRadioButtonChange} />
+    <Flex gap="gap.small" vAlign="center">
+      <Flex.Item push>
+        <Flex>
+          <RadioIcons onChange={handleRadioButtonChange} styles={{ margin: '0 0 16px 0' }} />
+        </Flex>
+      </Flex.Item>
       <Input
-        placeholder="Search..."
-        icon={(): JSX.Element => (
-          <Button
-            iconOnly
-            icon={(): JSX.Element => <Icon name="search" styles={{ color: 'black' }} />}
-            primary
-            onClick={handleOnClick}
-            styles={{ backgroundColor: 'none', border: 'none', 'box-shadow': 'none', 'border-radius': 'none' }}
-          />
-        )}
+        placeholder="Search"
+        icon="search"
         input={{
-          styles: { backgroundColor: 'white' },
+          styles: { backgroundColor: 'white', width: '250px' },
         }}
+        styles={{ margin: '0px 0px 16px 0px' }}
         onChange={handleOnChange}
         onKeyPress={handleKeyPress}
       />
-      <br />
-    </div>
+    </Flex>
   );
 };

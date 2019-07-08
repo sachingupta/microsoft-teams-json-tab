@@ -39,45 +39,5 @@
 }
 
 .listItemImage {
-  margin-right: 12px;
   background-color: #abcdef;
-  width: 100%;
-  height: auto;
-}
-
-.listItemTitle {
-  color: #252424 100%;
-  opacity: 100%;
-  font-size: 14px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: bold;
-  margin-right: 20px;
-  text-overflow: ellipsis;
-  width: 180px;
-}
-
-.listItemSubtitle {
-  color: #252424 75%;
-  opacity: 100%;
-  font-size: 14px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin-right: 20px;
-}
-
-.listItemDescription {
-  color: #252424 75%;
-  opacity: 100%;
-  font-size: 14px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 50%;
-  white-space: nowrap;
-}
-
-.listItem {
-  opacity: 100%;
-  border-radius: 3px 3px 0px 0px;
-  margin: 2px 2px 0 0;
-  box-shadow: 0 .2rem .4rem -.075rem rgba(0, 0, 0, .1);
 }

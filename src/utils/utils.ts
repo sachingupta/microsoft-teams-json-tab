@@ -12,7 +12,7 @@ export const launchTaskModule = (card: ICard): void => {
   if (card.content.type && card.content.type === 'AdaptiveCard') {
     const taskInfo: microsoftTeams.TaskInfo = {
       height: undefined,
-      width: undefined,
+      width: 600,
       title: card.preview.title,
       url: undefined,
       card: card.content,
@@ -72,4 +72,11 @@ export const parseQueryResponse = (response: microsoftTeams.bot.Results): ICard[
   } else {
     return [];
   }
+};
+
+// Function to strip HTML tags from data
+export const stripHTML = (html: string): string => {
+  let div = document.createElement('div');
+  div.innerHTML = html;
+  return div.textContent || div.innerText || '';
 };

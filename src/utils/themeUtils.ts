@@ -1,4 +1,4 @@
-import { themes, ThemeInput } from '@stardust-ui/react';
+import { themes, ThemeInput, mergeThemes } from '@stardust-ui/react';
 import * as queryString from 'query-string';
 
 enum themeTypes {
@@ -21,7 +21,30 @@ export const getThemeFromURL = (iUrl: string): string => {
 
 // gets theme type from string
 export const getTheme = (theme: string): ThemeInput => {
-  const newTheme: ThemeInput = themes.teams;
+  const customTheme: ThemeInput = {
+    componentVariables: {
+      ContentViewWrapper: ({ colorScheme }: any) => ({
+        backgroundColor: colorScheme.default.background2,
+      }),
+      ListItem: ({ colorScheme }: any) => ({
+        backgroundColor: colorScheme.default.background,
+      }),
+    },
+    componentStyles: {
+      ContentViewWrapper: {
+        root: ({ variables }: any) => ({
+          backgroundColor: variables.backgroundColor,
+        }),
+      },
+      ListItem: {
+        root: ({ variables }: any) => ({
+          backgroundColor: variables.backgroundColor,
+        }),
+      },
+    },
+  };
+
+  const newTheme: ThemeInput = mergeThemes(themes.teams, customTheme);
 
   switch (theme) {
     case themeTypes.Contrast:

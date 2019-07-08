@@ -63,7 +63,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
         <Text size={'medium'} content={'Name your tab'} />
       </div>
       <Input fluid placeholder={'Tab name'} onChange={handleNameChange} />
-      <div>
+      <div style={{ marginTop: '16px' }}>
         <Text size={'medium'} content={"Select the command you'd like query your bot with"} />
       </div>
       <Dropdown

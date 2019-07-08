@@ -1,7 +1,7 @@
 import React from 'react';
-import { List, Image, Flex } from '@stardust-ui/react';
+import { List, Image, Flex, Text, Icon } from '@stardust-ui/react';
 import { ICard } from '../api/api.interface';
-import { launchTaskModule } from '../utils/utils';
+import { launchTaskModule, stripHTML } from '../utils/utils';
 
 export interface IItemListProps {
   itemList: ICard[];
@@ -10,7 +10,6 @@ export interface IItemListProps {
 export interface IProcessedItem {
   key: number;
   content: JSX.Element;
-  className: string;
   onClick: () => void;
 }
 
@@ -20,29 +19,28 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
 
   // Function to translate items from IPreviewCard to List.Item format
   const processItem = (item: ICard): IProcessedItem => {
-    let subTitle = item.preview.subTitle;
-    if (subTitle && subTitle.length > 100) {
-      subTitle = subTitle.substring(0, 100).concat('...');
-    }
     keyCount++;
     const out = {
       key: keyCount,
       content: (
-        <Flex vAlign="center">
+        <Flex vAlign="center" fill gap="gap.small">
           <Flex.Item styles={{ width: '32px', height: '32px' }}>
             <Image src={item.preview.heroImageSrc} className="listItemImage" />
           </Flex.Item>
-          <Flex.Item>
-            <span dangerouslySetInnerHTML={{ __html: item.preview.title }} className="listItemTitle" />
+          <Flex.Item size="size.quarter">
+            <Text size="medium" weight="semibold" content={stripHTML(item.preview.title)} />
           </Flex.Item>
-          {subTitle ? (
-            <Flex.Item>
-              <span dangerouslySetInnerHTML={{ __html: subTitle }} className="listItemDescription" />
+          {item.preview.subTitle ? (
+            <Flex.Item grow size="size.half">
+              <Text truncated size="medium" weight="regular" content={stripHTML(item.preview.subTitle)} />
             </Flex.Item>
           ) : null}
+          <Flex.Item>
+            <Icon name="more" />
+          </Flex.Item>
         </Flex>
       ),
-      className: 'listItem',
+      styles: { margin: '2px 2px 0 0' },
       onClick: (): void => launchTaskModule(item),
     };
     return out;

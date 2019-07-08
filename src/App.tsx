@@ -3,7 +3,7 @@ import './css/App.css';
 
 import { getFrameContext } from './utils/utils';
 import { SettingsView } from './components/SettingsView';
-import { ContentView } from './components/ContentView';
+import { ContentViewWrapper } from './components/ContentView';
 
 interface IAppProps {
   onThemeChange: (theme: string) => void;
@@ -20,12 +20,7 @@ export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
       </div>
     );
   } else {
-    return (
-      <div>
-        <ContentView onThemeChange={props.onThemeChange} />
-      </div>
-    );
+    return <ContentViewWrapper onThemeChange={props.onThemeChange} />;
   }
 };
-
 export default App;
