@@ -37,10 +37,7 @@ export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JS
 
   return (
     <Flex gap="gap.small" vAlign="center">
-      <Image
-        src="https://robohash.org/ted.png"
-        styles={{ width: '32px', height: '32px', backgroundColor: '#CCCCCC', margin: '0 0 16px 20px' }}
-      />
+      <Image styles={{ width: '32px', height: '32px', backgroundColor: '#CCCCCC', margin: '0 0 16px 20px' }} />
       <Flex.Item styles={{ margin: '0 0 16px 0' }}>
         <Header content="Placeholder" as="h3" />
       </Flex.Item>
