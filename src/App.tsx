@@ -3,20 +3,11 @@ import './css/App.css';
 
 import { getFrameContext } from './utils/utils';
 import { SettingsView } from './components/SettingsView';
-import { ContentView } from './components/ContentView';
-import { createComponent } from '@stardust-ui/react';
+import { ContentViewWrapper } from './components/ContentView';
 
 interface IAppProps {
   onThemeChange: (theme: string) => void;
 }
-
-const ContentViewWrapper = createComponent({
-  displayName: 'ContentViewWrapper',
-  render: ({ stardust, onThemeChange }) => {
-    const { classes } = stardust;
-    return <ContentView className={classes.root} onThemeChange={onThemeChange} />;
-  },
-});
 
 export const App: React.FC<IAppProps> = (props: IAppProps): JSX.Element => {
   // CONSTANTS
