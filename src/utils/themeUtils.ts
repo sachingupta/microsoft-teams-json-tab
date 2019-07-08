@@ -23,12 +23,9 @@ export const getThemeFromURL = (iUrl: string): string => {
 export const getTheme = (theme: string): ThemeInput => {
   const customTheme: ThemeInput = {
     componentVariables: {
-      ContentViewWrapper: ({ colorScheme }: any) => {
-        console.log(colorScheme);
-        return {
-          backgroundColor: colorScheme.default.background2,
-        };
-      },
+      ContentViewWrapper: ({ colorScheme }: any) => ({
+        backgroundColor: colorScheme.default.background2,
+      }),
       ListItem: ({ colorScheme }: any) => ({
         backgroundColor: colorScheme.default.background,
       }),
@@ -42,7 +39,6 @@ export const getTheme = (theme: string): ThemeInput => {
       ListItem: {
         root: ({ variables }: any) => ({
           backgroundColor: variables.backgroundColor,
-          margin: '2px 2px 0 0',
         }),
       },
     },
