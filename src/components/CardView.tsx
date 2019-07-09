@@ -1,53 +1,82 @@
 import React from 'react';
-import { Box } from '@stardust-ui/react';
-import { FlexItem } from './FlexItem';
-import '../css/CardView.css';
+import { Flex, Grid, Segment, Image, Header, Icon, Text, Button, gridBehavior } from '@stardust-ui/react';
 import { IItemListProps } from './ListView';
+import { ICard } from '../api/api.interface';
+import { stripHTML, launchTaskModule } from '../utils/utils';
+import '../css/App.css';
+import { Column } from 'adaptivecards';
 
 export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.Element => {
-  const itemList = [];
+  const calculateColumns = (height: number) => {
+    return Math.floor(height / 278);
+  };
 
-  let tempSubTitle: string | undefined;
-  let tempTitle: string;
+  const [Columns, setColumns] = React.useState(calculateColumns(window.innerWidth));
 
-  const maxTitleLength = 21;
-  const maxSubtitleLength = 170;
+  const updateColumn = () => {
+    setColumns(calculateColumns(window.innerWidth));
+  };
 
-  for (let i = 0; i < props.itemList.length; i++) {
-    const item = props.itemList[i];
-    item.preview.title = item.preview.title
-      .replace(/<[^>]*>?/gm, '')
-      .replace(/&nbsp;/gm, '')
-      .replace(/&quot;/gm, ''); // !!!!! REGEX HACK REMOVE !!!!!;
+  React.useEffect(() => {
+    window.addEventListener('resize', updateColumn);
+    return () => {
+      window.removeEventListener('resize', updateColumn);
+    };
+  }, [Columns]);
 
-    if (item.preview.subTitle) {
-      item.preview.subTitle = item.preview.subTitle
-        .replace(/<[^>]*>?/gm, '')
-        .replace(/&nbsp;/gm, '')
-        .replace(/&quot;/gm, ''); // !!!!! REGEX HACK REMOVE !!!!!;
-    }
-
-    tempSubTitle = item.preview.subTitle;
-    tempTitle = item.preview.title;
-
-    // Limiting title length to maintain consistent box sizes
-    if (tempTitle.length > maxTitleLength) {
-      const newTitle = tempTitle.substring(0, maxTitleLength).concat('...');
-      item.preview.title = newTitle;
-    }
-    // Also limiting subtitle length to maintain box sizes, if length of subtitle is greater than a certain value, make a substring and concat "..."
-    if (tempSubTitle && tempSubTitle.length > maxSubtitleLength) {
-      item.preview.subTitle = tempSubTitle.substring(0, maxSubtitleLength).concat('...');
-    }
-
-    // Pass new Item to FlexItem function to handle format of each box, then push each item to itemList array, a unique key is needed
-    const newItem = <Box key={i} content={FlexItem(item)} />;
-    itemList.push(newItem);
-  }
+  const processItem = (item: ICard): JSX.Element => {
+    return (
+      <Segment
+        data-is-focusable="true"
+        styles={{
+          margin: '0 0 16px 12px',
+          height: '146px',
+          padding: '20px 20px 20px 20px',
+          borderRadius: '3px',
+          boxShadow: '0px 2px 4px -0.75px rgba(0,0,0,0.1)',
+        }}
+        onClick={(): void => launchTaskModule(item)}
+      >
+        <Flex gap="gap.small">
+          <Flex.Item>
+            <Image
+              styles={{ width: '48px', height: '100%' }}
+              src={item.preview.heroImageSrc}
+              className="listItemImage"
+            />
+          </Flex.Item>
+          <Flex.Item size="size.half" grow>
+            <Flex column styles={{ textAlign: 'left' }}>
+              <Flex.Item>
+                <Text content={item.preview.title} styles={{ margin: '0 0 2px 0' }} size="medium" weight="bold" />
+              </Flex.Item>
+              <Flex.Item>
+                <Text content={'SUBTITLE HERE'} styles={{ margin: '0 0 2px 0' }} size="smaller" weight="semilight" />
+              </Flex.Item>
+              {item.preview.subTitle ? (
+                <Flex.Item
+                  grow
+                  size="size.half"
+                  styles={{
+                    display: '-webkit-box',
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 4,
+                    overflow: 'hidden',
+                  }}
+                >
+                  <Text content={item.preview.subTitle} weight="regular" size="small" />
+                </Flex.Item>
+              ) : null}
+            </Flex>
+          </Flex.Item>
+        </Flex>
+      </Segment>
+    );
+  };
 
   return (
-    <div className="CardsContainer" id="CardsContainer" tabIndex={1}>
-      {itemList}
+    <div style={{ margin: '0 0 0 8px' }}>
+      <Grid columns={Columns} accessibility={gridBehavior} content={props.itemList.map(processItem)} />
     </div>
   );
 };
