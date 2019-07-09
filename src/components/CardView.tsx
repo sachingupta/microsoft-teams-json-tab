@@ -7,16 +7,20 @@ import '../css/App.css';
 import { Column } from 'adaptivecards';
 
 export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.Element => {
+  // HELPER FUNCTION
   const calculateColumns = (height: number) => {
     return Math.floor(height / 278);
   };
 
+  // STATE HOOKS
   const [Columns, setColumns] = React.useState(calculateColumns(window.innerWidth));
 
+  // HANDLERS
   const updateColumn = () => {
     setColumns(calculateColumns(window.innerWidth));
   };
 
+  // EFFECT HOOKS
   React.useEffect(() => {
     window.addEventListener('resize', updateColumn);
     return () => {
@@ -24,6 +28,7 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
     };
   }, [Columns]);
 
+  // ICARD PROCESSOR
   const processItem = (item: ICard): JSX.Element => {
     return (
       <Segment
@@ -74,6 +79,7 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
     );
   };
 
+  // RENDER
   return (
     <div style={{ margin: '0 0 0 8px' }}>
       <Grid columns={Columns} accessibility={gridBehavior} content={props.itemList.map(processItem)} />
