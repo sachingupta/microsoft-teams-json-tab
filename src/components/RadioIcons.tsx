@@ -12,9 +12,13 @@ interface IRadioIconsProps {
 }
 
 export const RadioIcons: React.FC<IRadioIconsProps> = (props: IRadioIconsProps): JSX.Element => {
+  // STATEHOOKS
+  const [Outlined, setOutlined] = React.useState(true);
+
   // HANDLERS
   const handleChange = (event: React.SyntheticEvent, items: { value: viewType }): void => {
     props.onChange(items.value);
+    setOutlined(items.value === viewType.List);
   };
 
   return (
@@ -23,9 +27,8 @@ export const RadioIcons: React.FC<IRadioIconsProps> = (props: IRadioIconsProps):
         <Button
           icon={{
             name: 'menu',
-            outline: false,
+            outline: !Outlined,
             size: 'medium',
-            color: 'primary',
           }}
           iconOnly
           text
@@ -36,7 +39,7 @@ export const RadioIcons: React.FC<IRadioIconsProps> = (props: IRadioIconsProps):
         <Button
           icon={{
             name: 'gallery',
-            outline: false,
+            outline: Outlined,
             size: 'medium',
           }}
           iconOnly
