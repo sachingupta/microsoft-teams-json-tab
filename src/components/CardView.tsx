@@ -4,7 +4,6 @@ import { IItemListProps } from './ListView';
 import { ICard } from '../api/api.interface';
 import { stripHTML, launchTaskModule } from '../utils/utils';
 import '../css/App.css';
-import { Column } from 'adaptivecards';
 
 export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.Element => {
   // HELPER FUNCTION
@@ -53,10 +52,10 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           <Flex.Item size="size.half" grow>
             <Flex column styles={{ textAlign: 'left' }}>
               <Flex.Item>
-                <Text content={item.preview.title} styles={{ margin: '0 0 2px 0' }} size="medium" weight="bold" />
+                <Text content={stripHTML(item.preview.title)} styles={{ margin: '0 0 2px 0' }} size="medium" weight="bold" />
               </Flex.Item>
               <Flex.Item>
-                <Text content={'SUBTITLE HERE'} styles={{ margin: '0 0 2px 0' }} size="smaller" weight="semilight" />
+                <Text content={stripHTML('SUBTITLE HERE')} styles={{ margin: '0 0 2px 0' }} size="smaller" weight="semilight" />
               </Flex.Item>
               {item.preview.subTitle ? (
                 <Flex.Item
@@ -69,7 +68,7 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
                     overflow: 'hidden',
                   }}
                 >
-                  <Text content={item.preview.subTitle} weight="regular" size="small" />
+                  <Text content={stripHTML(item.preview.subTitle)} weight="regular" size="small" />
                 </Flex.Item>
               ) : null}
             </Flex>
