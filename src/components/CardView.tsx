@@ -6,9 +6,12 @@ import { stripHTML, launchTaskModule } from '../utils/utils';
 import '../css/App.css';
 
 export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.Element => {
+  // CONSTANTS
+  const minimumCardWidth = 278; //px
+
   // HELPER FUNCTION
-  const calculateColumns = (height: number) => {
-    return Math.floor(height / 278);
+  const calculateColumns = (width: number) => {
+    return Math.floor(width / minimumCardWidth);
   };
 
   // STATE HOOKS
