@@ -21,7 +21,12 @@ export const RadioIcons: React.FC<IRadioIconsProps> = (props: IRadioIconsProps):
     <Flex styles={props.styles} vAlign="center">
       <Flex.Item>
         <Button
-          icon="menu"
+          icon={{
+            name: 'menu',
+            outline: false,
+            size: 'medium',
+            color: 'primary',
+          }}
           iconOnly
           text
           onClick={(e: React.SyntheticEvent): void => handleChange(e, { value: viewType.List })}
@@ -29,7 +34,11 @@ export const RadioIcons: React.FC<IRadioIconsProps> = (props: IRadioIconsProps):
       </Flex.Item>
       <Flex.Item>
         <Button
-          icon="table"
+          icon={{
+            name: 'gallery',
+            outline: false,
+            size: 'medium',
+          }}
           iconOnly
           text
           onClick={(e: React.SyntheticEvent): void => handleChange(e, { value: viewType.Grid })}
