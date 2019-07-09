@@ -52,10 +52,20 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           <Flex.Item size="size.half" grow>
             <Flex column styles={{ textAlign: 'left' }}>
               <Flex.Item>
-                <Text content={stripHTML(item.preview.title)} styles={{ margin: '0 0 2px 0' }} size="medium" weight="bold" />
+                <Text
+                  content={stripHTML(item.preview.title)}
+                  styles={{ margin: '0 0 2px 0' }}
+                  size="medium"
+                  weight="bold"
+                />
               </Flex.Item>
               <Flex.Item>
-                <Text content={stripHTML('SUBTITLE HERE')} styles={{ margin: '0 0 2px 0' }} size="smaller" weight="semilight" />
+                <Text
+                  content={stripHTML('SUBTITLE HERE')}
+                  styles={{ margin: '0 0 2px 0' }}
+                  size="smaller"
+                  weight="semilight"
+                />
               </Flex.Item>
               {item.preview.subTitle ? (
                 <Flex.Item
