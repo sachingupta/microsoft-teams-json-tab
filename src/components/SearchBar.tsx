@@ -1,6 +1,8 @@
 import React from 'react';
 import { Input, Button, Icon, Image, Flex, Header } from '@stardust-ui/react';
 import { RadioIcons } from './RadioIcons';
+import { debounce } from 'lodash';
+
 enum viewType {
   List = 'List',
   Grid = 'Grid',
@@ -12,16 +14,21 @@ interface ISearchBarProps {
 }
 
 export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JSX.Element => {
-  // HOOKS
+  // STATE HOOKS
   const [Query, setQuery] = React.useState('');
+
+  //DEBOUNCED QUERY
+  const onSearchDebounced = debounce(props.onSearch, 300);
 
   // HANDLERS
   const handleOnChange = (event: React.SyntheticEvent<HTMLElement>): void => {
-    setQuery((event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value);
-  };
-
-  const handleOnClick = (): void => {
-    props.onSearch(Query);
+    const newQuery = (event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value;
+    if ((event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value.length >= 1) {
+      onSearchDebounced(newQuery);
+    } else {
+      onSearchDebounced('');
+    }
+    setQuery(newQuery);
   };
 
   const handleRadioButtonChange = (view: string): void => {

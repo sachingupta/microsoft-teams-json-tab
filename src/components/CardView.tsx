@@ -54,7 +54,9 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           </Flex.Item>
           <Flex.Item size="size.half" grow>
             <Flex column styles={{ textAlign: 'left' }}>
-              <Flex.Item>
+              <Flex.Item
+                styles={{ display: '-webkit-box', WebkitBoxOrient: 'vertical', WebkitLineClamp: 1, overflow: 'hidden' }}
+              >
                 <Text
                   content={stripHTML(item.preview.title)}
                   styles={{ margin: '0 0 2px 0' }}
@@ -62,7 +64,9 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
                   weight="bold"
                 />
               </Flex.Item>
-              <Flex.Item>
+              <Flex.Item
+                styles={{ display: '-webkit-box', WebkitBoxOrient: 'vertical', WebkitLineClamp: 1, overflow: 'hidden' }}
+              >
                 <Text
                   content={stripHTML('SUBTITLE HERE')}
                   styles={{ margin: '0 0 2px 0' }}
