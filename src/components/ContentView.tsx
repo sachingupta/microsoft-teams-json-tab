@@ -80,6 +80,7 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
         commandId: getCommandId(window.location.href),
       };
       getResults(request, onResults, onError);
+      setAppState(AppStateEnum.Loading);
     }
   }, [props.onThemeChange]);
 
