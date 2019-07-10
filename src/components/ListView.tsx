@@ -28,10 +28,10 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
             <Image src={item.preview.heroImageSrc} className="listItemImage" />
           </Flex.Item>
           <Flex.Item size="size.medium">
-            <Text size="medium" weight="semibold" content={stripHTML(item.preview.title)} />
+            <Text truncated size="medium" weight="semibold" content={stripHTML(item.preview.title)} />
           </Flex.Item>
           <Flex.Item size="size.medium">
-            <Text size="medium" weight="regular" content={stripHTML('SUBTITLE HERE')} />
+            <Text truncated size="medium" weight="regular" content={stripHTML('SUBTITLE HERE')} />
           </Flex.Item>
           {item.preview.subTitle ? (
             <Flex.Item grow size="size.half">
