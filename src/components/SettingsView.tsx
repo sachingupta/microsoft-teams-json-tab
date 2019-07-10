@@ -26,20 +26,14 @@ export const SettingsView: React.FC = (): JSX.Element => {
     const command = CommandList.find(
       (item: microsoftTeams.bot.Command): boolean => item.title === res.value,
     ) as microsoftTeams.bot.Command;
-    setCommandSelected(command.id);
-    microsoftTeams.settings.setValidityState(true);
+    if (command) {
+      onCommandSelection(command);
+    }
   };
 
-  // EFFECT HOOKS
-  React.useEffect((): void => {
-    microsoftTeams.initialize();
-    microsoftTeams.appInitialization.notifyAppLoaded();
-
+  const onCommandSelection = (command: microsoftTeams.bot.Command): void => {
+    setCommandSelected(command.id);
     let contentUrl: string;
-    const command = CommandList.find(
-      (item: microsoftTeams.bot.Command): boolean => item.id === CommandSelected,
-    ) as microsoftTeams.bot.Command;
-
     if (command.isInitialRun) {
       contentUrl = `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}&initialRun=${command.isInitialRun}`;
     } else {
@@ -54,6 +48,13 @@ export const SettingsView: React.FC = (): JSX.Element => {
       });
       saveEvent.notifySuccess();
     });
+    microsoftTeams.settings.setValidityState(true);
+  };
+
+  // EFFECT HOOKS
+  React.useEffect((): void => {
+    microsoftTeams.initialize();
+    microsoftTeams.appInitialization.notifyAppLoaded();
     getSupportedCommands(onGetCommandResponse, onError);
   });
 

@@ -14,16 +14,21 @@ interface ISearchBarProps {
 }
 
 export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JSX.Element => {
+  // STATE HOOKS
+  const [Query, setQuery] = React.useState('');
+
   //DEBOUNCED QUERY
   const onSearchDebounced = debounce(props.onSearch, 300);
 
   // HANDLERS
   const handleOnChange = (event: React.SyntheticEvent<HTMLElement>): void => {
+    const newQuery = (event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value;
     if ((event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value.length >= 1) {
-      onSearchDebounced((event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value);
+      onSearchDebounced(newQuery);
     } else {
       onSearchDebounced('');
     }
+    setQuery(newQuery);
   };
 
   const handleRadioButtonChange = (view: string): void => {
@@ -33,7 +38,7 @@ export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JS
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>): void => {
     if (event.key === 'Enter') {
-      props.onSearch((event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value);
+      props.onSearch(Query);
     }
   };
 
