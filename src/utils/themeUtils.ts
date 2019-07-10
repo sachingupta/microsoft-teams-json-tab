@@ -19,39 +19,52 @@ export const getThemeFromURL = (iUrl: string): string => {
   return themeString;
 };
 
+const getCustomTheme = () => ({
+  componentVariables: {
+    ContentViewWrapper: ({ colorScheme }: any) => ({
+      backgroundColor: colorScheme.default.background2,
+    }),
+    ListItem: ({ colorScheme }: any) => ({
+      backgroundColor: colorScheme.default.background,
+    }),
+    Segment: ({ colorScheme }: any) => ({
+      backgroundColor: colorScheme.default.background,
+    }),
+    Input: ({ colorScheme }: any) => ({
+      inputBackgroundColor: colorScheme.default.background,
+    }),
+  },
+  componentStyles: {
+    ContentViewWrapper: {
+      root: ({ variables }: any) => ({
+        backgroundColor: variables.backgroundColor,
+      }),
+    },
+    ListItem: {
+      root: ({ variables }: any) => ({
+        backgroundColor: variables.backgroundColor,
+      }),
+    },
+    Input: {
+      input: ({ variables }: any) => ({
+        backgroundColor: variables.inputBackgroundColor,
+      }),
+    },
+  },
+});
+
 // gets theme type from string
 export const getTheme = (theme: string): ThemeInput => {
-  const customTheme: ThemeInput = {
-    componentVariables: {
-      ContentViewWrapper: ({ colorScheme }: any) => ({
-        backgroundColor: colorScheme.default.background2,
-      }),
-      ListItem: ({ colorScheme }: any) => ({
-        backgroundColor: colorScheme.default.background,
-      }),
-    },
-    componentStyles: {
-      ContentViewWrapper: {
-        root: ({ variables }: any) => ({
-          backgroundColor: variables.backgroundColor,
-        }),
-      },
-      ListItem: {
-        root: ({ variables }: any) => ({
-          backgroundColor: variables.backgroundColor,
-        }),
-      },
-    },
-  };
-
-  const newTheme: ThemeInput = mergeThemes(themes.teams, customTheme);
-
+  let customTheme: ThemeInput;
   switch (theme) {
     case themeTypes.Contrast:
-      return themes.teamsHighContrast;
+      customTheme = getCustomTheme();
+      return mergeThemes(themes.teamsHighContrast, customTheme);
     case themeTypes.Dark:
-      return themes.teamsDark;
+      customTheme = getCustomTheme();
+      return mergeThemes(themes.teamsDark, customTheme);
+    default:
+      customTheme = getCustomTheme();
+      return mergeThemes(themes.teams, customTheme);
   }
-
-  return newTheme;
 };
