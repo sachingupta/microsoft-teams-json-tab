@@ -44,7 +44,10 @@ export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JS
       </Flex.Item>
       <Input
         placeholder="Search"
-        icon="search"
+        icon={{
+          name: 'search',
+          outline: true,
+        }}
         input={{
           styles: { backgroundColor: 'white', width: '250px' },
         }}
