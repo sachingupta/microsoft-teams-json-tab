@@ -22,12 +22,13 @@ export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JS
 
   // HANDLERS
   const handleOnChange = (event: React.SyntheticEvent<HTMLElement>): void => {
+    const newQuery = (event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value;
     if ((event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value.length >= 1) {
-      onSearchDebounced((event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value);
+      onSearchDebounced(newQuery);
     } else {
       onSearchDebounced('');
     }
-    setQuery((event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value);
+    setQuery(newQuery);
   };
 
   const handleRadioButtonChange = (view: string): void => {
