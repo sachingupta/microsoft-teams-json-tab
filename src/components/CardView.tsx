@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import { Flex, Grid, Segment, Image, Header, Icon, Text, Button, gridBehavior } from '@stardust-ui/react';
 import { IItemListProps } from './ListView';
 import { ICard } from '../api/api.interface';
@@ -43,6 +43,11 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           boxShadow: '0px 2px 4px -0.75px rgba(0,0,0,0.1)',
         }}
         onClick={(): void => launchTaskModule(item)}
+        onKeyPress={(e: React.KeyboardEvent<HTMLDivElement>) => {
+          if (e.key === 'Enter') {
+            launchTaskModule(item);
+          }
+        }}
       >
         <Flex gap="gap.small">
           <Flex.Item>
