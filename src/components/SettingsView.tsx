@@ -49,7 +49,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
       saveEvent.notifySuccess();
     });
     microsoftTeams.settings.setValidityState(true);
-  }
+  };
 
   // EFFECT HOOKS
   React.useEffect((): void => {
