@@ -56,7 +56,7 @@ export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JS
           outline: true,
         }}
         input={{
-          styles: { backgroundColor: 'white', width: '250px' },
+          styles: { width: '250px' },
         }}
         styles={{ margin: '0px 0px 16px 0px' }}
         onChange={handleOnChange}
