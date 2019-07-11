@@ -31,13 +31,13 @@ export const SettingsView: React.FC = (): JSX.Element => {
     }
   };
 
-  const onCommandSelection = (command: microsoftTeams.bot.Command): void => {
+  const onCommandSelection = (command: any): void => {
     setCommandSelected(command.id);
     let contentUrl: string;
-    if (command.isInitialRun) {
-      contentUrl = `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}&initialRun=${command.isInitialRun}`;
+    if (command.initialRun) {
+      contentUrl = `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${command.id}&initialRun=${command.initialRun}`;
     } else {
-      contentUrl = `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${CommandSelected}`;
+      contentUrl = `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${command.id}`;
     }
 
     microsoftTeams.settings.registerOnSaveHandler((saveEvent: microsoftTeams.settings.SaveEvent): void => {
