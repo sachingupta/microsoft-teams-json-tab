@@ -2,6 +2,7 @@ import React from 'react';
 import { List, Image, Flex, Text, Icon, Menu, menuAsToolbarBehavior } from '@stardust-ui/react';
 import { ICard } from '../api/api.interface';
 import { launchTaskModule, stripHTML } from '../utils/utils';
+import { Overflow } from './Overflow';
 
 export interface IItemListProps {
   itemList: ICard[];
@@ -40,7 +41,7 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
               <Text truncated size="medium" weight="regular" content={stripHTML(item.preview.text)} />
             </Flex.Item>
           ) : null}
-          <Menu items={[]} iconOnly /> {/* TODO ADD ACTIONS, CREATE NEW COMPONENT */}
+          <Overflow />
         </Flex>
       ),
       styles: { margin: '2px 2px 0 0' },
