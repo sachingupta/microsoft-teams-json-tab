@@ -30,7 +30,7 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   // state hooks
   const [ViewOption, setViewOption] = React.useState('List');
   const [Result, setResult] = React.useState([] as ICard[]);
-  const [AppState, setAppState] = React.useState(AppStateEnum.Render);
+  const [AppState, setAppState] = React.useState(AppStateEnum.Auth);
   const [ErrorMessage, setErrorMessage] = React.useState('Hmm... Something went wrong...');
   const [AuthData, setAuthData] = React.useState({ url: '', title: 'Sign in' });
   const [Query, setQuery] = React.useState({ query: '', commandId: getCommandId(window.location.href) });

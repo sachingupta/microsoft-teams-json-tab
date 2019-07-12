@@ -1,6 +1,8 @@
 import React from 'react';
-import { Text } from '@stardust-ui/react';
+import { Text, Image } from '@stardust-ui/react';
 import * as microsoftTeams from '@microsoft/teams-js';
+
+import '../css/AuthView.css';
 
 interface IAuthViewProps {
   title: string;
@@ -10,19 +12,15 @@ interface IAuthViewProps {
 }
 
 export const AuthView: React.FC<IAuthViewProps> = (props: IAuthViewProps): JSX.Element => {
-  const onAuth = (results: microsoftTeams.bot.Results): void => {
-    alert('Successfully authenticated.');
+  const [ErrorMessage, setErrorMessage] = React.useState('');
+
+  const onAuthSuccess = (results: microsoftTeams.bot.Results): void => {
     props.onAuthenticated(results);
   };
 
-  const onError = (error: string): void => {
-    alert(`Failed to authenticate.\n${error}`);
+  const onAuthFailure = (error: string): void => {
+    setErrorMessage('Something went wrong, please try again');
   };
-
-  React.useEffect((): void => {
-    microsoftTeams.initialize();
-    microsoftTeams.appInitialization.notifyAppLoaded();
-  });
 
   const handleAuthentication = () => {
     const authParams: microsoftTeams.bot.AuthQueryRequest = {
@@ -31,24 +29,21 @@ export const AuthView: React.FC<IAuthViewProps> = (props: IAuthViewProps): JSX.E
       url: props.url,
     };
 
-    microsoftTeams.bot.authenticate(authParams, onAuth, onError);
+    microsoftTeams.bot.authenticate(authParams, onAuthSuccess, onAuthFailure);
   };
 
   return (
-    <>
+    <div className="AuthView">
       <Text size={'large'} content={props.title} />
       <Text
         size={'medium'}
         content={
           <p>
-            You&apos;ll need to{' '}
-            <a href="" onClick={handleAuthentication}>
-              sign in
-            </a>{' '}
-            to use this app.
+            You&apos;ll need to <a onClick={handleAuthentication}>sign in</a> to use this app.
           </p>
         }
       />
-    </>
+      <Text id="error" content={ErrorMessage} />
+    </div>
   );
 };
