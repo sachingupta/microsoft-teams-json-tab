@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Image, Flex, Text } from '@stardust-ui/react';
+import { List, Image, Flex, Text, Icon, Menu, menuAsToolbarBehavior } from '@stardust-ui/react';
 import { ICard } from '../api/api.interface';
 import { launchTaskModule, stripHTML } from '../utils/utils';
 
@@ -30,14 +30,17 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           <Flex.Item size="size.medium">
             <Text truncated size="medium" weight="semibold" content={stripHTML(item.preview.title)} />
           </Flex.Item>
-          <Flex.Item size="size.medium">
-            <Text truncated size="medium" weight="regular" content={stripHTML('SUBTITLE HERE')} />
-          </Flex.Item>
           {item.preview.subTitle ? (
-            <Flex.Item grow size="size.half">
+            <Flex.Item grow size="size.medium">
               <Text truncated size="medium" weight="regular" content={stripHTML(item.preview.subTitle)} />
             </Flex.Item>
           ) : null}
+          {item.preview.text ? (
+            <Flex.Item grow size="size.half">
+              <Text truncated size="medium" weight="regular" content={stripHTML(item.preview.text)} />
+            </Flex.Item>
+          ) : null}
+          <Menu items={[]} iconOnly /> {/* TODO ADD ACTIONS, CREATE NEW COMPONENT */}
         </Flex>
       ),
       styles: { margin: '2px 2px 0 0' },

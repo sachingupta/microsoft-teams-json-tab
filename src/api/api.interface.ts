@@ -1,6 +1,7 @@
 export interface IPreviewCard {
   title: string;
   subTitle?: string;
+  text?: string;
   heroImageSrc?: string;
 }
 

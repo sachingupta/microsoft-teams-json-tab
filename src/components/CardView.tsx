@@ -69,17 +69,24 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
                   weight="bold"
                 />
               </Flex.Item>
-              <Flex.Item
-                styles={{ display: '-webkit-box', WebkitBoxOrient: 'vertical', WebkitLineClamp: 1, overflow: 'hidden' }}
-              >
-                <Text
-                  content={stripHTML('SUBTITLE HERE')}
-                  styles={{ margin: '0 0 2px 0' }}
-                  size="smaller"
-                  weight="semilight"
-                />
-              </Flex.Item>
               {item.preview.subTitle ? (
+                <Flex.Item
+                  styles={{
+                    display: '-webkit-box',
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 1,
+                    overflow: 'hidden',
+                  }}
+                >
+                  <Text
+                    content={stripHTML(item.preview.subTitle)}
+                    styles={{ margin: '0 0 2px 0' }}
+                    weight="regular"
+                    size="small"
+                  />
+                </Flex.Item>
+              ) : null}
+              {item.preview.text ? (
                 <Flex.Item
                   grow
                   size="size.half"
@@ -90,7 +97,7 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
                     overflow: 'hidden',
                   }}
                 >
-                  <Text content={stripHTML(item.preview.subTitle)} weight="regular" size="small" />
+                  <Text content={stripHTML(item.preview.text)} weight="regular" size="small" />
                 </Flex.Item>
               ) : null}
             </Flex>

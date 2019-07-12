@@ -42,6 +42,7 @@ export const getFrameContext = (iUrl: string): string => {
 
 export const processQueryResponse = (item: microsoftTeams.bot.Attachment, botID: string): ICard => {
   let url = '';
+  console.log(item);
   if (item.previewRawPayload.content.hasOwnProperty('images')) {
     if (
       item.previewRawPayload.content.images &&
@@ -55,7 +56,8 @@ export const processQueryResponse = (item: microsoftTeams.bot.Attachment, botID:
     content: item.card.content,
     preview: {
       title: item.previewRawPayload.content.title,
-      subTitle: item.previewRawPayload.content.text,
+      subTitle: item.previewRawPayload.content.subtitle,
+      text: item.previewRawPayload.content.text,
       heroImageSrc: url,
     },
     botId: botID,
