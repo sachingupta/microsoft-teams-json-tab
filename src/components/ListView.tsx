@@ -40,7 +40,6 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
               <Text truncated size="medium" weight="regular" content={stripHTML(item.preview.text)} />
             </Flex.Item>
           ) : null}
-          <Menu items={[]} iconOnly /> {/* TODO ADD ACTIONS, CREATE NEW COMPONENT */}
         </Flex>
       ),
       styles: { margin: '2px 2px 0 0' },
