@@ -21,6 +21,16 @@ export const Overflow: React.FC<OverflowProps> = (props: OverflowProps): JSX.Ele
             content: 'Youtube',
             onClick: () => window.open('https://youtube.com', '_blank'),
           },
+          {
+            key: 'youtube',
+            content: 'Youtube',
+            onClick: () => window.open('https://youtube.com', '_blank'),
+          },
+          {
+            key: 'youtube',
+            content: 'Youtube',
+            onClick: () => window.open('https://youtube.com', '_blank'),
+          },
         ],
       },
     },
