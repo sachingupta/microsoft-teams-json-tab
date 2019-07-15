@@ -1,11 +1,22 @@
 import React from 'react';
 import { Menu } from '@stardust-ui/react';
+import { ICard, OverflowAction } from '../api/api.interface';
+import { getOverflowActions } from '../utils/utils';
 
 export interface OverflowProps {
-  actions?: any[];
+  card: ICard;
 }
 
 export const Overflow: React.FC<OverflowProps> = (props: OverflowProps): JSX.Element => {
+  const displayActions = (action: OverflowAction) => ({
+    key: action.id,
+    content: action.title ? action.title : action.id,
+    disabled: !action.enabled,
+    onClick: action.url ? () => window.open(action.url) : undefined,
+  });
+
+  const actions = getOverflowActions(props.card);
+
   const items = [
     {
       key: 'more',
@@ -15,23 +26,7 @@ export const Overflow: React.FC<OverflowProps> = (props: OverflowProps): JSX.Ele
       },
       indicator: false,
       menu: {
-        items: [
-          {
-            key: 'youtube',
-            content: 'Youtube',
-            onClick: () => window.open('https://youtube.com', '_blank'),
-          },
-          {
-            key: 'youtube',
-            content: 'Youtube',
-            onClick: () => window.open('https://youtube.com', '_blank'),
-          },
-          {
-            key: 'youtube',
-            content: 'Youtube',
-            onClick: () => window.open('https://youtube.com', '_blank'),
-          },
-        ],
+        items: actions.map(displayActions),
       },
     },
   ];

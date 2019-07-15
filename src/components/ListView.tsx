@@ -41,7 +41,7 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
               <Text truncated size="medium" weight="regular" content={stripHTML(item.preview.text)} />
             </Flex.Item>
           ) : null}
-          <Overflow />
+          <Overflow card={item} />
         </Flex>
       ),
       styles: { margin: '2px 2px 0 0' },
