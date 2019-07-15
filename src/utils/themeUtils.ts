@@ -26,13 +26,17 @@ const getCustomTheme = () => ({
     }),
     ListItem: ({ colorScheme }: any) => ({
       backgroundColor: colorScheme.default.background,
+      hoverBackgroundColor: colorScheme.default.backgroundHover1,
+      hoverTextColor: colorScheme.default.foregroundFocus,
+      activeBackgroundColor: colorScheme.default.borderActive,
+      activeTextColor: colorScheme.default.foregroundFocus,
     }),
     Segment: ({ colorScheme }: any) => ({
       backgroundColor: colorScheme.default.background,
-      hoverBackgroundColor: colorScheme.brand.background,
-      hoverTextColor: colorScheme.default.foregroundFocus3,
-      activeBackgroundColor: colorScheme.brand.backgroundPressed,
-      activeTextColor: colorScheme.default.foregroundFocus3,
+      hoverBackgroundColor: colorScheme.default.backgroundHover1,
+      hoverTextColor: colorScheme.default.foregroundFocus,
+      activeBackgroundColor: colorScheme.default.borderActive,
+      activeTextColor: colorScheme.default.foregroundFocus,
     }),
     Input: ({ colorScheme }: any) => ({
       inputBackgroundColor: colorScheme.default.background,
@@ -47,6 +51,18 @@ const getCustomTheme = () => ({
     ListItem: {
       root: ({ variables }: any) => ({
         backgroundColor: variables.backgroundColor,
+        ':hover': {
+          backgroundColor: variables.hoverBackgroundColor,
+          color: variables.hoverTextColor,
+        },
+        ':active': {
+          backgroundColor: variables.activeBackgroundColor,
+          color: variables.activeTextColor,
+        },
+        ':focus': {
+          backgroundColor: variables.hoverBackgroundColor,
+          color: variables.hoverTextColor,
+        },
       }),
     },
     Input: {
