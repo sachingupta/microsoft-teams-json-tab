@@ -11,3 +11,11 @@ export interface ICard {
   preview: IPreviewCard;
   botId: string;
 }
+
+export interface OverflowAction {
+  type: string;
+  title?: string;
+  id: string;
+  url?: string;
+  enabled: boolean;
+}
