@@ -40,7 +40,7 @@ export const RadioIcons: React.FC<IRadioIconsProps> = (props: IRadioIconsProps):
 
   return (
     <Flex styles={props.styles} vAlign="center">
-      <Menu items={items} accessibility={menuAsToolbarBehavior} iconOnly />
+      <Menu items={items} defaultActiveIndex={0} accessibility={menuAsToolbarBehavior} iconOnly />
     </Flex>
   );
 };
