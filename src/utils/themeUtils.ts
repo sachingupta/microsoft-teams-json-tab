@@ -30,9 +30,9 @@ const getCustomTheme = () => ({
     Segment: ({ colorScheme }: any) => ({
       backgroundColor: colorScheme.default.background,
       hoverBackgroundColor: colorScheme.brand.background,
-      hoverTextColor: colorScheme.default.backgroundFocus,
+      hoverTextColor: colorScheme.default.foregroundFocus3,
       activeBackgroundColor: colorScheme.brand.backgroundPressed,
-      activeTextColor: colorScheme.default.backgroundFocus,
+      activeTextColor: colorScheme.default.foregroundFocus3,
     }),
     Input: ({ colorScheme }: any) => ({
       inputBackgroundColor: colorScheme.default.background,
