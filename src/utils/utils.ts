@@ -1,5 +1,5 @@
 import * as microsoftTeams from '@microsoft/teams-js';
-import { ICard } from '../api/api.interface';
+import { ICard, OverflowAction } from '../api/api.interface';
 import * as queryString from 'query-string';
 import { ISubmitAction, IOpenUrlAction, IShowCardAction } from 'adaptivecards/lib/schema';
 
@@ -84,10 +84,17 @@ export const stripHTML = (html: string): string => {
   return div.textContent || div.innerText || '';
 };
 
-export const getOverflowActions = (card: ICard): any[] => {
-  const supportedOverflowActions: string[] = ['Action.OpenUrl', 'invoke'];
+export const processOverflowAction = (action: ISubmitAction | IOpenUrlAction | IShowCardAction): OverflowAction => {
+  const supportedOverflowActions: string[] = ['Action.OpenUrl'];
+  return {
+    id: action.id,
+    type: action.type,
+    title: action.title ? action.title : undefined,
+    enabled: supportedOverflowActions.includes(action.type),
+    url: action.type === 'Action.OpenUrl' ? action.url : undefined,
+  };
+};
 
-  return card.content.actions.filter((item: ISubmitAction | IOpenUrlAction | IShowCardAction): boolean => {
-    return supportedOverflowActions.includes(item.type);
-  });
+export const getOverflowActions = (card: ICard): OverflowAction[] => {
+  return card.content.actions.map(processOverflowAction);
 };
