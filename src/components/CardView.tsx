@@ -4,6 +4,7 @@ import { IItemListProps } from './ListView';
 import { ICard } from '../api/api.interface';
 import { stripHTML, launchTaskModule } from '../utils/utils';
 import '../css/App.css';
+import { Overflow } from './Overflow';
 
 export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.Element => {
   // CONSTANTS
@@ -41,6 +42,7 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           padding: '20px 20px 20px 20px',
           borderRadius: '3px',
           boxShadow: '0px 2px 4px -0.75px rgba(0,0,0,0.1)',
+          position: 'relative',
         }}
         onClick={(): void => launchTaskModule(item)}
         onKeyPress={(e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -49,6 +51,7 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           }
         }}
       >
+        <Overflow card={item} styles={{ position: 'absolute', right: '0', top: '0', margin: '0 8px 0px 0px' }} />
         <Flex gap="gap.small">
           <Flex.Item>
             <Image
