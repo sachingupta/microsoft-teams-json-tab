@@ -32,7 +32,7 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   // state hooks
   const [ViewOption, setViewOption] = React.useState('List');
   const [Result, setResult] = React.useState([] as ICard[]);
-  const [AppState, setAppState] = React.useState(AppStateEnum.NoResults);
+  const [AppState, setAppState] = React.useState(AppStateEnum.Render);
   const [ErrorMessage, setErrorMessage] = React.useState('');
   const [AuthData, setAuthData] = React.useState({ url: '', title: 'Sign in' });
   const [Query, setQuery] = React.useState({ query: '', commandId: getCommandId(window.location.href) });
@@ -50,11 +50,7 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
     } else {
       const resultsResponse: microsoftTeams.bot.Results = response.data as microsoftTeams.bot.Results;
       setResult(parseQueryResponse(resultsResponse));
-      if (Result.length === 0) {
-        setAppState(AppStateEnum.NoResults);
-      } else {
-        setAppState(AppStateEnum.Render);
-      }
+      handleIfNoResults(resultsResponse.attachments);
       microsoftTeams.appInitialization.notifySuccess();
     }
   };
@@ -70,6 +66,14 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   const handleViewChange = (viewOption: string): void => {
     if (viewOption) {
       setViewOption(viewOption);
+    }
+  };
+
+  const handleIfNoResults = (response: microsoftTeams.bot.Attachment[]): void => {
+    if (response.length === 0) {
+      setAppState(AppStateEnum.NoResults);
+    } else {
+      setAppState(AppStateEnum.Render);
     }
   };
 
