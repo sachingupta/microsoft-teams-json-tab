@@ -6,6 +6,7 @@ import { getOverflowActions } from '../utils/utils';
 export interface OverflowProps {
   card: ICard;
   styles?: object;
+  title?: string;
 }
 
 export const Overflow: React.FC<OverflowProps> = (props: OverflowProps): JSX.Element => {
@@ -32,5 +33,5 @@ export const Overflow: React.FC<OverflowProps> = (props: OverflowProps): JSX.Ele
     },
   ];
 
-  return <Menu iconOnly items={items} styles={props.styles} />;
+  return <Menu iconOnly items={items} styles={props.styles} title={props.title} />;
 };
