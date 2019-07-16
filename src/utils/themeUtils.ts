@@ -29,6 +29,10 @@ const getCustomTheme = () => ({
     }),
     Segment: ({ colorScheme }: any) => ({
       backgroundColor: colorScheme.default.background,
+      hoverBackgroundColor: colorScheme.brand.background,
+      hoverTextColor: colorScheme.default.foregroundFocus3,
+      activeBackgroundColor: colorScheme.brand.backgroundPressed,
+      activeTextColor: colorScheme.default.foregroundFocus3,
     }),
     Input: ({ colorScheme }: any) => ({
       inputBackgroundColor: colorScheme.default.background,
@@ -48,6 +52,22 @@ const getCustomTheme = () => ({
     Input: {
       input: ({ variables }: any) => ({
         backgroundColor: variables.inputBackgroundColor,
+      }),
+    },
+    Segment: {
+      root: ({ variables }: any) => ({
+        ':hover': {
+          backgroundColor: variables.hoverBackgroundColor,
+          color: variables.hoverTextColor,
+        },
+        ':active': {
+          backgroundColor: variables.activeBackgroundColor,
+          color: variables.activeTextColor,
+        },
+        ':focus': {
+          backgroundColor: variables.hoverBackgroundColor,
+          color: variables.hoverTextColor,
+        },
       }),
     },
   },

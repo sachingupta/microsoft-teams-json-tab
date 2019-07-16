@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Grid, Segment, Image, Header, Icon, Text, Button, gridBehavior } from '@stardust-ui/react';
+import { Flex, Grid, Segment, Image, Text, gridBehavior } from '@stardust-ui/react';
 import { IItemListProps } from './ListView';
 import { ICard } from '../api/api.interface';
 import { stripHTML, launchTaskModule } from '../utils/utils';
@@ -66,7 +66,7 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
                   content={stripHTML(item.preview.title)}
                   styles={{ margin: '0 0 2px 0' }}
                   size="medium"
-                  weight="bold"
+                  weight="semibold"
                 />
               </Flex.Item>
               {item.preview.subTitle ? (
@@ -82,7 +82,7 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
                     content={stripHTML(item.preview.subTitle)}
                     styles={{ margin: '0 0 2px 0' }}
                     weight="regular"
-                    size="small"
+                    size="medium"
                   />
                 </Flex.Item>
               ) : null}
@@ -93,11 +93,11 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
                   styles={{
                     display: '-webkit-box',
                     WebkitBoxOrient: 'vertical',
-                    WebkitLineClamp: 4,
+                    WebkitLineClamp: 3,
                     overflow: 'hidden',
                   }}
                 >
-                  <Text content={stripHTML(item.preview.text)} weight="regular" size="small" />
+                  <Text content={stripHTML(item.preview.text)} weight="regular" size="medium" />
                 </Flex.Item>
               ) : null}
             </Flex>
