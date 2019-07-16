@@ -7,6 +7,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
   // STATE HOOKS
   const [CommandList, setCommandList] = React.useState([] as microsoftTeams.bot.Command[]);
   const [CommandSelected, setCommandSelected] = React.useState('');
+  const [ContentUrl, setContentUrl] = React.useState('');
   const [TabName, setTabName] = React.useState('JSONTabDefault');
   // HANDLERS
   const onError = (error: string): void => {
@@ -33,28 +34,32 @@ export const SettingsView: React.FC = (): JSX.Element => {
 
   const onCommandSelection = (command: any): void => {
     setCommandSelected(command.id);
-    let contentUrl: string;
     if (command.initialRun) {
-      contentUrl = `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${command.id}&initialRun=${command.initialRun}`;
+      setContentUrl(
+        `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${command.id}&initialRun=${command.initialRun}`,
+      );
     } else {
-      contentUrl = `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${command.id}`;
+      setContentUrl(
+        `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${command.id}`,
+      );
     }
-
-    microsoftTeams.settings.registerOnSaveHandler((saveEvent: microsoftTeams.settings.SaveEvent): void => {
-      microsoftTeams.settings.setSettings({
-        entityId: 'JSONTab',
-        contentUrl: contentUrl,
-        suggestedDisplayName: TabName,
-      });
-      saveEvent.notifySuccess();
-    });
     microsoftTeams.settings.setValidityState(true);
+  };
+
+  const saveHandler = (saveEvent: microsoftTeams.settings.SaveEvent): void => {
+    microsoftTeams.settings.setSettings({
+      entityId: 'JSONTab',
+      contentUrl: ContentUrl,
+      suggestedDisplayName: TabName,
+    });
+    saveEvent.notifySuccess();
   };
 
   // EFFECT HOOKS
   React.useEffect((): void => {
     microsoftTeams.initialize();
     microsoftTeams.appInitialization.notifyAppLoaded();
+    microsoftTeams.settings.registerOnSaveHandler(saveHandler);
     getSupportedCommands(onGetCommandResponse, onError);
   });
 
