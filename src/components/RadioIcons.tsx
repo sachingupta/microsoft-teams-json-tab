@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Flex } from '@stardust-ui/react';
+import { Button, Flex, Menu, menuAsToolbarBehavior } from '@stardust-ui/react';
 
 enum viewType {
   List = 'List',
@@ -12,41 +12,35 @@ interface IRadioIconsProps {
 }
 
 export const RadioIcons: React.FC<IRadioIconsProps> = (props: IRadioIconsProps): JSX.Element => {
-  // STATEHOOKS
-  const [Outlined, setOutlined] = React.useState(true);
-
   // HANDLERS
   const handleChange = (event: React.SyntheticEvent, items: { value: viewType }): void => {
     props.onChange(items.value);
-    setOutlined(items.value === viewType.List);
   };
+
+  const items = [
+    {
+      key: 'list',
+      icon: {
+        name: 'menu',
+        outline: true,
+      },
+      'aria-label': 'List View',
+      onClick: (e: React.SyntheticEvent): void => handleChange(e, { value: viewType.List }),
+    },
+    {
+      key: 'card',
+      icon: {
+        name: 'gallery',
+        outline: true,
+      },
+      'aria-label': 'Card View',
+      onClick: (e: React.SyntheticEvent): void => handleChange(e, { value: viewType.Grid }),
+    },
+  ];
 
   return (
     <Flex styles={props.styles} vAlign="center">
-      <Flex.Item>
-        <Button
-          icon={{
-            name: 'menu',
-            outline: !Outlined,
-            size: 'medium',
-          }}
-          iconOnly
-          text
-          onClick={(e: React.SyntheticEvent): void => handleChange(e, { value: viewType.List })}
-        />
-      </Flex.Item>
-      <Flex.Item>
-        <Button
-          icon={{
-            name: 'gallery',
-            outline: Outlined,
-            size: 'medium',
-          }}
-          iconOnly
-          text
-          onClick={(e: React.SyntheticEvent): void => handleChange(e, { value: viewType.Grid })}
-        />
-      </Flex.Item>
+      <Menu items={items} defaultActiveIndex={0} accessibility={menuAsToolbarBehavior} iconOnly />
     </Flex>
   );
 };
