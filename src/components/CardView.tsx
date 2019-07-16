@@ -70,6 +70,7 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
                   styles={{ margin: '0 0 2px 0' }}
                   size="medium"
                   weight="semibold"
+                  title={stripHTML(item.preview.title)}
                 />
               </Flex.Item>
               {item.preview.subTitle ? (
@@ -86,6 +87,7 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
                     styles={{ margin: '0 0 2px 0' }}
                     weight="regular"
                     size="medium"
+                    title={stripHTML(item.preview.subTitle)}
                   />
                 </Flex.Item>
               ) : null}
@@ -100,7 +102,12 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
                     overflow: 'hidden',
                   }}
                 >
-                  <Text content={stripHTML(item.preview.text)} weight="regular" size="medium" />
+                  <Text
+                    content={stripHTML(item.preview.text)}
+                    weight="regular"
+                    size="medium"
+                    title={stripHTML(item.preview.text)}
+                  />
                 </Flex.Item>
               ) : null}
             </Flex>
