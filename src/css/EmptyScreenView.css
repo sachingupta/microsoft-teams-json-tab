@@ -1,0 +1,52 @@
+.EmptyScreenView {
+    letter-spacing: 0;
+    text-align: center;
+}
+
+a { 
+    color: #6264a7;
+}
+
+a:focus, a:hover {
+    color: #6264a7;
+    text-decoration: underline;
+}
+
+#title {
+    line-height: 24px;
+}
+
+#error {
+    position: relative;
+    color: #484644;
+    line-height: 16px;
+}
+
+#textblock {
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+p {
+    line-height: 20px;
+    color: #484644;
+    margin-block-start: 8px;
+    margin-block-end: 16px;
+}
+
+#image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:32px;
+    width: 50%;
+    max-width: 280px;
+    max-height: 280px;
+}
+
+#button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}

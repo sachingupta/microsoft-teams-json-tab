@@ -1,21 +1,19 @@
 import React from 'react';
-import { Text, Image } from '@stardust-ui/react';
 import * as microsoftTeams from '@microsoft/teams-js';
-
-import '../css/AuthView.css';
+import { EmptyScreenView } from './EmptyScreenView';
 
 interface IAuthViewProps {
   title: string;
   url: string;
   currentQuery: microsoftTeams.bot.QueryRequest;
-  onAuthenticated: (results: microsoftTeams.bot.Results) => void;
+  onAuthenticated: (results: microsoftTeams.bot.QueryResponse) => void;
 }
 
 export const AuthView: React.FC<IAuthViewProps> = (props: IAuthViewProps): JSX.Element => {
   const [ErrorMessage, setErrorMessage] = React.useState('');
 
   const onAuthSuccess = (results: microsoftTeams.bot.Results): void => {
-    props.onAuthenticated(results);
+    props.onAuthenticated({ data: results, type: microsoftTeams.bot.ResponseType.Auth });
   };
 
   const onAuthFailure = (error: string): void => {
@@ -33,17 +31,12 @@ export const AuthView: React.FC<IAuthViewProps> = (props: IAuthViewProps): JSX.E
   };
 
   return (
-    <div className="AuthView">
-      <Text size={'large'} content={props.title} />
-      <Text
-        size={'medium'}
-        content={
-          <p>
-            You&apos;ll need to <a onClick={handleAuthentication}>sign in</a> to use this app.
-          </p>
-        }
-      />
-      <Text id="error" content={ErrorMessage} />
-    </div>
+    <EmptyScreenView
+      buttonText="Sign In"
+      title={props.title}
+      subTitle={"You'll need to sign in to use this app."}
+      message={ErrorMessage}
+      onClick={handleAuthentication}
+    />
   );
 };

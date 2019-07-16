@@ -30,8 +30,8 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   // state hooks
   const [ViewOption, setViewOption] = React.useState('List');
   const [Result, setResult] = React.useState([] as ICard[]);
-  const [AppState, setAppState] = React.useState(AppStateEnum.Render);
-  const [ErrorMessage, setErrorMessage] = React.useState('Hmm... Something went wrong...');
+  const [AppState, setAppState] = React.useState(AppStateEnum.Error);
+  const [ErrorMessage, setErrorMessage] = React.useState('');
   const [AuthData, setAuthData] = React.useState({ url: '', title: 'Sign in' });
   const [Query, setQuery] = React.useState({ query: '', commandId: getCommandId(window.location.href) });
 
@@ -67,11 +67,6 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
     }
   };
 
-  const handleAuthenticated = (results: microsoftTeams.bot.Results) => {
-    setResult(parseQueryResponse(results));
-    setAppState(AppStateEnum.Render);
-  };
-
   // EFFECT HOOKS
   React.useEffect((): void => {
     microsoftTeams.initialize();
@@ -95,14 +90,7 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
       view = <ErrorView message={ErrorMessage} />;
       break;
     case 'Auth':
-      view = (
-        <AuthView
-          title={AuthData.title}
-          url={AuthData.url}
-          currentQuery={Query}
-          onAuthenticated={handleAuthenticated}
-        />
-      );
+      view = <AuthView title={AuthData.title} url={AuthData.url} currentQuery={Query} onAuthenticated={onResults} />;
       break;
   }
   return (
