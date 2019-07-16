@@ -13,7 +13,7 @@ export const AuthView: React.FC<IAuthViewProps> = (props: IAuthViewProps): JSX.E
   const [ErrorMessage, setErrorMessage] = React.useState('');
 
   const onAuthSuccess = (results: microsoftTeams.bot.Results): void => {
-    props.onAuthenticated({ data: results, type: microsoftTeams.bot.ResponseType.Auth });
+    props.onAuthenticated({ data: results, type: microsoftTeams.bot.ResponseType.Results });
   };
 
   const onAuthFailure = (error: string): void => {
