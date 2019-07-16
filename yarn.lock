@@ -1115,10 +1115,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
-"@microsoft/teams-js@^1.5.0-beta.8":
-  version "1.5.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@microsoft/teams-js/-/teams-js-1.5.0-beta.8.tgz#df9bb28ad3c78806879900a9738ec0e28efbbfe6"
-  integrity sha512-Lw1FQ1s3TpwaLVFjWUiLLzUTplvdznF4JgHqDu5nABOiF57Hm+yAEjMJilAS+RXgbUoQrv7j2fcye4mzNBi5yQ==
+"@microsoft/teams-js@^1.5.0-beta.9":
+  version "1.5.0-beta.9"
+  resolved "https://registry.yarnpkg.com/@microsoft/teams-js/-/teams-js-1.5.0-beta.9.tgz#19d283177557275741c52250a452d39669c256a7"
+  integrity sha512-a46f+P2BLnVArCH0S8vTppb1aDUdvKDiLLDSGKMCvK2XkmZza572y/HBKu8gpmrF0T3UKAK8b426TFl9mF7SMg==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
