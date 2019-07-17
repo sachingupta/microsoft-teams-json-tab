@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button, Icon, Image, Flex, Header } from '@stardust-ui/react';
+import { Input, Button, Icon, Image, Flex, Header, createComponent } from '@stardust-ui/react';
 import { RadioIcons } from './RadioIcons';
 import { debounce } from 'lodash';
 
@@ -11,6 +11,7 @@ enum viewType {
 interface ISearchBarProps {
   onSearch: (query: string) => void;
   onViewChange: (view: viewType) => void;
+  customClass?: string;
 }
 
 export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JSX.Element => {
@@ -43,7 +44,7 @@ export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JS
   };
 
   return (
-    <Flex gap="gap.small" vAlign="center">
+    <Flex gap="gap.small" vAlign="center" className={props.customClass}>
       <Flex.Item push>
         <Flex>
           <RadioIcons onChange={handleRadioButtonChange} styles={{ margin: '0 0 16px 0' }} />
@@ -65,3 +66,11 @@ export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JS
     </Flex>
   );
 };
+
+export const SearchBarWrapper = createComponent({
+  displayName: 'SearchBarWrapper',
+  render: ({ stardust, onSearch, onViewChange }) => {
+    const { classes } = stardust;
+    return <SearchBar customClass={classes.root} onViewChange={onViewChange} onSearch={onSearch} />;
+  },
+});
