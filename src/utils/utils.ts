@@ -2,6 +2,7 @@ import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard, OverflowAction } from '../api/api.interface';
 import * as queryString from 'query-string';
 import { ISubmitAction, IOpenUrlAction, IShowCardAction } from 'adaptivecards/lib/schema';
+import { removeUnsupportedActions } from '../api/api';
 
 // gets frame context from url
 export const submitHandler = (err: string, result: string): void => {
@@ -54,7 +55,7 @@ export const processQueryResponse = (item: microsoftTeams.bot.Attachment, botID:
   }
   const out: ICard = {
     contentType: 'AdaptiveCard',
-    content: item.card.content,
+    content: removeUnsupportedActions(item.card.content),
     preview: {
       title: item.previewRawPayload.content.title,
       subTitle: item.previewRawPayload.content.subtitle,
