@@ -14,7 +14,7 @@ export interface ICard {
 
 export interface OverflowAction {
   type: string;
-  title: string;
+  title: string | undefined;
   id: string;
   url?: string;
   enabled: boolean;

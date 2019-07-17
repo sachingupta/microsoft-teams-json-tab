@@ -89,7 +89,7 @@ export const processOverflowAction = (action: ISubmitAction | IOpenUrlAction | I
   return {
     id: action.id,
     type: action.type,
-    title: action.title ? action.title : undefined,
+    title: action.title,
     enabled: supportedOverflowActions.includes(action.type),
     url: action.type === 'Action.OpenUrl' ? action.url : undefined,
   };
