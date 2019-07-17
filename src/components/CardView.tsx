@@ -5,6 +5,7 @@ import { ICard } from '../api/api.interface';
 import { stripHTML, launchTaskModule } from '../utils/utils';
 import '../css/App.css';
 import { Overflow } from './Overflow';
+import { CustomImage } from './CustomImage';
 
 export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.Element => {
   // CONSTANTS
@@ -54,11 +55,7 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
         <Overflow card={item} styles={{ position: 'absolute', right: '0', top: '0', margin: '0 8px 0px 0px' }} />
         <Flex gap="gap.small">
           <Flex.Item>
-            <Image
-              styles={{ width: '48px', height: '100%' }}
-              src={item.preview.heroImageSrc}
-              className="listItemImage"
-            />
+            <CustomImage width="48px" className="listItemImage" src={item.preview.heroImageSrc} />
           </Flex.Item>
           <Flex.Item size="size.half" grow>
             <Flex column styles={{ textAlign: 'left' }}>
