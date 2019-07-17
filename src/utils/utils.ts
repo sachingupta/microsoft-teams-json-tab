@@ -1,6 +1,7 @@
 import * as microsoftTeams from '@microsoft/teams-js';
-import { ICard } from '../api/api.interface';
+import { ICard, OverflowAction } from '../api/api.interface';
 import * as queryString from 'query-string';
+import { ISubmitAction, IOpenUrlAction, IShowCardAction } from 'adaptivecards/lib/schema';
 
 // gets frame context from url
 export const submitHandler = (err: string, result: string): void => {
@@ -80,4 +81,19 @@ export const stripHTML = (html: string): string => {
   let div = document.createElement('div');
   div.innerHTML = html;
   return div.textContent || div.innerText || '';
+};
+
+export const processOverflowAction = (action: ISubmitAction | IOpenUrlAction | IShowCardAction): OverflowAction => {
+  const supportedOverflowActions: string[] = ['Action.OpenUrl'];
+  return {
+    id: action.id,
+    type: action.type,
+    title: action.title,
+    enabled: supportedOverflowActions.includes(action.type),
+    url: action.type === 'Action.OpenUrl' ? action.url : undefined,
+  };
+};
+
+export const getOverflowActions = (card: ICard): OverflowAction[] => {
+  return card.content.actions.map(processOverflowAction);
 };
