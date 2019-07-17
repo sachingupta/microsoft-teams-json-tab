@@ -12,7 +12,7 @@ export interface OverflowProps {
 export const Overflow: React.FC<OverflowProps> = (props: OverflowProps): JSX.Element => {
   const displayActions = (action: OverflowAction) => ({
     key: action.id,
-    content: action.title ? action.title : action.id,
+    content: action.title,
     disabled: !action.enabled,
     onClick: action.url ? () => window.open(action.url) : undefined,
   });
