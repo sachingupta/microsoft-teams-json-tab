@@ -24,6 +24,9 @@ const getCustomTheme = () => ({
     ContentViewWrapper: ({ colorScheme }: any) => ({
       backgroundColor: colorScheme.default.background2,
     }),
+    SearchBarWrapper: ({ colorScheme }: any) => ({
+      backgroundColor: colorScheme.default.background2,
+    }),
     ListItem: ({ colorScheme }: any) => ({
       backgroundColor: colorScheme.default.background,
       hoverBackgroundColor: colorScheme.default.backgroundHover1,
@@ -46,6 +49,14 @@ const getCustomTheme = () => ({
     ContentViewWrapper: {
       root: ({ variables }: any) => ({
         backgroundColor: variables.backgroundColor,
+      }),
+    },
+    SearchBarWrapper: {
+      root: ({ variables }: any) => ({
+        backgroundColor: variables.backgroundColor,
+        position: 'sticky',
+        top: '0px',
+        zIndex: 1,
       }),
     },
     ListItem: {
