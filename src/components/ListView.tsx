@@ -60,9 +60,11 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
               />
             </Flex.Item>
           ) : null}
-          <Flex.Item shrink={0}>
-            <Overflow card={item} title="More Options" />
-          </Flex.Item>
+          {item.content.actions ? (
+            <Flex.Item shrink={0}>
+              <Overflow card={item} title="More Options" />
+            </Flex.Item>
+          ) : null}
         </Flex>
       ),
       styles: { margin: '2px 2px 0 0' },

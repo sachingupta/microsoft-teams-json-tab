@@ -52,7 +52,9 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           }
         }}
       >
-        <Overflow card={item} styles={{ position: 'absolute', right: '0', top: '0', margin: '0 8px 0px 0px' }} />
+        {item.content.actions ? (
+          <Overflow card={item} styles={{ position: 'absolute', right: '0', top: '0', margin: '0 8px 0px 0px' }} />
+        ) : null}
         <Flex gap="gap.small">
           <Flex.Item>
             <CustomImage width="48px" className="listItemImage" src={item.preview.heroImageSrc} />
