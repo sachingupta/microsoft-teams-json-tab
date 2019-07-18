@@ -10,6 +10,8 @@ export interface OverflowProps {
 }
 
 export const Overflow: React.FC<OverflowProps> = (props: OverflowProps): JSX.Element => {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+
   const displayActions = (action: OverflowAction) => ({
     key: action.id,
     content: action.title,
@@ -26,9 +28,14 @@ export const Overflow: React.FC<OverflowProps> = (props: OverflowProps): JSX.Ele
         name: 'more',
         outline: true,
       },
+      menuOpen,
+      active: menuOpen,
       indicator: false,
       menu: {
         items: actions.map(displayActions),
+      },
+      onMenuOpenChange: (e: any, { menuOpen }: any) => {
+        setMenuOpen(menuOpen);
       },
     },
   ];

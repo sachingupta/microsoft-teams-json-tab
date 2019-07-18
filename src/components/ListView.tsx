@@ -1,8 +1,9 @@
 import React from 'react';
-import { List, Image, Flex, Text, Icon, Menu, menuAsToolbarBehavior } from '@stardust-ui/react';
+import { List, Flex, Text } from '@stardust-ui/react';
 import { ICard } from '../api/api.interface';
 import { launchTaskModule, stripHTML } from '../utils/utils';
 import { Overflow } from './Overflow';
+import { CustomImage } from './CustomImage';
 
 export interface IItemListProps {
   itemList: ICard[];
@@ -25,8 +26,8 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
       key: keyCount,
       content: (
         <Flex vAlign="center" fill gap="gap.small">
-          <Flex.Item styles={{ width: '32px', height: '100%' }}>
-            <Image src={item.preview.heroImageSrc} className="listItemImage" />
+          <Flex.Item>
+            <CustomImage width="32px" className="listItemImage" src={item.preview.heroImageSrc} />
           </Flex.Item>
           <Flex.Item size="size.small" shrink={0} grow={1}>
             <Text
@@ -59,9 +60,11 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
               />
             </Flex.Item>
           ) : null}
-          <Flex.Item shrink={0}>
-            <Overflow card={item} title="More Options" />
-          </Flex.Item>
+          {item.content.actions ? (
+            <Flex.Item shrink={0}>
+              <Overflow card={item} title="More Options" />
+            </Flex.Item>
+          ) : null}
         </Flex>
       ),
       styles: { margin: '2px 2px 0 0' },

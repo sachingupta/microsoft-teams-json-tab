@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SearchBar } from './SearchBar';
+import { SearchBarWrapper } from './SearchBar';
 import { Results } from './Results';
 import { LoadIcon } from './LoadIcon';
 import { ErrorView } from './ErrorView';
@@ -108,7 +108,7 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   }
   return (
     <div className={props.customClass}>
-      <SearchBar onSearch={handleSearch} onViewChange={handleViewChange} />
+      <SearchBarWrapper onSearch={handleSearch} onViewChange={handleViewChange} />
       {view}
     </div>
   );
