@@ -33,7 +33,7 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
   }, [Columns]);
 
   // ICARD PROCESSOR
-  const processItem = (item: ICard): JSX.Element => {
+  const processItem = (item: ICard, showImage: boolean): JSX.Element => {
     return (
       <Segment
         data-is-focusable="true"
@@ -56,9 +56,11 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
           <Overflow card={item} styles={{ position: 'absolute', right: '0', top: '0', margin: '0 8px 0px 0px' }} />
         ) : null}
         <Flex gap="gap.small">
-          <Flex.Item>
-            <CustomImage width="48px" className="listItemImage" src={item.preview.heroImageSrc} />
-          </Flex.Item>
+          {showImage ? (
+            <Flex.Item>
+              <CustomImage width="48px" className="listItemImage" src={item.preview.heroImageSrc} />
+            </Flex.Item>
+          ) : null}
           <Flex.Item size="size.half" grow>
             <Flex column styles={{ textAlign: 'left' }}>
               <Flex.Item
@@ -116,10 +118,22 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
     );
   };
 
+  // Show Image constant
+  const showImage = props.itemList[0]
+    ? props.itemList[0].preview
+      ? props.itemList[0].preview.heroImageSrc
+        ? true
+        : false
+      : false
+    : false;
   // RENDER
   return (
     <div style={{ margin: '0 0 0 8px' }}>
-      <Grid columns={Columns} accessibility={gridBehavior} content={props.itemList.map(processItem)} />
+      <Grid
+        columns={Columns}
+        accessibility={gridBehavior}
+        content={props.itemList.map(item => processItem(item, showImage))}
+      />
     </div>
   );
 };

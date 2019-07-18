@@ -18,17 +18,18 @@ export interface IProcessedItem {
 export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.Element => {
   // Key count to ensure unique keys for every item
   let keyCount = 0;
-
   // Function to translate items from IPreviewCard to List.Item format
-  const processItem = (item: ICard): IProcessedItem => {
+  const processItem = (item: ICard, showImage: boolean): IProcessedItem => {
     keyCount++;
     const out = {
       key: keyCount,
       content: (
         <Flex vAlign="center" fill gap="gap.small">
-          <Flex.Item>
-            <CustomImage width="32px" className="listItemImage" src={item.preview.heroImageSrc} />
-          </Flex.Item>
+          {showImage ? (
+            <Flex.Item>
+              <CustomImage width="32px" className="listItemImage" src={item.preview.heroImageSrc} />
+            </Flex.Item>
+          ) : null}
           <Flex.Item size="size.small" shrink={0} grow={1}>
             <Text
               truncated
@@ -73,9 +74,17 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
     return out;
   };
 
+  // Show Image constant
+  const showImage = props.itemList[0]
+    ? props.itemList[0].preview
+      ? props.itemList[0].preview.heroImageSrc
+        ? true
+        : false
+      : false
+    : false;
   // Output List for processed data
   // Call processing function on all items
-  const outList = props.itemList.map(processItem);
+  const outList = props.itemList.map(item => processItem(item, showImage));
 
   // Render selectable list
   return (
