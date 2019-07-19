@@ -1,24 +1,15 @@
 import React from 'react';
-import { Image, Text } from '@stardust-ui/react';
-import '../css/ErrorView.css';
+import { EmptyScreenView } from './EmptyScreenView';
 interface IErrorViewProps {
   message: string;
 }
 
 export const ErrorView: React.FC<IErrorViewProps> = (props: IErrorViewProps): JSX.Element => {
   return (
-    <div className="ErrorView">
-      <Image
-        styles={{
-          maxWidth: '37%',
-          margin: '0 auto',
-          display: 'block',
-          textAlign: 'center',
-          marginBottom: '10px',
-        }}
-        src="error.svg"
-      />
-      <Text size="larger" content={'Hmm... Something went wrong...'} />
-    </div>
+    <EmptyScreenView
+      title="There was a problem communicating with the bot"
+      subTitle="You may not be able to use this feature"
+      message={props.message}
+    />
   );
 };

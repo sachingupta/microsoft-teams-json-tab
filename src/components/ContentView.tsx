@@ -12,6 +12,7 @@ import * as microsoftTeams from '@microsoft/teams-js';
 import { ICard } from '../api/api.interface';
 import { isInitialRun, parseQueryResponse, getCommandId } from '../utils/utils';
 import { createComponent } from '@stardust-ui/react';
+import { EmptyScreenView } from './EmptyScreenView';
 
 // handlers
 export interface IContentViewProps {
@@ -24,6 +25,7 @@ enum AppStateEnum {
   Error = 'Error',
   Render = 'Render',
   Auth = 'Auth',
+  NoResults = 'NoResults',
 }
 
 export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProps): JSX.Element => {
@@ -31,8 +33,9 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   const [ViewOption, setViewOption] = React.useState('List');
   const [Result, setResult] = React.useState([] as ICard[]);
   const [AppState, setAppState] = React.useState(AppStateEnum.Render);
-  const [ErrorMessage, setErrorMessage] = React.useState('Hmm... Something went wrong...');
+  const [ErrorMessage, setErrorMessage] = React.useState('');
   const [AuthData, setAuthData] = React.useState({ url: '', title: 'Sign in' });
+  const [Query, setQuery] = React.useState({ query: '', commandId: getCommandId(window.location.href) });
 
   const onError = (error: string): void => {
     setAppState(AppStateEnum.Error);
@@ -47,18 +50,15 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
     } else {
       const resultsResponse: microsoftTeams.bot.Results = response.data as microsoftTeams.bot.Results;
       setResult(parseQueryResponse(resultsResponse));
-      setAppState(AppStateEnum.Render);
+      handleIfNoResults(resultsResponse.attachments);
       microsoftTeams.appInitialization.notifySuccess();
     }
   };
 
   const handleSearch = (query: string): void => {
     if (query !== undefined) {
-      const request: microsoftTeams.bot.QueryRequest = {
-        query: query,
-        commandId: getCommandId(window.location.href),
-      };
-      getResults(request, onResults, onError);
+      setQuery({ query: query, commandId: getCommandId(window.location.href) }); // keep query in state for auth
+      getResults(Query, onResults, onError);
       setAppState(AppStateEnum.Loading);
     }
   };
@@ -66,6 +66,14 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   const handleViewChange = (viewOption: string): void => {
     if (viewOption) {
       setViewOption(viewOption);
+    }
+  };
+
+  const handleIfNoResults = (response: microsoftTeams.bot.Attachment[]): void => {
+    if (response.length === 0) {
+      setAppState(AppStateEnum.NoResults);
+    } else {
+      setAppState(AppStateEnum.Render);
     }
   };
 
@@ -80,7 +88,6 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
         commandId: getCommandId(window.location.href),
       };
       getResults(request, onResults, onError);
-      setAppState(AppStateEnum.Loading);
     }
   }, [props.onThemeChange]);
 
@@ -93,7 +100,10 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
       view = <ErrorView message={ErrorMessage} />;
       break;
     case 'Auth':
-      view = <AuthView title={AuthData.title} url={AuthData.url} />;
+      view = <AuthView title={AuthData.title} url={AuthData.url} currentQuery={Query} onAuthenticated={onResults} />;
+      break;
+    case 'NoResults':
+      view = <EmptyScreenView title="We couldn't find any results" subTitle="Search, or try refining your query!" />;
       break;
   }
   return (
