@@ -15,7 +15,7 @@ export const CustomImage: React.FC<CustomImageProps> = (props: CustomImageProps)
   };
   return (
     <img
-      style={{ width: `${props.width}`, height: '100%' }}
+      style={{ width: `${props.width}`, height: '100%', borderRadius: '3px' }}
       className={props.className}
       src={ImageSrc}
       onError={handleError}
