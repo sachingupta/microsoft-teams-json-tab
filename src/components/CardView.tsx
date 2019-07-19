@@ -16,6 +16,19 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
     return Math.floor(width / minimumCardWidth);
   };
 
+  const [Height, setHeight] = React.useState(window.innerHeight);
+  const updateHeight = () => {
+    setHeight(window.innerHeight);
+  };
+
+  // EFFECT HOOKS
+  React.useEffect(() => {
+    window.addEventListener('resize', updateHeight);
+    return () => {
+      window.removeEventListener('resize', updateHeight);
+    };
+  }, [Height]);
+
   // STATE HOOKS
   const [Columns, setColumns] = React.useState(calculateColumns(window.innerWidth));
 
@@ -118,7 +131,7 @@ export const CardView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
 
   // RENDER
   return (
-    <div style={{ margin: '0 0 0 8px' }}>
+    <div style={{ margin: '0 0 0 8px', height: `${Height - 50}px`, overflow: 'scroll' }}>
       <Grid columns={Columns} accessibility={gridBehavior} content={props.itemList.map(processItem)} />
     </div>
   );

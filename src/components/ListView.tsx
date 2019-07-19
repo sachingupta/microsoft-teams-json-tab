@@ -16,6 +16,19 @@ export interface IProcessedItem {
 }
 
 export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.Element => {
+  const [Height, setHeight] = React.useState(window.innerHeight);
+  const updateHeight = () => {
+    setHeight(window.innerHeight);
+  };
+
+  // EFFECT HOOKS
+  React.useEffect(() => {
+    window.addEventListener('resize', updateHeight);
+    return () => {
+      window.removeEventListener('resize', updateHeight);
+    };
+  }, [Height]);
+
   // Key count to ensure unique keys for every item
   let keyCount = 0;
 
@@ -78,9 +91,5 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
   const outList = props.itemList.map(processItem);
 
   // Render selectable list
-  return (
-    <div>
-      <List selectable items={outList} />
-    </div>
-  );
+  return <List selectable items={outList} styles={{ height: `${Height - 48}px`, overflow: 'scroll' }} />;
 };
