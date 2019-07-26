@@ -27,8 +27,7 @@
     {
       "entityId": "json-tab",
       "name": "json tab",
-      "contentUrl": "https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&initialRun=true",
-      "websiteUrl": "https://microsoft-teams-json-tab.azurewebsites.net",
+      "contentUrl": "https://{jsonTabUrl}?theme={theme}&frameContext=content&initialRun=true",
       "scopes": [
         "personal"
       ]
@@ -36,7 +35,7 @@
   ],
   "configurableTabs": [
     {
-      "configurationUrl": "https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=settings&initialRun=true",
+      "configurationUrl": "https://{jsonTabUrl}?theme={theme}&frameContext=settings&initialRun=true",
       "canUpdateConfiguration": false,
       "scopes": [
         "team"
