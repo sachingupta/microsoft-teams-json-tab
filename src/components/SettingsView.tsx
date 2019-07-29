@@ -6,7 +6,6 @@ import { getSupportedCommands } from '../api/api';
 export const SettingsView: React.FC = (): JSX.Element => {
   // STATE HOOKS
   const [CommandList, setCommandList] = React.useState([] as microsoftTeams.bot.Command[]);
-  const [CommandSelected, setCommandSelected] = React.useState('');
   const [ContentUrl, setContentUrl] = React.useState('');
   const [TabName, setTabName] = React.useState('JSONTabDefault');
   // HANDLERS
@@ -16,6 +15,9 @@ export const SettingsView: React.FC = (): JSX.Element => {
 
   const onGetCommandResponse = (response: microsoftTeams.bot.Command[]): void => {
     setCommandList(response);
+    if (CommandList.length === 1) {
+      onCommandSelection(CommandList[0]);
+    }
     microsoftTeams.appInitialization.notifySuccess();
   };
 
@@ -32,8 +34,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
     }
   };
 
-  const onCommandSelection = (command: any): void => {
-    setCommandSelected(command.id);
+  const onCommandSelection = (command: microsoftTeams.bot.Command): void => {
     if (command.initialRun) {
       setContentUrl(
         `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${command.id}&initialRun=${command.initialRun}`,
@@ -79,7 +80,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
         })}
         noResultsMessage="We couldn't find any matches."
         onSelectedChange={handleCommandChange}
-        placeholder="Select the command"
+        placeholder={CommandList.length === 1 ? CommandList[0].title : 'Select the command'}
       />
     </div>
   );
