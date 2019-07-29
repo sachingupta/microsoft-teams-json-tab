@@ -16,7 +16,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
   const onGetCommandResponse = (response: microsoftTeams.bot.Command[]): void => {
     setCommandList(response);
     if (CommandList.length === 1) {
-      onCommandSelection(findCommand(CommandList[0].title));
+      onCommandSelection(CommandList[0]);
     }
     microsoftTeams.appInitialization.notifySuccess();
   };
@@ -26,17 +26,12 @@ export const SettingsView: React.FC = (): JSX.Element => {
   };
 
   const handleCommandChange = (event: any, res: any): void => {
-    const command = findCommand(res.value);
+    const command = CommandList.find(
+      (item: microsoftTeams.bot.Command): boolean => item.title === res.value,
+    ) as microsoftTeams.bot.Command;
     if (command) {
       onCommandSelection(command);
     }
-  };
-
-  const findCommand = (title: string): microsoftTeams.bot.Command => {
-    const command = CommandList.find(
-      (item: microsoftTeams.bot.Command): boolean => item.title === title,
-    ) as microsoftTeams.bot.Command;
-    return command;
   };
 
   const onCommandSelection = (command: microsoftTeams.bot.Command): void => {
