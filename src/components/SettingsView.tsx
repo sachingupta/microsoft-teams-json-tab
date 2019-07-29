@@ -6,7 +6,6 @@ import { getSupportedCommands } from '../api/api';
 export const SettingsView: React.FC = (): JSX.Element => {
   // STATE HOOKS
   const [CommandList, setCommandList] = React.useState([] as microsoftTeams.bot.Command[]);
-  const [CommandSelected, setCommandSelected] = React.useState('');
   const [ContentUrl, setContentUrl] = React.useState('');
   const [TabName, setTabName] = React.useState('JSONTabDefault');
   // HANDLERS
@@ -16,6 +15,9 @@ export const SettingsView: React.FC = (): JSX.Element => {
 
   const onGetCommandResponse = (response: microsoftTeams.bot.Command[]): void => {
     setCommandList(response);
+    if (CommandList.length === 1) {
+      onCommandSelection(findCommand(CommandList[0].title));
+    }
     microsoftTeams.appInitialization.notifySuccess();
   };
 
@@ -24,16 +26,25 @@ export const SettingsView: React.FC = (): JSX.Element => {
   };
 
   const handleCommandChange = (event: any, res: any): void => {
-    const command = CommandList.find(
-      (item: microsoftTeams.bot.Command): boolean => item.title === res.value,
-    ) as microsoftTeams.bot.Command;
+    const command = findCommand(res.value);
     if (command) {
       onCommandSelection(command);
     }
   };
 
-  const onCommandSelection = (command: any): void => {
-    setCommandSelected(command.id);
+  const findCommand = (title: string): microsoftTeams.bot.Command => {
+    const command = CommandList.find(
+      (item: microsoftTeams.bot.Command): boolean => item.title === title,
+    ) as microsoftTeams.bot.Command;
+    return command;
+  };
+
+  const onCommandSelection = (command: microsoftTeams.bot.Command): void => {
+    modifyUrlIfInitial(command);
+    microsoftTeams.settings.setValidityState(true);
+  };
+
+  const modifyUrlIfInitial = (command: microsoftTeams.bot.Command): void => {
     if (command.initialRun) {
       setContentUrl(
         `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${command.id}&initialRun=${command.initialRun}`,
@@ -43,7 +54,6 @@ export const SettingsView: React.FC = (): JSX.Element => {
         `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${command.id}`,
       );
     }
-    microsoftTeams.settings.setValidityState(true);
   };
 
   const saveHandler = (saveEvent: microsoftTeams.settings.SaveEvent): void => {
@@ -79,7 +89,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
         })}
         noResultsMessage="We couldn't find any matches."
         onSelectedChange={handleCommandChange}
-        placeholder="Select the command"
+        placeholder={CommandList.length === 1 ? CommandList[0].title : 'Select the command'}
       />
     </div>
   );
