@@ -35,11 +35,6 @@ export const SettingsView: React.FC = (): JSX.Element => {
   };
 
   const onCommandSelection = (command: microsoftTeams.bot.Command): void => {
-    modifyUrlIfInitial(command);
-    microsoftTeams.settings.setValidityState(true);
-  };
-
-  const modifyUrlIfInitial = (command: microsoftTeams.bot.Command): void => {
     if (command.initialRun) {
       setContentUrl(
         `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${command.id}&initialRun=${command.initialRun}`,
@@ -49,6 +44,7 @@ export const SettingsView: React.FC = (): JSX.Element => {
         `https://microsoft-teams-json-tab.azurewebsites.net?theme={theme}&frameContext=content&commandId=${command.id}`,
       );
     }
+    microsoftTeams.settings.setValidityState(true);
   };
 
   const saveHandler = (saveEvent: microsoftTeams.settings.SaveEvent): void => {
