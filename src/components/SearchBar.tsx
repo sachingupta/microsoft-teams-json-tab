@@ -18,18 +18,20 @@ export const SearchBar: React.FC<ISearchBarProps> = (props: ISearchBarProps): JS
   // STATE HOOKS
   const [Query, setQuery] = React.useState('');
 
-  //DEBOUNCED QUERY
-  const onSearchDebounced = debounce(props.onSearch, 300);
+  // HELPER
+  const onChangeHelper = (query: string) => {
+    if (query !== Query) {
+      props.onSearch(query);
+      setQuery(query);
+    }
+  };
+  // DEBOUNCED HELPER
+  const onChangeHelperDebounced = debounce(onChangeHelper, 400, { leading: false, trailing: true });
 
   // HANDLERS
   const handleOnChange = (event: React.SyntheticEvent<HTMLElement>): void => {
     const newQuery = (event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value;
-    if ((event as React.SyntheticEvent<HTMLInputElement>).currentTarget.value.length >= 1) {
-      onSearchDebounced(newQuery);
-    } else {
-      onSearchDebounced('');
-    }
-    setQuery(newQuery);
+    onChangeHelperDebounced(newQuery);
   };
 
   const handleRadioButtonChange = (view: string): void => {
