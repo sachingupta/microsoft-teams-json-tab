@@ -57,9 +57,9 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
 
   const handleSearch = (query: string): void => {
     if (query !== undefined) {
-      setQuery({ query: query, commandId: getCommandId(window.location.href) }); // keep query in state for auth
-      getResults(Query, onResults, onError);
+      getResults({ query: query, commandId: getCommandId(window.location.href) }, onResults, onError);
       setAppState(AppStateEnum.Loading);
+      setQuery({ query: query, commandId: getCommandId(window.location.href) }); // keep query in state for auth
     }
   };
 
