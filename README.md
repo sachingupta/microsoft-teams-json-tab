@@ -1,4 +1,9 @@
 
+# microsoft-teams-json-tab
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+[![Build Status](https://dev.azure.com/hapysachin91/json-tab/_apis/build/status/sachingupta.microsoft-teams-json-tab?branchName=master)](https://dev.azure.com/hapysachin91/json-tab/_build/latest?definitionId=1&branchName=master)
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
