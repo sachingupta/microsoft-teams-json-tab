@@ -28,14 +28,26 @@ enum AppStateEnum {
   NoResults = 'NoResults',
 }
 
+// constants
+const itemHeight = 48;
+
 export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProps): JSX.Element => {
   // state hooks
   const [ViewOption, setViewOption] = React.useState('List');
-  const [Result, setResult] = React.useState([] as ICard[]);
+  let [Result, setResult] = React.useState([] as ICard[]);
   const [AppState, setAppState] = React.useState(AppStateEnum.Render);
   const [ErrorMessage, setErrorMessage] = React.useState('');
   const [AuthData, setAuthData] = React.useState({ url: '', title: 'Sign in' });
-  const [Query, setQuery] = React.useState({ query: '', commandId: getCommandId(window.location.href) });
+  const [Query, setQuery] = React.useState({
+    query: '',
+    commandId: getCommandId(window.location.href),
+    option: {
+      skip: 0,
+      count: 10,
+    },
+  });
+  let [Skip, setSkip] = React.useState(0);
+  let [PendingQuery, setPendingQuery] = React.useState(false);
 
   const onError = (error: string): void => {
     setAppState(AppStateEnum.Error);
@@ -49,7 +61,8 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
       setAppState(AppStateEnum.Auth);
     } else {
       const resultsResponse: microsoftTeams.bot.Results = response.data as microsoftTeams.bot.Results;
-      setResult(parseQueryResponse(resultsResponse));
+      setPendingQuery(false);
+      setResult((Result = Result.concat(parseQueryResponse(resultsResponse))));
       handleIfNoResults(resultsResponse.attachments);
       microsoftTeams.appInitialization.notifySuccess();
     }
@@ -57,7 +70,7 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
 
   const handleSearch = (query: string): void => {
     if (query !== undefined) {
-      const queryInfo = { query: query, commandId: getCommandId(window.location.href) };
+      const queryInfo = { query: query, commandId: getCommandId(window.location.href), option: { skip: 0, count: 25 } };
       getResults(queryInfo, onResults, onError);
       setAppState(AppStateEnum.Loading);
       setQuery(queryInfo); // keep query in state for auth
@@ -79,18 +92,54 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   };
 
   // EFFECT HOOKS
-  React.useEffect((): void => {
+  React.useEffect(() => {
     microsoftTeams.initialize();
     microsoftTeams.appInitialization.notifyAppLoaded();
     microsoftTeams.registerOnThemeChangeHandler(props.onThemeChange);
     if (isInitialRun()) {
-      const request: microsoftTeams.bot.QueryRequest = {
-        query: '',
-        commandId: getCommandId(window.location.href),
-      };
+      const request: microsoftTeams.bot.QueryRequest = Query;
       getResults(request, onResults, onError);
     }
+    return scrollBehavior();
   }, [props.onThemeChange]);
+
+  const scrollBehavior = () => {
+    let scrollItem = document.getElementById('scroll-list');
+    if (scrollItem !== null) {
+      const pageSize = Math.floor(scrollItem.offsetHeight / itemHeight) * 2;
+      const handleScroll = () => {
+        if (
+          scrollItem !== null &&
+          scrollItem.offsetHeight + scrollItem.scrollTop > scrollItem.scrollHeight - itemHeight * 5
+        ) {
+          fetchMoreItems(pageSize);
+        }
+      };
+      scrollItem.addEventListener('scroll', handleScroll);
+      return () => {
+        if (scrollItem !== null) {
+          scrollItem.removeEventListener('scroll', handleScroll);
+        }
+      };
+    }
+  };
+
+  const fetchMoreItems = (pageSize: number) => {
+    if (PendingQuery) {
+      return;
+    }
+    const request: microsoftTeams.bot.QueryRequest = {
+      query: Query.query,
+      commandId: Query.commandId,
+      option: {
+        skip: Skip + pageSize,
+        count: pageSize,
+      },
+    };
+    getResults(request, onResults, onError);
+    setPendingQuery(true);
+    setSkip((Skip = Skip + pageSize));
+  };
 
   let view = <Results results={Result} viewOption={ViewOption} />;
   switch (AppState) {
@@ -109,6 +158,7 @@ export const ContentView: React.FC<IContentViewProps> = (props: IContentViewProp
   }
   return (
     <div className={props.customClass}>
+      <LoadIcon isLoading={PendingQuery} />
       <SearchBarWrapper onSearch={handleSearch} onViewChange={handleViewChange} />
       {view}
     </div>

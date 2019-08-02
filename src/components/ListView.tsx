@@ -91,5 +91,7 @@ export const ListView: React.FC<IItemListProps> = (props: IItemListProps): JSX.E
   const outList = props.itemList.map(processItem);
 
   // Render selectable list
-  return <List selectable items={outList} styles={{ height: `${Height - 48}px`, overflow: 'scroll' }} />;
+  return (
+    <List id="scroll-list" selectable items={outList} styles={{ height: `${Height - 48}px`, overflow: 'scroll' }} />
+  );
 };
